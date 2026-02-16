@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Kurale&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #111;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#app {
+    padding: 2rem;
+    transition:
+        opacity 200ms ease,
+        transform 200ms ease;
+}
+
+/* Animation states */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page {
+    min-height: 60vh;
+}
+
+#title {
+    font-size: 10em;
+    font-weight: 800;
+    margin-bottom: 0.5em;
+    font-family: "Kurale";
+    letter-spacing: -14px;
+    margin: 0;
+}
+
+#subtitle {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 1em;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#main {
+    display: flex;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    padding: 2em;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.patibrata-svg {
+    position: absolute;
+    blur: 10px;
+    width: 200%; /* Or a specific pixel value like 300px */
+    left: -50%;
+    height: auto;
+    z-index: -1;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
