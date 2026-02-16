@@ -1,37 +1,69 @@
-import { serve } from "bun"
-import { join } from "path"
+import { serve } from "bun";
+import { join } from "path";
+import os from "os";
+
+function getLocalIP() {
+  const interfaces = os.networkInterfaces();
+
+  for (const name of Object.keys(interfaces)) {
+    for (const net of interfaces[name] || []) {
+      if (net.family === "IPv4" && !net.internal) {
+        return net.address;
+      }
+    }
+  }
+
+  return "localhost";
+}
 
 function startServer(port) {
   try {
     const server = serve({
       port,
+      hostname: "0.0.0.0",
+
       async fetch(req) {
-        const url = new URL(req.url)
-        const pathname = url.pathname
+        const url = new URL(req.url);
+        const pathname = url.pathname;
+        const method = req.method;
+        const clientIP =
+          req.headers.get("x-forwarded-for") ||
+          req.headers.get("x-real-ip") ||
+          "local";
 
-        const filePath = join(process.cwd(), pathname)
+        const time = new Date().toLocaleTimeString();
 
-        try {
-          const file = Bun.file(filePath)
-          if (await file.exists()) {
-            return new Response(file)
-          }
-        } catch {}
+        const filePath = join(process.cwd(), pathname);
+        const file = Bun.file(filePath);
 
-        return new Response(Bun.file("index.html"))
-      }
-    })
+        let status = 200;
 
-    console.log(`Server running at http://localhost:${server.port}`)
+        if (await file.exists()) {
+          console.log(`[${time}] ${clientIP} ${method} ${pathname} → 200`);
+          return new Response(file);
+        }
+
+        // SPA fallback
+        console.log(`[${time}] ${clientIP} ${method} ${pathname} → 200 (SPA)`);
+        return new Response(Bun.file("index.html"));
+      },
+    });
+
+    const ip = getLocalIP();
+
+    console.log("");
+    console.log("  SPA Boilerplate Dev Server");
+    console.log("");
+    console.log(`  Local:   http://localhost:${server.port}`);
+    console.log(`  Network: http://${ip}:${server.port}`);
+    console.log("");
   } catch (err) {
     if (err.code === "EADDRINUSE") {
-      console.log(`Port ${port} in use, trying ${port + 1}...`)
-      startServer(port + 1)
+      startServer(port + 1);
     } else {
-      throw err
+      throw err;
     }
   }
 }
 
-startServer(3000)
-
+startServer(3000);
