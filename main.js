@@ -1,16 +1,13 @@
-import { router, navigateTo } from "./router.js"
+import { router, navigateTo } from "./router.js";
 
-// Intercept link clicks
-document.addEventListener("click", e => {
-  if (e.target.matches("[data-link]")) {
-    e.preventDefault()
-    navigateTo(e.target.href)
-  }
-})
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("[data-link]");
+  if (!link) return;
 
-// Handle browser back/forward
-window.addEventListener("popstate", router)
+  e.preventDefault();
+  navigateTo(link.href);
+});
 
-// Initial load
-router()
+window.addEventListener("popstate", router);
 
+router();

@@ -1,4 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Kurale&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("/assets/fonts/PlusJakartaSans-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("/assets/fonts/PlusJakartaSans-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Libre Baskerville";
+    src: url("/assets/fonts/LibreBaskerville-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Libre Baskerville";
+    src: url("/assets/fonts/LibreBaskerville-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Kurale";
+    src: url("/assets/fonts/Kurale-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Amiri";
+    src: url("/assets/fonts/Amiri-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Amiri";
+    src: url("/assets/fonts/Amiri-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Amiri";
+    src: url("/assets/fonts/Amiri-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Amiri";
+    src: url("/assets/fonts/Amiri-BoldItalic.woff2") format("woff2");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ================== */
 
 body {
     font-family: sans-serif;
@@ -95,4 +167,78 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* ===============================
+   POEM PAGE
+================================ */
+
+.poem {
+    max-width: 720px;
+    margin: 120px auto;
+    padding: 0 40px;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Title (from # in markdown) */
+.poem h1 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Author (from ### in markdown) */
+.poem h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    opacity: 0.6;
+    margin-bottom: 70px;
+    font-weight: 400;
+}
+
+/* Poem body */
+.poem p {
+    font-family: "Libre Baskerville", serif;
+    font-size: 19px;
+    line-height: 2.1;
+    margin: 0 0 28px 0;
+}
+
+/* Drop cap on first stanza */
+.poem p:first-of-type {
+    position: relative;
+}
+
+.poem p:first-of-type::before {
+    content: "❦";
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.4;
+}
+
+.poem span[lang="ar"] {
+    font-family: "Amiri", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+}
+
+.back-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    opacity: 0.6;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
+.back-link:hover {
+    opacity: 1;
 }
