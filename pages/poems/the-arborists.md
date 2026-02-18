@@ -60,8 +60,6 @@ day four
 and our missions are done
 but then you had to aim the gun
 at one of us, and pull the trigger
-then my eyes look down the barrel
-of your revolver, and you pulled the trigger
 
 i know you had to choose one
 but why should it be me?
@@ -69,7 +67,16 @@ but why should it be me?
 you told me that it wasn't personal
 and not to think about it too much
 but honestly I can't
-I can't not think about how i rushed to your side 
+i can't not think about that time, 
+when i was struggling
+to get the other end of my backpack
+and you pulled it out for me
+that time when
+i saw you were craving for those baby oranges
+and i saved some for you
+and how bright your eyes were shining
+looking at them, excited for them
+that time when i rushed to your side 
 when you were alone in the blue seashore
 and i invited you to collect sea corals 
 and one of them you gave to me
@@ -81,21 +88,27 @@ but even with all that
 i am still the furthest to you
 compared to buddy Jo, big brother, and little Poppy.
 so if one had never went with you on this journey
+if the boat was overcrowded
+and someone had to be thrown overboard
 you chose for it to be me
+and my eyes look down the barrel
+of your revolver, and you pulled the trigger
+
 and you shot me between the eyes
+and i sobbed the rest of the night
 
 what i can take is that
-I failed to get your attention
+i failed to get your attention
 thus i’ll never get to be your friend
 the way a big brother and a poppy are
 one on which you can lean on
 for any of your difficulties
-one who will keep an open ear
+one who will always be there for you
 for any of your hardships
 that you need to tell somebody
 let alone someone
 you can lean on when you're sad
-or who i can lean on when i’m sad
+or who i can lean on when i am
 
 i can do all that
 but i won’t be your first choice
@@ -197,7 +210,7 @@ as i take a spoonful myself
 and tried to enjoy our noodles
 
 and i was in awe
-watching you hug
+watching you pull him close
 rest your face on his back
 and drift off into sleep
 then you and Poppy were preparing
@@ -232,9 +245,11 @@ never be able to be a proxy to you
 that i only wanted
 you
 
-but please
+but please stay
 stay being affectionate to your Poppy, big brother,
 and everyone else you're affectionate with
 even if that person isn't me
 please keep being you 
+because i know
+this is essentially how you are
 the one i know and love with all my heart

@@ -5,7 +5,7 @@ mellow as we waited for you
 as another just left the group
 under the impression
 long after we just lost one
-In their hearts, they needed you
+in their hearts, they needed you
 definitely not gonna lose another
 and then you show up
 

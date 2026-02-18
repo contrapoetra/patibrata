@@ -1,3 +1,10 @@
+const connections = {
+  "/": "/about",
+  "/about": "/contact",
+  "/contact": "/poems",
+  "/poems": "/",
+};
+
 const routes = {
   "/": "/pages/home.html",
   "/about": "/pages/about.html",

@@ -10,7 +10,7 @@ and we try to sit somewhere dry
 
 i always hear it like
 you say it out of spite
-It’s the way you answer my call:
+it’s the way you answer my call:
 yes, darling?
 
 i surely know i'm not your love, darling
