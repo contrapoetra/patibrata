@@ -162,7 +162,6 @@ body {
 #title {
     font-size: 10em;
     font-weight: 800;
-    margin-bottom: 0.5em;
     font-family: "Kurale";
     letter-spacing: -14px;
     margin: 0;
@@ -171,8 +170,25 @@ body {
 #subtitle {
     font-size: 1.2em;
     color: #666;
-    margin-bottom: 1em;
     margin: 0;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+#slide-title {
+    background: #fff;
+}
+
+#slide-subtitle {
+    background: #f8f8f8;
 }
 
 html,
@@ -187,24 +203,19 @@ body {
 }
 
 #main {
-    display: flex;
-    height: 100dvh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     position: relative;
-    flex-direction: column;
-    padding: 2em;
     font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .patibrata-svg {
     position: absolute;
-    blur: 10px;
-    width: 200%; /* Or a specific pixel value like 300px */
+    filter: blur(10px);
+    width: 200%;
     left: -50%;
     height: auto;
     z-index: -1;
+    opacity: 0.15;
+    will-change: transform;
 }
 
 a {

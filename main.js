@@ -47,9 +47,46 @@ let nextPath;
 function initScrollReveal() {
   const currentPath = window.location.pathname;
   nextPath = connections[currentPath];
-  if (!nextPath) return;
+  if (!nextPath) {
+    // If there's no next path for reveal, we should still set up home page animations if it's the home page.
+    if (currentPath === "/") {
+      // Parallax for the Patibrata logo on the home page
+      // Background moves slower (negative yPercent) creating depth illusion
+      gsap.to(".patibrata-svg", {
+        yPercent: -15,
+        scale: 1.1,
+        filter: "blur(20px)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#smooth-content",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.5,
+          scroller: "#smooth-content",
+        },
+      });
+    }
+    return;
+  }
 
   ScrollTrigger.getAll().forEach((t) => t.kill());
+
+  // Add the parallax effect for the logo only if on the home page and not during a reveal transition
+  if (currentPath === "/") {
+    gsap.to(".patibrata-svg", {
+      yPercent: -15,
+      scale: 1.1,
+      filter: "blur(20px)",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#smooth-content",
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.5,
+        scroller: "#smooth-content",
+      },
+    });
+  }
 
   if (overlay) overlay.remove();
 
