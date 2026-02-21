@@ -20,8 +20,12 @@ export function navigateTo(url) {
 export async function router() {
   const path = window.location.pathname;
   const app = document.getElementById("app");
+  const body = document.body;
 
   if (!app) return;
+
+  // Update body class based on current page
+  body.className = "";
 
   app.classList.remove("fade-in");
   app.classList.add("fade-out");
@@ -43,6 +47,43 @@ export async function router() {
             ${marked.parse(md, { breaks: true })}
           </div>
         `;
+
+        // Animate poem text
+        const poemContent = document.querySelectorAll(".poem p");
+        poemContent.forEach((poem) => {
+          // Process each child node (text nodes and br elements)
+          const originalNodes = Array.from(poem.childNodes);
+          poem.innerHTML = "";
+
+          originalNodes.forEach((node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              // Split text node by spaces and wrap words in spans
+              const text = node.textContent || "";
+              const words = text.match(/\S+\s*/g) || [];
+              words.forEach((word) => {
+                const span = document.createElement("span");
+                span.textContent = word;
+                poem.appendChild(span);
+              });
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
+              // Keep <br> elements as-is
+              poem.appendChild(node.cloneNode(true));
+            }
+          });
+
+          gsap.from(poem.querySelectorAll("span"), {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.02,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: poem,
+              start: "top bottom-=100",
+              toggleActions: "play none none none",
+            },
+          });
+        });
       }
 
       // 🔹 Normal routes
@@ -50,6 +91,11 @@ export async function router() {
         const res = await fetch(routes[path]);
         const html = await res.text();
         app.innerHTML = html;
+
+        // Add body class for home page
+        if (path === "/") {
+          body.classList.add("home");
+        }
       }
 
       // 🔹 404

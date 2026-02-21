@@ -3,6 +3,46 @@ import { router, navigateTo } from "./router.js";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 /* =========================
+   TEXT ANIMATION
+========================= */
+
+function animatePoemText() {
+  const poemContent = document.querySelector(".poem p");
+  if (!poemContent) return;
+
+  // Wrap each word in a span for animation
+  const poems = document.querySelectorAll(".poem p");
+
+  poems.forEach((poem) => {
+    const text = poem.textContent;
+    const words = text.split(" ");
+
+    // Clear original text and wrap words in spans
+    poem.innerHTML = "";
+    words.forEach((word, index) => {
+      const span = document.createElement("span");
+      span.textContent = word + " ";
+      span.style.display = "inline-block";
+      poem.appendChild(span);
+    });
+
+    // Animate words on scroll
+    gsap.from(poem.querySelectorAll("span"), {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.02,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: poem,
+        start: "top bottom-=100",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+}
+
+/* =========================
    PAGE CONNECTIONS
 ========================= */
 
@@ -51,18 +91,15 @@ function initScrollReveal() {
     // If there's no next path for reveal, we should still set up home page animations if it's the home page.
     if (currentPath === "/") {
       // Parallax for the Patibrata logo on the home page
-      // Background moves slower (negative yPercent) creating depth illusion
-      gsap.to(".patibrata-svg", {
-        yPercent: -15,
-        scale: 1.1,
-        filter: "blur(20px)",
+      // Background moves slower (positive yPercent) creating depth illusion
+      gsap.to(".parallax-logo", {
+        yPercent: 15,
         ease: "none",
         scrollTrigger: {
-          trigger: "#smooth-content",
+          trigger: "#slide-title",
           start: "top top",
           end: "bottom top",
-          scrub: 0.5,
-          scroller: "#smooth-content",
+          scrub: true,
         },
       });
     }
@@ -73,17 +110,14 @@ function initScrollReveal() {
 
   // Add the parallax effect for the logo only if on the home page and not during a reveal transition
   if (currentPath === "/") {
-    gsap.to(".patibrata-svg", {
-      yPercent: -15,
-      scale: 1.1,
-      filter: "blur(20px)",
+    gsap.to(".parallax-logo", {
+      yPercent: 15,
       ease: "none",
       scrollTrigger: {
-        trigger: "#smooth-content",
+        trigger: "#slide-title",
         start: "top top",
         end: "bottom top",
-        scrub: 0.5,
-        scroller: "#smooth-content",
+        scrub: true,
       },
     });
   }

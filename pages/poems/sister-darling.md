@@ -138,7 +138,8 @@ writing a few words
 that i hope you'll read
 
 but you did call me out the next day 
-and told me to take a chip
+and told me to
+take a chip
 scoop a little of ice cream with it
 and enjoy
 and my smile grew

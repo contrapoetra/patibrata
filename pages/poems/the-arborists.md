@@ -209,7 +209,7 @@ and i lost count
 as i take a spoonful myself
 and tried to enjoy our noodles
 
-and i was in awe
+and on the way home i was in awe
 watching you pull him close
 rest your face on his back
 and drift off into sleep
@@ -223,7 +223,8 @@ and you think i hated you
 but nothing could be further from the truth
 i loved you
 from the top of my heart
-but know that it's not because you were very kind to me
+but know that
+it's not because you were very kind to me
 not because you did anything
 i fell for you just for being you
 and what did i do?
