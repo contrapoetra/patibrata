@@ -84,14 +84,11 @@ window.addEventListener("popstate", router);
 let overlay;
 let nextPath;
 
-function initScrollReveal() {
-  const currentPath = window.location.pathname;
-  nextPath = connections[currentPath];
-  if (!nextPath) {
-    // If there's no next path for reveal, we should still set up home page animations if it's the home page.
-    if (currentPath === "/") {
-      // Parallax for the Patibrata logo on the home page
-      // Background moves slower (positive yPercent) creating depth illusion
+function setupHomeParallax() {
+  setTimeout(() => {
+    const logo = document.querySelector(".parallax-logo");
+    const slideTitle = document.querySelector("#slide-title");
+    if (logo && slideTitle) {
       gsap.to(".parallax-logo", {
         yPercent: 15,
         ease: "none",
@@ -103,23 +100,27 @@ function initScrollReveal() {
         },
       });
     }
+  }, 50);
+}
+
+window.initScrollReveal = function initScrollReveal() {
+  const currentPath = window.location.pathname;
+  nextPath = connections[currentPath];
+
+  // Kill all existing ScrollTriggers to prevent duplicates
+  ScrollTrigger.getAll().forEach((t) => t.kill());
+
+  if (!nextPath) {
+    // If there's no next path for reveal, we should still set up home page animations if it's the home page.
+    if (currentPath === "/") {
+      setupHomeParallax();
+    }
     return;
   }
 
-  ScrollTrigger.getAll().forEach((t) => t.kill());
-
-  // Add the parallax effect for the logo only if on the home page and not during a reveal transition
+  // Add the parallax effect for the logo only if on the home page
   if (currentPath === "/") {
-    gsap.to(".parallax-logo", {
-      yPercent: 15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#slide-title",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+    setupHomeParallax();
   }
 
   if (overlay) overlay.remove();
@@ -168,7 +169,8 @@ function finalizeReveal() {
 
   window.scrollTo(0, 0);
 
-  initScrollReveal();
+  // Re-init after a short delay to ensure DOM is ready
+  setTimeout(initScrollReveal, 100);
 }
 
 /* =========================

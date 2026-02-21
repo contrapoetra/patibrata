@@ -118,5 +118,10 @@ export async function router() {
 
     app.classList.remove("fade-out");
     app.classList.add("fade-in");
+
+    // Re-initialize scroll effects after content loads
+    if (typeof initScrollReveal === "function") {
+      setTimeout(initScrollReveal, 100);
+    }
   }, 200);
 }
