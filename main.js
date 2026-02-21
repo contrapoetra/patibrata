@@ -100,15 +100,61 @@ function setupHomeParallax() {
         },
       });
     }
+    setupFallingLetters();
   }, 50);
+}
+
+function setupFallingLetters() {
+  const title = document.querySelector("#title");
+  if (!title) return;
+
+  // Split text into individual letters
+  const text = title.textContent.trim();
+  title.innerHTML = "";
+
+  const letters = text.split("").map((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char === " " ? "\u00A0" : char;
+    span.style.display = "inline-block";
+    span.style.position = "relative";
+    span.style.zIndex = "2";
+    return span;
+  });
+
+  letters.forEach((letter) => title.appendChild(letter));
+
+  // Create falling animation for each letter with random delays and distances
+  letters.forEach((letter, i) => {
+    const randomDelay = Math.random() * 0.3;
+    const randomDistance = 200 + Math.random() * 300;
+    const randomRotation = (Math.random() - 0.5) * 60;
+
+    gsap.to(letter, {
+      y: randomDistance,
+      rotation: randomRotation,
+      opacity: 0,
+      duration: 1.5 + Math.random() * 0.5,
+      ease: "power1.in",
+      scrollTrigger: {
+        trigger: "#slide-title",
+        start: "bottom bottom",
+        end: "bottom top",
+        scrub: 0.5 + Math.random() * 0.5,
+      },
+    });
+  });
 }
 
 window.initScrollReveal = function initScrollReveal() {
   const currentPath = window.location.pathname;
   nextPath = connections[currentPath];
 
-  // Kill all existing ScrollTriggers to prevent duplicates
-  ScrollTrigger.getAll().forEach((t) => t.kill());
+  // Kill only parallax-related ScrollTriggers, not poem animations
+  ScrollTrigger.getAll().forEach((t) => {
+    if (t.trigger && (t.trigger.classList?.contains("parallax-logo") || t.trigger.id === "slide-title" || t.trigger.id === "smooth-content")) {
+      t.kill();
+    }
+  });
 
   if (!nextPath) {
     // If there's no next path for reveal, we should still set up home page animations if it's the home page.
@@ -149,7 +195,7 @@ window.initScrollReveal = function initScrollReveal() {
       },
     },
   });
-}
+};
 
 async function loadNextPageIntoOverlay() {
   const routePath =
