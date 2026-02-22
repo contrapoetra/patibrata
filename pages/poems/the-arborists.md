@@ -142,7 +142,14 @@ the only one you don't ever feed with your soft lovely hand
 like you did one time
 when i was in bed
 in a hospital
-the only time i ever felt loved by you
+one of the few times i ever felt loved by you
+like when you tried so hard
+to help me get the bracelet off me
+when i was struggling to get my hand
+through the straps of my backpack
+and out of nowhere you show up
+and pulled it out for my hand to reach
+the way my heart melted for you then
 and how i felt sorry for every other me
 for they will never going to feel
 being cared for by you
@@ -175,18 +182,19 @@ but the sounds were still clear
 and i do notice how
 you kept on going
 like nothing happened
+
 and when you invited everyone in the camp
 everyone but me
 and even after i asked to join
 after i've been drenched in the rain
 none of you said anything
 it's as if
-you don't want to include me
+you didn't want to include me
 so i went as far away as you need me
 and when i get back
 dead silence
 not even then
-no one wants to talk to me
+no one wanted to talk to me
 but i overheard
 that when i was gone
 fireflies met you
@@ -194,9 +202,10 @@ and gave you company
 while mosquitoes
 drained my feet in the dark 
 my poor heart
-i love them
+how i wished i was you then because, i love those guys
 fireflies should accompany me
 instead of blood-sucking nobodies
+
 and in breakfast i sat
 between you and your Poppy
 with no energy to take a bite i watched
@@ -213,7 +222,8 @@ and on the way home i was in awe
 watching you pull him close
 rest your face on his back
 and drift off into sleep
-then you and Poppy were preparing
+
+that day, you and Poppy were preparing dinner
 you asked for my help
 but i said something stupid
 because i thought we were taught
@@ -232,7 +242,7 @@ i broke your heart
 and i will never be able
 never be able to forgive myself
 
-as my weak left hand types this out
+as my weak fingers type this out
 i mourn you
 a friend that could’ve been
 how we could've loved each other 
@@ -244,7 +254,48 @@ that they won't be the one
 that they will never be able
 never be able to be a proxy to you
 that i only wanted
-you
+to be yours
+and when we went out sunday night
+you went with us with a bike
+with a plate none of the other arborists had
+and, wait, who's bike is this?
+and you reveal
+you have found somebody
+and it was his
+in a strange turn of emotions
+i felt some kind of
+pride in you
+happy for you
+wishful for your new journey
+and in another strange turn of emotions
+i felt in myself some kind of
+relieve
+like a soldier
+receiving a news
+that the battle has ended
+and
+disappointment
+that i never had the courage to
+raise my rifle, take an aim
+and tell you everything
+
+at least this will be how i can heal
+because in a strange way myself is just am
+however graceful they are
+however beautiful they are
+however much they make me feel
+like how you made me feel
+my heart could never
+could never see them as more
+than the closest a friend can be
+once they've found somebody else
+well, my friends cheer at me
+to tell you everything
+but i simply can't
+i can confess
+but i can't if their mind is preoccupied
+this poem
+is all that i can do
 
 but please stay
 stay being affectionate to your Poppy, big brother,
