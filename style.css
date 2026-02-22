@@ -1397,7 +1397,7 @@ a:hover {
 
     .slide {
         /* Account for fixed navbar on mobile - push content down */
-        padding-top: 80px;
+        padding-top: 120px;
         padding-bottom: 40px;
         box-sizing: border-box;
         /* Use actual viewport height for mobile */
