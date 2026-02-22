@@ -3,6 +3,20 @@ import { router, navigateTo } from "./router.js";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 /* =========================
+   MOBILE VIEWPORT HEIGHT FIX
+========================= */
+
+// Fix for mobile browsers where 100vh doesn't account for browser chrome
+function setViewportHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
+
+// Set on load and resize
+setViewportHeight();
+window.addEventListener("resize", setViewportHeight);
+
+/* =========================
    TEXT ANIMATION
 ========================= */
 
@@ -57,7 +71,10 @@ const connections = {
 ========================= */
 
 // Detect mobile for performance optimization
-const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+const isMobileDevice =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  ) || window.innerWidth <= 768;
 
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
@@ -112,25 +129,61 @@ let floatingPhotosHandler = null;
 
 // Available photocards
 const photocards = [
-  "IMG20251220125211.jpg", "IMG20251220125221.jpg", "IMG20251231193021.jpg",
-  "IMG20260107111310.jpg", "IMG20260107111319.jpg", "IMG20260108163626.jpg",
-  "IMG20260108163922.jpg", "IMG20260108164456.jpg", "IMG20260108164858.jpg",
-  "IMG20260108165023.jpg", "IMG20260108165303.jpg", "IMG20260111232548.jpg",
-  "IMG20260113213603.jpg", "IMG20260120172111.jpg", "IMG20260120173209.jpg",
-  "IMG20260120173234.jpg", "IMG20260120174108.jpg", "IMG20260120174207.jpg",
-  "IMG20260120174421.jpg", "IMG20260120174453.jpg", "IMG20260125112742.jpg",
-  "IMG20260126141239.jpg", "IMG20260127134517.jpg", "IMG20260127134528.jpg",
-  "IMG20260127134555.jpg", "IMG20260127141112.jpg", "IMG20260127141454.jpg",
-  "IMG20260127141648.jpg", "IMG20260127141655.jpg", "IMG20260127141710.jpg",
-  "IMG20260127141719.jpg", "IMG20260127141732.jpg", "IMG20260127141736.jpg",
-  "IMG20260127141942.jpg", "IMG20260127142014.jpg", "IMG20260127142538.jpg",
-  "IMG20260127142626.jpg", "IMG20260127142630.jpg", "IMG20260127142640.jpg",
-  "IMG20260127143549.jpg", "IMG20260127143609.jpg", "IMG20260127143646.jpg",
-  "IMG20260127143709.jpg", "IMG20260127144022.jpg", "IMG20260127144303.jpg",
-  "IMG20260127144308.jpg", "IMG20260127144330.jpg", "IMG20260127144359.jpg",
-  "IMG20260127144803.jpg", "IMG20260127161809.jpg", "IMG20260127161815.jpg",
-  "IMG20260127161821.jpg", "IMG_20260127_150250_DRO.jpg", "IMG_20260127_150053.jpg",
-  "IMG_20260127_150311.jpg"
+  "IMG20251220125211.jpg",
+  "IMG20251220125221.jpg",
+  "IMG20251231193021.jpg",
+  "IMG20260107111310.jpg",
+  "IMG20260107111319.jpg",
+  "IMG20260108163626.jpg",
+  "IMG20260108163922.jpg",
+  "IMG20260108164456.jpg",
+  "IMG20260108164858.jpg",
+  "IMG20260108165023.jpg",
+  "IMG20260108165303.jpg",
+  "IMG20260111232548.jpg",
+  "IMG20260113213603.jpg",
+  "IMG20260120172111.jpg",
+  "IMG20260120173209.jpg",
+  "IMG20260120173234.jpg",
+  "IMG20260120174108.jpg",
+  "IMG20260120174207.jpg",
+  "IMG20260120174421.jpg",
+  "IMG20260120174453.jpg",
+  "IMG20260125112742.jpg",
+  "IMG20260126141239.jpg",
+  "IMG20260127134517.jpg",
+  "IMG20260127134528.jpg",
+  "IMG20260127134555.jpg",
+  "IMG20260127141112.jpg",
+  "IMG20260127141454.jpg",
+  "IMG20260127141648.jpg",
+  "IMG20260127141655.jpg",
+  "IMG20260127141710.jpg",
+  "IMG20260127141719.jpg",
+  "IMG20260127141732.jpg",
+  "IMG20260127141736.jpg",
+  "IMG20260127141942.jpg",
+  "IMG20260127142014.jpg",
+  "IMG20260127142538.jpg",
+  "IMG20260127142626.jpg",
+  "IMG20260127142630.jpg",
+  "IMG20260127142640.jpg",
+  "IMG20260127143549.jpg",
+  "IMG20260127143609.jpg",
+  "IMG20260127143646.jpg",
+  "IMG20260127143709.jpg",
+  "IMG20260127144022.jpg",
+  "IMG20260127144303.jpg",
+  "IMG20260127144308.jpg",
+  "IMG20260127144330.jpg",
+  "IMG20260127144359.jpg",
+  "IMG20260127144803.jpg",
+  "IMG20260127161809.jpg",
+  "IMG20260127161815.jpg",
+  "IMG20260127161821.jpg",
+  "IMG_20260127_150250_DRO.jpg",
+  "IMG_20260127_150053.jpg",
+  "IMG_20260127_150311.jpg",
 ];
 
 function setupFloatingPhotos() {
@@ -171,9 +224,9 @@ function setupFloatingPhotos() {
   };
 
   // Process all images and then set up
-  Promise.all(selectedCards.map(card =>
-    loadImage(`/assets/photocards/${card}`)
-  )).then(dimensions => {
+  Promise.all(
+    selectedCards.map((card) => loadImage(`/assets/photocards/${card}`)),
+  ).then((dimensions) => {
     photos.forEach((photo, index) => {
       // Set the image
       photo.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
@@ -236,9 +289,11 @@ function setupFloatingPhotos() {
       const parallaxY = -scrollY * (speed - 1);
 
       // Constant slow rotation (always running)
-      const continuousRotation = photo._baseRotation + (tickCount * 0.1 * photo._rotationDirection);
+      const continuousRotation =
+        photo._baseRotation + tickCount * 0.1 * photo._rotationDirection;
       // Scroll-based rotation in SAME direction
-      const scrollRotation = scrollY * photo._rotationSpeed * photo._rotationDirection;
+      const scrollRotation =
+        scrollY * photo._rotationSpeed * photo._rotationDirection;
       const rotation = continuousRotation + scrollRotation;
 
       photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
@@ -267,7 +322,7 @@ function setupSlideBackgrounds() {
   // Only on home page
   const currentPath = window.location.pathname;
   if (currentPath !== "/") {
-    slides.forEach(slide => {
+    slides.forEach((slide) => {
       const bg = slide.querySelector(".slide-image-bg");
       if (bg) bg.style.display = "none";
     });
@@ -367,13 +422,14 @@ window.initScrollReveal = function initScrollReveal() {
 
   // Kill only parallax-related ScrollTriggers, not poem animations
   ScrollTrigger.getAll().forEach((t) => {
-    if (t.trigger && (
-      t.trigger.classList?.contains("parallax-logo") ||
-      t.trigger.classList?.contains("floating-photo") ||
-      t.trigger.id === "slide-title" ||
-      t.trigger.id === "smooth-content" ||
-      t.trigger.id === "smooth-wrapper"
-    )) {
+    if (
+      t.trigger &&
+      (t.trigger.classList?.contains("parallax-logo") ||
+        t.trigger.classList?.contains("floating-photo") ||
+        t.trigger.id === "slide-title" ||
+        t.trigger.id === "smooth-content" ||
+        t.trigger.id === "smooth-wrapper")
+    ) {
       t.kill();
     }
   });
