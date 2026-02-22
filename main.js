@@ -110,6 +110,29 @@ function setupHomeParallax() {
 // Store parallax handler for cleanup
 let floatingPhotosHandler = null;
 
+// Available photocards
+const photocards = [
+  "IMG20251220125211.jpg", "IMG20251220125221.jpg", "IMG20251231193021.jpg",
+  "IMG20260107111310.jpg", "IMG20260107111319.jpg", "IMG20260108163626.jpg",
+  "IMG20260108163922.jpg", "IMG20260108164456.jpg", "IMG20260108164858.jpg",
+  "IMG20260108165023.jpg", "IMG20260108165303.jpg", "IMG20260111232548.jpg",
+  "IMG20260113213603.jpg", "IMG20260120172111.jpg", "IMG20260120173209.jpg",
+  "IMG20260120173234.jpg", "IMG20260120174108.jpg", "IMG20260120174207.jpg",
+  "IMG20260120174421.jpg", "IMG20260120174453.jpg", "IMG20260125112742.jpg",
+  "IMG20260126141239.jpg", "IMG20260127134517.jpg", "IMG20260127134528.jpg",
+  "IMG20260127134555.jpg", "IMG20260127141112.jpg", "IMG20260127141454.jpg",
+  "IMG20260127141648.jpg", "IMG20260127141655.jpg", "IMG20260127141710.jpg",
+  "IMG20260127141719.jpg", "IMG20260127141732.jpg", "IMG20260127141736.jpg",
+  "IMG20260127141942.jpg", "IMG20260127142014.jpg", "IMG20260127142538.jpg",
+  "IMG20260127142626.jpg", "IMG20260127142630.jpg", "IMG20260127142640.jpg",
+  "IMG20260127143549.jpg", "IMG20260127143609.jpg", "IMG20260127143646.jpg",
+  "IMG20260127143709.jpg", "IMG20260127144022.jpg", "IMG20260127144303.jpg",
+  "IMG20260127144308.jpg", "IMG20260127144330.jpg", "IMG20260127144359.jpg",
+  "IMG20260127144803.jpg", "IMG20260127161809.jpg", "IMG20260127161815.jpg",
+  "IMG20260127161821.jpg", "IMG_20260127_150250_DRO.jpg", "IMG_20260127_150053.jpg",
+  "IMG_20260127_150311.jpg"
+];
+
 function setupFloatingPhotos() {
   const container = document.getElementById("floating-photos");
   const photos = document.querySelectorAll(".floating-photo");
@@ -124,20 +147,32 @@ function setupFloatingPhotos() {
 
   container.style.display = "block";
 
-  // Assign random sizes - smaller on mobile
+  // Shuffle photocards and pick 8 unique ones
+  const shuffled = [...photocards].sort(() => Math.random() - 0.5);
+  const selectedCards = shuffled.slice(0, photos.length);
+
+  // Assign random sizes and photocards
   const isMobile = window.innerWidth <= 768;
   photos.forEach((photo, index) => {
-    if (isMobile) {
-      const width = gsap.utils.random(100, 140, 10);
-      const height = gsap.utils.random(130, 180, 10);
-      photo.style.width = `${width}px`;
-      photo.style.height = `${height}px`;
-    } else {
-      const width = gsap.utils.random(140, 220, 10);
-      const height = gsap.utils.random(180, 280, 10);
-      photo.style.width = `${width}px`;
-      photo.style.height = `${height}px`;
-    }
+    // Set the image
+    photo.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
+    photo.style.backgroundSize = "cover";
+    photo.style.backgroundPosition = "center";
+
+    // Vary aspect ratios - some portrait, some landscape
+    const aspectRatios = [
+      { w: 140, h: 180 },  // portrait 4:5
+      { w: 180, h: 140 },  // landscape 5:4
+      { w: 160, h: 200 },  // tall portrait
+      { w: 200, h: 160 },  // wide landscape
+      { w: 150, h: 150 },  // square
+    ];
+    const aspect = isMobile
+      ? { w: gsap.utils.random(80, 110, 5), h: gsap.utils.random(100, 140, 5) }
+      : aspectRatios[index % aspectRatios.length];
+
+    photo.style.width = `${aspect.w}px`;
+    photo.style.height = `${aspect.h}px`;
   });
 
   // Get ScrollSmoother instance for scroll position

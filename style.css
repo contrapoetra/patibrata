@@ -333,35 +333,10 @@ body {
 
 .floating-photo {
     position: absolute;
-    width: 200px;
-    height: 260px;
     border-radius: 6px;
-    background: linear-gradient(135deg, rgba(232, 228, 223, 0.6) 0%, rgba(212, 207, 199, 0.6) 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     opacity: 0.9;
     will-change: transform;
-}
-
-.floating-photo::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-}
-
-.floating-photo::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 24px;
-    height: 24px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
 }
 
 /* =====================================
