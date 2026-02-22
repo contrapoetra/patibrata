@@ -157,31 +157,49 @@ function setupFloatingPhotos() {
   // Predefined speeds - some faster, some slower
   const speeds = [1.3, 1.5, 1.4, 1.6, 1.35, 1.55, 1.45, 1.5];
 
-  // Assign random sizes and photocards
+  // Assign sizes and photocards
   const isMobile = window.innerWidth <= 768;
-  photos.forEach((photo, index) => {
-    // Set the image
-    photo.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
-    photo.style.backgroundSize = "cover";
-    photo.style.backgroundPosition = "center";
 
-    // Set speed from predefined array (faster = more blur & bigger)
-    const speed = speeds[index];
-    photo.dataset.speed = speed;
+  // Load images to get their natural aspect ratios
+  const loadImage = (src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve({ width: img.width, height: img.height });
+      img.onerror = () => resolve({ width: 100, height: 100 }); // fallback
+      img.src = src;
+    });
+  };
 
-    // Add blur based on speed - faster = more blur (max 4px)
-    const blur = Math.round((speed - 1.3) * 20); // 0-6px range
-    photo.style.backdropFilter = `blur(${blur}px)`;
-    photo.style.webkitBackdropFilter = `blur(${blur}px)`;
+  // Process all images and then set up
+  Promise.all(selectedCards.map(card =>
+    loadImage(`/assets/photocards/${card}`)
+  )).then(dimensions => {
+    photos.forEach((photo, index) => {
+      // Set the image
+      photo.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
+      photo.style.backgroundSize = "cover";
+      photo.style.backgroundPosition = "center";
 
-    // Size based on speed - width sets the scale, height based on typical aspect ratio
-    const baseWidth = isMobile ? 100 : 250;
-    const sizeMultiplier = 1 + (speed - 1.3) * 1.8;
-    const width = Math.round(baseWidth * sizeMultiplier);
-    const height = Math.round(width * 1.3); // ~4:5 aspect ratio
+      // Set speed from predefined array
+      const speed = speeds[index];
+      photo.dataset.speed = speed;
 
-    photo.style.width = `${width}px`;
-    photo.style.height = `${height}px`;
+      // Add blur based on speed
+      const blur = Math.round((speed - 1.3) * 15);
+      photo.style.backdropFilter = `blur(${blur}px)`;
+      photo.style.webkitBackdropFilter = `blur(${blur}px)`;
+
+      // Calculate size based on image's natural aspect ratio
+      const baseWidth = isMobile ? 100 : 250;
+      const sizeMultiplier = 1 + (speed - 1.3) * 1.8;
+      const width = Math.round(baseWidth * sizeMultiplier);
+      const dim = dimensions[index];
+      const aspectRatio = dim.height / dim.width;
+      const height = Math.round(width * aspectRatio);
+
+      photo.style.width = `${width}px`;
+      photo.style.height = `${height}px`;
+    });
   });
 
   // Get ScrollSmoother instance for scroll position
