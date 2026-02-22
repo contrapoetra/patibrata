@@ -1511,6 +1511,10 @@ a:hover {
     .floating-photo {
         width: 80px;
         height: 110px;
+        /* Disable expensive effects on mobile for performance */
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     /* Hide some floating photos on mobile for cleaner look */

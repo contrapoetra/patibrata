@@ -237,11 +237,16 @@ function setupFloatingPhotos() {
       const speed = speeds[index];
       photo.dataset.speed = speed;
 
-      // Add subtle blur based on speed (reduced range)
-      const blur = Math.round((speed - 1.3) * 8); // 0-2.5px range - subtle
-      photo.dataset.baseBlur = blur;
-      photo.style.filter = `blur(${blur}px)`;
-      photo.style.webkitFilter = `blur(${blur}px)`;
+      // Add subtle blur based on speed (reduced range) - DISABLED on mobile for performance
+      if (!isMobile) {
+        const blur = Math.round((speed - 1.3) * 8); // 0-2.5px range - subtle
+        photo.dataset.baseBlur = blur;
+        photo.style.filter = `blur(${blur}px)`;
+        photo.style.webkitFilter = `blur(${blur}px)`;
+      }
+
+      // GPU acceleration hint
+      photo.style.willChange = "transform";
 
       // Enable pointer events for hover
       photo.style.pointerEvents = "auto";
@@ -268,9 +273,11 @@ function setupFloatingPhotos() {
   }
 
   // Assign rotation speed and calculate when each photo enters viewport
+  // On mobile, skip rotation for better performance
+  const enableRotation = !isMobile;
   photos.forEach((photo) => {
     photo._rotationSpeed = 0.03; // slower scroll-based rotation
-    photo._baseRotation = gsap.utils.random(0, 360); // Starting rotation position
+    photo._baseRotation = enableRotation ? gsap.utils.random(0, 360) : 0; // Starting rotation position
     photo._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1; // Clockwise or counter-clockwise
     // Get the scroll position where this photo starts to become visible
     const topPercent = parseFloat(photo.style.top) / 100;
@@ -278,25 +285,40 @@ function setupFloatingPhotos() {
   });
 
   // Use gsap.ticker for smooth frame-by-frame updates
+  // On mobile, throttle updates for better performance
   let tickCount = 0;
+  let lastScrollY = 0;
+  const scrollThreshold = isMobile ? 5 : 0; // Only update every 5px on mobile
+
   floatingPhotosHandler = () => {
     tickCount++;
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+
+    // Throttle on mobile - skip update if scroll hasn't changed enough
+    if (isMobile && Math.abs(scrollY - lastScrollY) < scrollThreshold) {
+      return;
+    }
+    lastScrollY = scrollY;
 
     photos.forEach((photo) => {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
       // Move UP faster than scroll to appear closer/foreground
       const parallaxY = -scrollY * (speed - 1);
 
-      // Constant slow rotation (always running)
-      const continuousRotation =
-        photo._baseRotation + tickCount * 0.1 * photo._rotationDirection;
-      // Scroll-based rotation in SAME direction
-      const scrollRotation =
-        scrollY * photo._rotationSpeed * photo._rotationDirection;
-      const rotation = continuousRotation + scrollRotation;
+      if (enableRotation) {
+        // Constant slow rotation (always running)
+        const continuousRotation =
+          photo._baseRotation + tickCount * 0.1 * photo._rotationDirection;
+        // Scroll-based rotation in SAME direction
+        const scrollRotation =
+          scrollY * photo._rotationSpeed * photo._rotationDirection;
+        const rotation = continuousRotation + scrollRotation;
 
-      photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
+        photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
+      } else {
+        // On mobile, just do parallax without rotation
+        photo.style.transform = `translateY(${parallaxY}px)`;
+      }
     });
   };
 
