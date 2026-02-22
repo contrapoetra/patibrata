@@ -56,11 +56,14 @@ const connections = {
    SMOOTHER
 ========================= */
 
+// Detect mobile for performance optimization
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
   content: "#smooth-content",
-  smooth: 1.2,
-  effects: true,
+  smooth: isMobileDevice ? 0.5 : 1.2, // Less smooth on mobile = less lag
+  effects: !isMobileDevice, // Disable effects on mobile for better performance
 });
 
 /* =========================
@@ -121,6 +124,22 @@ function setupFloatingPhotos() {
 
   container.style.display = "block";
 
+  // Assign random sizes - smaller on mobile
+  const isMobile = window.innerWidth <= 768;
+  photos.forEach((photo, index) => {
+    if (isMobile) {
+      const width = gsap.utils.random(100, 140, 10);
+      const height = gsap.utils.random(130, 180, 10);
+      photo.style.width = `${width}px`;
+      photo.style.height = `${height}px`;
+    } else {
+      const width = gsap.utils.random(140, 220, 10);
+      const height = gsap.utils.random(180, 280, 10);
+      photo.style.width = `${width}px`;
+      photo.style.height = `${height}px`;
+    }
+  });
+
   // Get ScrollSmoother instance for scroll position
   const smoother = ScrollSmoother.get();
 
@@ -129,14 +148,8 @@ function setupFloatingPhotos() {
     gsap.ticker.remove(floatingPhotosHandler);
   }
 
-  // Assign random size, rotation speed, and calculate when each photo enters viewport
+  // Assign rotation speed and calculate when each photo enters viewport
   photos.forEach((photo) => {
-    // Random size between 140-220px width and 180-280px height
-    const width = gsap.utils.random(140, 220, 10);
-    const height = gsap.utils.random(180, 280, 10);
-    photo.style.width = `${width}px`;
-    photo.style.height = `${height}px`;
-
     photo._rotationSpeed = gsap.utils.random(-0.05, 0.05, 0.01);
     // Get the scroll position where this photo starts to become visible
     const topPercent = parseFloat(photo.style.top) / 100;
