@@ -336,11 +336,26 @@ body {
     position: absolute;
     border-radius: 6px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    will-change: transform;
+    will-change: transform, filter;
     z-index: 2147483647 !important;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.25); /* semi-transparent bg for blur to work */
+    background-color: rgba(255, 255, 255, 0.25);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.3s ease, z-index 0s;
+}
+
+/* When hovering a photo, unblur the hovered one */
+.floating-photo:hover {
+    filter: blur(0px) !important;
+}
+
+/* But unblur the one being hovered */
+.floating-photo:hover {
+    filter: blur(0px) !important;
+    z-index: 2147483647 !important;
+    transform: scale(1.1) !important;
 }
 
 /* =====================================

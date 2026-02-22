@@ -184,10 +184,14 @@ function setupFloatingPhotos() {
       const speed = speeds[index];
       photo.dataset.speed = speed;
 
-      // Add blur to the image itself based on speed (faster = more blurred)
-      const blur = Math.round((speed - 1.3) * 20); // 0-6px range
+      // Add subtle blur based on speed (reduced range)
+      const blur = Math.round((speed - 1.3) * 8); // 0-2.5px range - subtle
+      photo.dataset.baseBlur = blur;
       photo.style.filter = `blur(${blur}px)`;
       photo.style.webkitFilter = `blur(${blur}px)`;
+
+      // Enable pointer events for hover
+      photo.style.pointerEvents = "auto";
 
       // Calculate size based on image's natural aspect ratio
       const baseWidth = isMobile ? 100 : 250;
