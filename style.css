@@ -267,6 +267,714 @@ body {
     letter-spacing: 3px;
 }
 
+/* =====================================
+   FLOATING PHOTOS (PARALLAX)
+   ===================================== */
+
+.floating-photos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-photo {
+    position: absolute;
+    width: 180px;
+    height: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: floatIn 1s ease forwards;
+}
+
+.floating-photo:nth-child(1) { animation-delay: 0.2s; }
+.floating-photo:nth-child(2) { animation-delay: 0.4s; }
+.floating-photo:nth-child(3) { animation-delay: 0.6s; }
+.floating-photo:nth-child(4) { animation-delay: 0.8s; }
+.floating-photo:nth-child(5) { animation-delay: 1.0s; }
+.floating-photo:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes floatIn {
+    to {
+        opacity: 0.85;
+        transform: translateY(0);
+    }
+}
+
+.floating-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.floating-photo:hover {
+    opacity: 1;
+}
+
+.floating-photo:hover img {
+    transform: scale(1.05);
+}
+
+/* =====================================
+   STORY SLIDES
+   ===================================== */
+
+.slide-story {
+    background: #faf9f7;
+}
+
+.story-content {
+    max-width: 640px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.story-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.story-label.light {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.story-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+}
+
+.story-title.light {
+    color: #fff;
+}
+
+.story-text {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+}
+
+.story-text.light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* =====================================
+   DARK SLIDE
+   ===================================== */
+
+.slide-dark {
+    background: #1a1a1a;
+}
+
+/* =====================================
+   LOCATION SLIDE
+   ===================================== */
+
+.slide-location {
+    background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+}
+
+.location-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+.location-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    padding: 4rem;
+    border-radius: 4px;
+    text-align: center;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.location-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.location-name {
+    font-family: "Libre Baskerville", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+}
+
+.location-desc {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 2rem 0;
+}
+
+.location-coords {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+.coords-divider {
+    margin: 0 1rem;
+    opacity: 0.4;
+}
+
+/* =====================================
+   PILLARS SLIDE
+   ===================================== */
+
+.slide-pillars {
+    background: #fff;
+}
+
+.pillars-container {
+    max-width: 1000px;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.pillars-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 1rem 0 3rem 0;
+    color: #1a1a1a;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.pillar {
+    text-align: center;
+}
+
+.pillar-number {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #ccc;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.pillar h3 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+    color: #1a1a1a;
+}
+
+.pillar p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+}
+
+/* =====================================
+   JOURNEY SLIDE
+   ===================================== */
+
+.slide-journey {
+    background: linear-gradient(180deg, #f8f5ef 0%, #fff 100%);
+}
+
+.journey-content {
+    max-width: 640px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.journey-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 1rem 0 1.5rem 0;
+    color: #1a1a1a;
+}
+
+.journey-text {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0 0 2.5rem 0;
+}
+
+.journey-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: 1px solid #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.journey-link:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.journey-link svg {
+    transition: transform 0.3s ease;
+}
+
+.journey-link:hover svg {
+    transform: translateX(4px);
+}
+
+/* =====================================
+   ABOUT PAGE
+   ===================================== */
+
+.about-page {
+    min-height: 100vh;
+}
+
+.about-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, #f8f5ef 0%, #fff 100%);
+    position: relative;
+}
+
+.about-hero-content {
+    max-width: 800px;
+}
+
+.about-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.about-hero-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+}
+
+.about-hero-subtitle {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-hero-scroll {
+    position: absolute;
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.6;
+}
+
+.about-hero-scroll span {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #1a1a1a, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.5; }
+}
+
+/* About Container */
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* About Story Section */
+.about-story {
+    padding: 8rem 0;
+    background: #fff;
+}
+
+.about-story-text {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-story-text h2 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+    color: #1a1a1a;
+}
+
+.about-story-text p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0 0 1.5rem 0;
+}
+
+.about-story-text p.lead {
+    font-size: 20px;
+    color: #333;
+}
+
+/* About Values Section */
+.about-values {
+    padding: 8rem 0;
+    background: #f8f5ef;
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 2.5rem 2rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.value-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1.5rem;
+    color: #1a1a1a;
+}
+
+.value-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.value-card h3 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+    color: #1a1a1a;
+}
+
+.value-card p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* About Village Section */
+.about-village {
+    padding: 8rem 0;
+    background: #1a1a1a;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.village-map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.map-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.map-dot {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.map-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: ripple 2s ease-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes ripple {
+    0% { width: 16px; height: 16px; opacity: 1; }
+    100% { width: 80px; height: 80px; opacity: 0; }
+}
+
+.map-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.village-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.village-info .about-label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.village-info h2 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 1rem 0 1.5rem 0;
+    color: #fff;
+}
+
+.village-info p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 2.5rem 0;
+}
+
+.village-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.village-stats li {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: "Libre Baskerville", serif;
+    font-size: 48px;
+    color: #fff;
+    display: block;
+}
+
+.stat-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* About Team Section */
+.about-team {
+    padding: 8rem 0;
+    background: #fff;
+    text-align: center;
+}
+
+.about-team h2 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 1rem 0 3rem 0;
+    color: #1a1a1a;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.member-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 3px solid #f0ede8;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.team-member:hover .member-photo img {
+    filter: grayscale(0%);
+}
+
+.team-member h4 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+}
+
+.member-role {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #888;
+    margin: 0;
+}
+
+/* About CTA Section */
+.about-cta {
+    padding: 8rem 0;
+    background: #f8f5ef;
+    text-align: center;
+}
+
+.about-cta h2 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+}
+
+.about-cta p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 17px;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+.cta-button {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    background: #1a1a1a;
+    padding: 1rem 2.5rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #333;
+    letter-spacing: 3px;
+}
+
 html,
 body {
     height: 100%;
@@ -531,5 +1239,95 @@ a:hover {
     .album-home .album-link {
         font-size: 11px;
         padding: 10px 24px;
+    }
+
+    /* ---------- FLOATING PHOTOS ---------- */
+
+    .floating-photo {
+        width: 100px;
+        height: 140px;
+    }
+
+    /* ---------- STORY SLIDES ---------- */
+
+    .story-title,
+    .journey-title {
+        font-size: 28px;
+    }
+
+    .story-text,
+    .journey-text {
+        font-size: 15px;
+    }
+
+    /* ---------- LOCATION SLIDE ---------- */
+
+    .location-card {
+        padding: 2rem;
+    }
+
+    .location-name {
+        font-size: 32px;
+    }
+
+    /* ---------- PILLARS SLIDE ---------- */
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pillar h3 {
+        font-size: 20px;
+    }
+
+    /* ---------- ABOUT PAGE ---------- */
+
+    .about-hero-title {
+        font-size: 42px;
+    }
+
+    .about-hero-subtitle {
+        font-size: 16px;
+    }
+
+    .about-story-text h2 {
+        font-size: 28px;
+    }
+
+    .about-story-text p.lead {
+        font-size: 17px;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-village {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem;
+    }
+
+    .village-info h2 {
+        font-size: 32px;
+    }
+
+    .village-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-cta h2 {
+        font-size: 32px;
     }
 }

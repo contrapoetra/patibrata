@@ -101,7 +101,29 @@ function setupHomeParallax() {
       });
     }
     setupFallingLetters();
+    setupFloatingPhotos();
   }, 50);
+}
+
+function setupFloatingPhotos() {
+  const photos = document.querySelectorAll(".floating-photo");
+  if (photos.length === 0) return;
+
+  photos.forEach((photo) => {
+    const speed = parseFloat(photo.dataset.parallax) || 1.3;
+    const yOffset = (speed - 1) * 100; // Calculate offset based on speed
+
+    gsap.to(photo, {
+      y: () => window.innerHeight * (speed - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#smooth-content",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+  });
 }
 
 function setupFallingLetters() {
@@ -151,7 +173,12 @@ window.initScrollReveal = function initScrollReveal() {
 
   // Kill only parallax-related ScrollTriggers, not poem animations
   ScrollTrigger.getAll().forEach((t) => {
-    if (t.trigger && (t.trigger.classList?.contains("parallax-logo") || t.trigger.id === "slide-title" || t.trigger.id === "smooth-content")) {
+    if (t.trigger && (
+      t.trigger.classList?.contains("parallax-logo") ||
+      t.trigger.classList?.contains("floating-photo") ||
+      t.trigger.id === "slide-title" ||
+      t.trigger.id === "smooth-content"
+    )) {
       t.kill();
     }
   });
