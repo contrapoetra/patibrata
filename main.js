@@ -129,6 +129,11 @@ function setupFloatingPhotos() {
     gsap.ticker.remove(floatingPhotosHandler);
   }
 
+  // Assign a random rotation speed to each photo (-0.05 to 0.05 degrees per pixel scrolled)
+  photos.forEach((photo) => {
+    photo._rotationSpeed = gsap.utils.random(-0.05, 0.05, 0.01);
+  });
+
   // Use gsap.ticker for smooth frame-by-frame updates
   floatingPhotosHandler = () => {
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
@@ -136,7 +141,9 @@ function setupFloatingPhotos() {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
       // Move UP faster than scroll to appear closer/foreground
       const parallaxY = -scrollY * (speed - 1);
-      photo.style.transform = `translateY(${parallaxY}px)`;
+      // Rotate based on scroll with each photo's random rotation speed
+      const rotation = scrollY * photo._rotationSpeed;
+      photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
     });
   };
 
