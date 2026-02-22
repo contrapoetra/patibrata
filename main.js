@@ -129,9 +129,18 @@ function setupFloatingPhotos() {
     gsap.ticker.remove(floatingPhotosHandler);
   }
 
-  // Assign a random rotation speed to each photo (-0.05 to 0.05 degrees per pixel scrolled)
+  // Assign random size, rotation speed, and calculate when each photo enters viewport
   photos.forEach((photo) => {
+    // Random size between 140-220px width and 180-280px height
+    const width = gsap.utils.random(140, 220, 10);
+    const height = gsap.utils.random(180, 280, 10);
+    photo.style.width = `${width}px`;
+    photo.style.height = `${height}px`;
+
     photo._rotationSpeed = gsap.utils.random(-0.05, 0.05, 0.01);
+    // Get the scroll position where this photo starts to become visible
+    const topPercent = parseFloat(photo.style.top) / 100;
+    photo._startY = window.innerHeight * topPercent;
   });
 
   // Use gsap.ticker for smooth frame-by-frame updates
@@ -141,8 +150,11 @@ function setupFloatingPhotos() {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
       // Move UP faster than scroll to appear closer/foreground
       const parallaxY = -scrollY * (speed - 1);
-      // Rotate based on scroll with each photo's random rotation speed
-      const rotation = scrollY * photo._rotationSpeed;
+
+      // Only rotate after the photo starts entering the viewport
+      const rotationStart = Math.max(0, scrollY - photo._startY + window.innerHeight * 0.5);
+      const rotation = rotationStart * photo._rotationSpeed;
+
       photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
     });
   };
