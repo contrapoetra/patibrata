@@ -184,10 +184,10 @@ function setupFloatingPhotos() {
       const speed = speeds[index];
       photo.dataset.speed = speed;
 
-      // Add blur based on speed
-      const blur = Math.round((speed - 1.3) * 15);
-      photo.style.backdropFilter = `blur(${blur}px)`;
-      photo.style.webkitBackdropFilter = `blur(${blur}px)`;
+      // Add blur to the image itself based on speed (faster = more blurred)
+      const blur = Math.round((speed - 1.3) * 20); // 0-6px range
+      photo.style.filter = `blur(${blur}px)`;
+      photo.style.webkitFilter = `blur(${blur}px)`;
 
       // Calculate size based on image's natural aspect ratio
       const baseWidth = isMobile ? 100 : 250;
@@ -212,23 +212,30 @@ function setupFloatingPhotos() {
 
   // Assign rotation speed and calculate when each photo enters viewport
   photos.forEach((photo) => {
-    photo._rotationSpeed = gsap.utils.random(-0.05, 0.05, 0.01);
+    photo._rotationSpeed = 0.03; // slower scroll-based rotation
+    photo._baseRotation = gsap.utils.random(0, 360); // Starting rotation position
+    photo._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1; // Clockwise or counter-clockwise
     // Get the scroll position where this photo starts to become visible
     const topPercent = parseFloat(photo.style.top) / 100;
     photo._startY = window.innerHeight * topPercent;
   });
 
   // Use gsap.ticker for smooth frame-by-frame updates
+  let tickCount = 0;
   floatingPhotosHandler = () => {
+    tickCount++;
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+
     photos.forEach((photo) => {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
       // Move UP faster than scroll to appear closer/foreground
       const parallaxY = -scrollY * (speed - 1);
 
-      // Only rotate after the photo starts entering the viewport
-      const rotationStart = Math.max(0, scrollY - photo._startY + window.innerHeight * 0.5);
-      const rotation = rotationStart * photo._rotationSpeed;
+      // Constant slow rotation (always running)
+      const continuousRotation = photo._baseRotation + (tickCount * 0.1 * photo._rotationDirection);
+      // Scroll-based rotation in SAME direction
+      const scrollRotation = scrollY * photo._rotationSpeed * photo._rotationDirection;
+      const rotation = continuousRotation + scrollRotation;
 
       photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
     });
