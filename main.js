@@ -101,29 +101,50 @@ function setupHomeParallax() {
       });
     }
     setupFallingLetters();
-    setupFloatingPhotos();
   }, 50);
 }
 
+// Store parallax handler for cleanup
+let floatingPhotosHandler = null;
+
 function setupFloatingPhotos() {
+  const container = document.getElementById("floating-photos");
   const photos = document.querySelectorAll(".floating-photo");
-  if (photos.length === 0) return;
+  if (!container || photos.length === 0) return;
 
-  photos.forEach((photo) => {
-    const speed = parseFloat(photo.dataset.parallax) || 1.3;
-    const yOffset = (speed - 1) * 100; // Calculate offset based on speed
+  // Show floating photos only on home page
+  const currentPath = window.location.pathname;
+  if (currentPath !== "/") {
+    container.style.display = "none";
+    return;
+  }
 
-    gsap.to(photo, {
-      y: () => window.innerHeight * (speed - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#smooth-content",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
-      },
+  container.style.display = "block";
+
+  // Get ScrollSmoother instance for scroll position
+  const smoother = ScrollSmoother.get();
+
+  // Remove old handler if exists
+  if (floatingPhotosHandler) {
+    gsap.ticker.remove(floatingPhotosHandler);
+  }
+
+  // Use gsap.ticker for smooth frame-by-frame updates
+  floatingPhotosHandler = () => {
+    const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+    photos.forEach((photo) => {
+      const speed = parseFloat(photo.dataset.speed) || 1.4;
+      // Move UP faster than scroll to appear closer/foreground
+      const parallaxY = -scrollY * (speed - 1);
+      photo.style.transform = `translateY(${parallaxY}px)`;
     });
-  });
+  };
+
+  // Add to ticker for smooth animation on every frame
+  gsap.ticker.add(floatingPhotosHandler);
+
+  // Initial update
+  floatingPhotosHandler();
 }
 
 function setupFallingLetters() {
@@ -177,11 +198,15 @@ window.initScrollReveal = function initScrollReveal() {
       t.trigger.classList?.contains("parallax-logo") ||
       t.trigger.classList?.contains("floating-photo") ||
       t.trigger.id === "slide-title" ||
-      t.trigger.id === "smooth-content"
+      t.trigger.id === "smooth-content" ||
+      t.trigger.id === "smooth-wrapper"
     )) {
       t.kill();
     }
   });
+
+  // Setup floating photos (handles visibility based on page)
+  setupFloatingPhotos();
 
   if (!nextPath) {
     // If there's no next path for reveal, we should still set up home page animations if it's the home page.

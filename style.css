@@ -276,51 +276,41 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
+    z-index: 10;
+    overflow: visible;
 }
 
 .floating-photo {
     position: absolute;
-    width: 180px;
-    height: 240px;
-    border-radius: 8px;
-    overflow: hidden;
+    width: 200px;
+    height: 260px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: floatIn 1s ease forwards;
+    opacity: 0.75;
+    will-change: transform;
 }
 
-.floating-photo:nth-child(1) { animation-delay: 0.2s; }
-.floating-photo:nth-child(2) { animation-delay: 0.4s; }
-.floating-photo:nth-child(3) { animation-delay: 0.6s; }
-.floating-photo:nth-child(4) { animation-delay: 0.8s; }
-.floating-photo:nth-child(5) { animation-delay: 1.0s; }
-.floating-photo:nth-child(6) { animation-delay: 1.2s; }
-
-@keyframes floatIn {
-    to {
-        opacity: 0.85;
-        transform: translateY(0);
-    }
+.floating-photo::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
 }
 
-.floating-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.floating-photo:hover {
-    opacity: 1;
-}
-
-.floating-photo:hover img {
-    transform: scale(1.05);
+.floating-photo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
 }
 
 /* =====================================
@@ -975,6 +965,36 @@ body {
     letter-spacing: 3px;
 }
 
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    width: 56px;
+    height: 56px;
+    border: 1px solid #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.social-link svg {
+    width: 22px;
+    height: 22px;
+}
+
 html,
 body {
     height: 100%;
@@ -1244,8 +1264,13 @@ a:hover {
     /* ---------- FLOATING PHOTOS ---------- */
 
     .floating-photo {
-        width: 100px;
-        height: 140px;
+        width: 80px;
+        height: 110px;
+    }
+
+    /* Hide some floating photos on mobile for cleaner look */
+    .floating-photo:nth-child(n+5) {
+        display: none;
     }
 
     /* ---------- STORY SLIDES ---------- */
@@ -1329,5 +1354,19 @@ a:hover {
 
     .about-cta h2 {
         font-size: 32px;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 48px;
+        height: 48px;
+    }
+
+    .social-link svg {
+        width: 20px;
+        height: 20px;
     }
 }
