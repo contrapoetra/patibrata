@@ -151,6 +151,9 @@ function setupFloatingPhotos() {
   const shuffled = [...photocards].sort(() => Math.random() - 0.5);
   const selectedCards = shuffled.slice(0, photos.length);
 
+  // Predefined speeds - some faster, some slower
+  const speeds = [1.3, 1.5, 1.4, 1.6, 1.35, 1.55, 1.45, 1.5];
+
   // Assign random sizes and photocards
   const isMobile = window.innerWidth <= 768;
   photos.forEach((photo, index) => {
@@ -159,20 +162,22 @@ function setupFloatingPhotos() {
     photo.style.backgroundSize = "cover";
     photo.style.backgroundPosition = "center";
 
-    // Vary aspect ratios - some portrait, some landscape
-    const aspectRatios = [
-      { w: 140, h: 180 },  // portrait 4:5
-      { w: 180, h: 140 },  // landscape 5:4
-      { w: 160, h: 200 },  // tall portrait
-      { w: 200, h: 160 },  // wide landscape
-      { w: 150, h: 150 },  // square
-    ];
-    const aspect = isMobile
-      ? { w: gsap.utils.random(80, 110, 5), h: gsap.utils.random(100, 140, 5) }
-      : aspectRatios[index % aspectRatios.length];
+    // Set speed from predefined array (faster = more blur & bigger)
+    const speed = speeds[index];
+    photo.dataset.speed = speed;
 
-    photo.style.width = `${aspect.w}px`;
-    photo.style.height = `${aspect.h}px`;
+    // Add blur based on speed - faster = more blur (max 4px)
+    const blur = Math.round((speed - 1.3) * 20); // 0-6px range
+    photo.style.backdropFilter = `blur(${blur}px)`;
+    photo.style.webkitBackdropFilter = `blur(${blur}px)`;
+
+    // Size based on speed - width sets the scale, height auto to preserve aspect ratio
+    const baseWidth = isMobile ? 90 : 180;
+    const sizeMultiplier = 1 + (speed - 1.3) * 1.8;
+    const width = Math.round(baseWidth * sizeMultiplier);
+
+    photo.style.width = `${width}px`;
+    photo.style.height = "auto";
   });
 
   // Get ScrollSmoother instance for scroll position
