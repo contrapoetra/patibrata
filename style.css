@@ -327,7 +327,7 @@ body {
     width: 100%;
     height: 100vh;
     pointer-events: none;
-    z-index: 10;
+    z-index: 2147483647 !important;
     overflow: visible;
 }
 
@@ -337,6 +337,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     opacity: 0.9;
     will-change: transform;
+    z-index: 2147483647 !important;
 }
 
 /* =====================================
@@ -345,6 +346,59 @@ body {
 
 .slide-story {
     background: #faf9f7;
+}
+
+/* Slide with background image */
+.slide-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-image-bg {
+    position: absolute;
+    inset: -20%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+}
+
+/* Override original backgrounds when slide has image */
+.slide-image.slide-story,
+.slide-image.slide-location,
+.slide-image.slide-dark {
+    background: none !important;
+}
+
+.slide-image .story-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 4px;
+}
+
+/* Slide with background image */
+.slide-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-image-bg {
+    position: absolute;
+    inset: -25%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.slide-image .story-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 4px;
 }
 
 .story-content {
@@ -406,6 +460,7 @@ body {
 
 .slide-location {
     background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+    position: relative;
 }
 
 .location-visual {

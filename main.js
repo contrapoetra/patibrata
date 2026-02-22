@@ -138,14 +138,17 @@ function setupFloatingPhotos() {
   const photos = document.querySelectorAll(".floating-photo");
   if (!container || photos.length === 0) return;
 
-  // Show floating photos only on home page
+  // Always show on home page
+  container.style.display = "block";
+  container.style.visibility = "visible";
+  container.style.opacity = "1";
+
+  // Check path - hide on other pages
   const currentPath = window.location.pathname;
   if (currentPath !== "/") {
-    container.style.display = "none";
+    container.style.visibility = "hidden";
     return;
   }
-
-  container.style.display = "block";
 
   // Shuffle photocards and pick 8 unique ones
   const shuffled = [...photocards].sort(() => Math.random() - 0.5);
@@ -171,13 +174,14 @@ function setupFloatingPhotos() {
     photo.style.backdropFilter = `blur(${blur}px)`;
     photo.style.webkitBackdropFilter = `blur(${blur}px)`;
 
-    // Size based on speed - width sets the scale, height auto to preserve aspect ratio
-    const baseWidth = isMobile ? 90 : 180;
+    // Size based on speed - width sets the scale, height based on typical aspect ratio
+    const baseWidth = isMobile ? 100 : 250;
     const sizeMultiplier = 1 + (speed - 1.3) * 1.8;
     const width = Math.round(baseWidth * sizeMultiplier);
+    const height = Math.round(width * 1.3); // ~4:5 aspect ratio
 
     photo.style.width = `${width}px`;
-    photo.style.height = "auto";
+    photo.style.height = `${height}px`;
   });
 
   // Get ScrollSmoother instance for scroll position
@@ -217,6 +221,74 @@ function setupFloatingPhotos() {
 
   // Initial update
   floatingPhotosHandler();
+
+  // Setup slide background images with parallax
+  setupSlideBackgrounds();
+}
+
+// Store slide backgrounds handler
+let slideBackgroundsHandler = null;
+
+function setupSlideBackgrounds() {
+  // Get slides that should have background images
+  const slides = document.querySelectorAll(".slide-image");
+
+  if (slides.length === 0) return;
+
+  // Only on home page
+  const currentPath = window.location.pathname;
+  if (currentPath !== "/") {
+    slides.forEach(slide => {
+      const bg = slide.querySelector(".slide-image-bg");
+      if (bg) bg.style.display = "none";
+    });
+    return;
+  }
+
+  // Get ScrollSmoother instance
+  const smoother = ScrollSmoother.get();
+
+  // Clean up old handler
+  if (slideBackgroundsHandler) {
+    gsap.ticker.remove(slideBackgroundsHandler);
+  }
+
+  // Pick random images for each slide (without replacement)
+  const shuffled = [...photocards].sort(() => Math.random() - 0.5);
+  let imageIndex = 0;
+
+  slides.forEach((slide) => {
+    const bg = slide.querySelector(".slide-image-bg");
+    if (!bg) return;
+
+    // High chance to have background (80%)
+    if (Math.random() > 0.2) {
+      bg.style.backgroundImage = `url(/assets/photocards/${shuffled[imageIndex++]})`;
+      bg.style.display = "block";
+
+      // Random parallax speed for this slide
+      bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
+    } else {
+      bg.style.display = "none";
+    }
+  });
+
+  // Create parallax handler
+  slideBackgroundsHandler = () => {
+    const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+
+    slides.forEach((slide) => {
+      const bg = slide.querySelector(".slide-image-bg");
+      if (!bg || bg.style.display === "none") return;
+
+      const speed = bg._parallaxSpeed || 0.15;
+      const parallaxY = scrollY * speed;
+      bg.style.transform = `translateY(${parallaxY}px)`;
+    });
+  };
+
+  gsap.ticker.add(slideBackgroundsHandler);
+  slideBackgroundsHandler();
 }
 
 function setupFallingLetters() {
@@ -348,4 +420,8 @@ function finalizeReveal() {
 ========================= */
 
 router();
-setTimeout(initScrollReveal, 300);
+setTimeout(() => {
+  initScrollReveal();
+  // Also run floating photos setup immediately
+  setupFloatingPhotos();
+}, 300);
