@@ -34,23 +34,16 @@
             <div class="floating-photo" data-speed="1.55" style="top: 210%; right: 10%;"></div>
             <div class="floating-photo" data-speed="1.35" style="top: 260%; left: 6%;"></div>
             <div class="floating-photo" data-speed="1.5" style="top: 320%; right: 5%;"></div>
+            <!-- Closest Foreground Photos (Lower down) -->
+            <div class="floating-photo" data-speed="1.8" style="top: 280%; right: 15%;"></div>
+            <div class="floating-photo" data-speed="1.9" style="top: 340%; left: 12%;"></div>
         </div>
 
         <div id="smooth-wrapper">
             <div id="smooth-content">
                 <main id="app"></main>
 
-                <!-- SVG Filter for Liquid Glass Refraction -->
-        <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
-            <filter id="liquid-refraction">
-                <!-- Generate fractal noise -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="3" result="noise" />
-                <!-- Distort the background content based on the noise -->
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-        </svg>
-
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
                 <script src="/static/js/gsap.min.js"></script>
                 <script src="/static/js/ScrollTrigger.min.js"></script>
                 <script src="/static/js/ScrollSmoother.min.js"></script>

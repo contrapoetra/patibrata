@@ -244,12 +244,12 @@ function setupFloatingPhotos() {
     return;
   }
 
-  // Shuffle photocards and pick 8 unique ones
+  // Shuffle photocards and pick 10 unique ones (8 original + 2 closest)
   const shuffled = [...photocards].sort(() => Math.random() - 0.5);
   const selectedCards = shuffled.slice(0, photos.length);
 
-  // Predefined speeds - some faster, some slower
-  const speeds = [1.3, 1.5, 1.4, 1.6, 1.35, 1.55, 1.45, 1.5];
+  // Predefined speeds - expanded to include the very fast foreground ones
+  const speeds = [1.3, 1.5, 1.4, 1.6, 1.35, 1.55, 1.45, 1.5, 1.8, 1.9];
 
   // Assign sizes and photocards
   const isMobile = window.innerWidth <= 768;
@@ -269,6 +269,26 @@ function setupFloatingPhotos() {
     selectedCards.map((card) => loadImage(`/assets/photocards/${card}`)),
   ).then((dimensions) => {
     photos.forEach((photo, index) => {
+      // 1. Randomize Position (with center dead-zone)
+      const side = Math.random() > 0.5 ? "left" : "right";
+      // Randomly pick a percentage from 0-30% for left, or 70-100% for right
+      const horizontalPos = side === "left" 
+        ? gsap.utils.random(2, 30) 
+        : gsap.utils.random(70, 95);
+      
+      // Randomize vertical position based on index to ensure spread
+      // (Original tops were roughly 12% to 340%)
+      const verticalPos = (index * 35) + gsap.utils.random(5, 25);
+      
+      photo.style.top = `${verticalPos}%`;
+      if (side === "left") {
+        photo.style.left = `${horizontalPos}%`;
+        photo.style.right = "auto";
+      } else {
+        photo.style.right = `${100 - horizontalPos}%`;
+        photo.style.left = "auto";
+      }
+
       // Create inner visual element
       photo.innerHTML = `<div class="photo-inner"></div>`;
       const inner = photo.querySelector(".photo-inner");
@@ -282,7 +302,8 @@ function setupFloatingPhotos() {
 
       // Add base blur data to inner
       if (!isMobile) {
-        const blur = Math.round((speed - 1.3) * 8);
+        // More exponential blur for closest ones
+        const blur = Math.round(Math.pow(speed - 1.2, 2) * 45); 
         inner.dataset.baseBlur = blur;
         inner.style.filter = `blur(${blur}px)`;
         inner.style.webkitFilter = `blur(${blur}px)`;

@@ -116,11 +116,11 @@ html {
     transform: translateX(-50%);
     z-index: 2147483647;
     
-    /* High-Distortion Liquid Glass with SVG Refraction */
-    background: rgba(255, 255, 255, 0.15); 
-    backdrop-filter: blur(25px) saturate(200%) brightness(1.1) url(#liquid-refraction);
-    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.1) url(#liquid-refraction);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Standard Glassmorphism */
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 16px;
     
     display: flex;
@@ -1527,10 +1527,10 @@ a:hover {
         max-height: 64px;
         padding: 10px;
         
-        /* High-Distortion Liquid Glass with SVG Refraction */
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px) saturate(220%) brightness(1.1) url(#liquid-refraction);
-        -webkit-backdrop-filter: blur(20px) saturate(220%) brightness(1.1) url(#liquid-refraction);
+        /* Standard Glassmorphism */
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.4);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 
                     inset 0 0 0 1px rgba(255, 255, 255, 0.2);
