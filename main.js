@@ -263,7 +263,7 @@ function setupFloatingPhotos() {
         bounds: "#smooth-content",
         edgeResistance: 0.65,
         onDragStart: function() {
-          photo._isDragging = true;
+          photo._isDraggingActive = true;
           photo.style.zIndex = 2147483647;
         },
         onDrag: function() {
@@ -275,15 +275,16 @@ function setupFloatingPhotos() {
         onThrowUpdate: function() {
           const scrollY = window.scrollY;
           const driftY = -scrollY * (speed - 1);
+          // Sync offset during the inertia phase to prevent scroll-jumping
           photo._dragOffset.x = this.x;
           photo._dragOffset.y = this.y - driftY;
         },
         onDragEnd: function() {
-          photo._isDragging = false;
+          photo._isDraggingActive = false;
           photo.style.zIndex = 2147483646;
         },
         onThrowComplete: function() {
-          photo._isDragging = false;
+          photo._isDraggingActive = false;
         }
       });
     });
@@ -308,7 +309,11 @@ function setupFloatingPhotos() {
       const finalX = photo._dragOffset ? photo._dragOffset.x : 0;
       const finalY = driftY + (photo._dragOffset ? photo._dragOffset.y : 0);
 
-      if (!photo._isDragging) gsap.set(photo, { x: finalX, y: finalY });
+      // Only skip update if the user's MOUSE is currently DOWN dragging
+      // This allows the ticker to handle the physics-based throw motion
+      if (!photo._isDraggingActive) {
+        gsap.set(photo, { x: finalX, y: finalY });
+      }
 
       const inner = photo.querySelector(".photo-inner");
       if (inner && !isMobile && !photo.classList.contains("is-hovered")) {
