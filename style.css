@@ -1631,7 +1631,7 @@ a:hover {
 .gallery-container {
     max-width: 1400px;
     margin: 0 auto 80px;
-    padding: 0 40px;
+    padding: 120px 40px 0; /* 120px top padding for navbar spacing */
 }
 
 .gallery-header {
@@ -1751,8 +1751,8 @@ a:hover {
     }
 
     .gallery-container {
-        padding: 0 20px;
-        margin-top: 100px;
+        padding: 100px 20px 0;
+        margin-top: 0;
     }
 
     .gallery-header h1 {
