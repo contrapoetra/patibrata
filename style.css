@@ -76,7 +76,8 @@
 }
 
 #app {
-    padding: 120px 2rem 2rem 2rem;
+    padding: 2rem;
+    transition: opacity 200ms ease, transform 200ms ease;
 }
 
 /* Home page slides - fullscreen */
@@ -102,98 +103,103 @@ body {
 }
 
 /* ===============================
-   INTERACTIVE MENU TOGGLE
+   FLOATING DOCK NAVBAR
 ================================ */
 
-.menu-toggle {
+.nav-dock {
     position: fixed;
     top: 32px;
-    right: 32px;
-    z-index: 10001;
-    background: #111;
-    color: #fff;
-    border: none;
-    padding: 12px 32px;
-    border-radius: 40px;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1), background 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2147483647;
+    
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.menu-toggle:hover {
-    transform: scale(1.05);
-    background: #000;
-}
-
-.menu-toggle.active {
-    background: #fff;
-    color: #111;
-}
-
-.nav-overlay {
-    position: fixed;
-    top: 32px;
-    right: 32px;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 10000;
-    border-radius: 40px;
+    padding: 8px;
     overflow: hidden;
+    
+    /* Fluid morphing animation */
+    transition: max-width 0.8s cubic-bezier(0.7, 0, 0.3, 1), 
+                height 0.8s cubic-bezier(0.7, 0, 0.3, 1),
+                padding 0.8s cubic-bezier(0.7, 0, 0.3, 1),
+                background 0.4s ease;
+    
+    width: auto;
+    max-width: 60px; /* Collapsed state */
+    height: 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.nav-dock.open {
+    max-width: 1000px; /* Expanded state */
+    padding-right: 32px;
+}
+
+.dock-toggle {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border: none;
+    background: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
-    opacity: 0;
-    pointer-events: none;
+    padding: 0;
+    transition: transform 0.3s ease;
 }
 
-.nav-overlay.open {
-    width: calc(100% - 64px);
-    height: calc(100% - 64px);
-    opacity: 1;
-    pointer-events: auto;
-    border-radius: 20px;
+.dock-toggle:hover {
+    transform: scale(1.1);
 }
 
-.nav-links {
+.dock-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.dock-links {
     display: flex;
-    gap: 40px;
+    gap: 32px;
+    margin-left: 0;
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s ease 0.3s;
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+    white-space: nowrap;
 }
 
-.nav-overlay.open .nav-links {
+.nav-dock.open .dock-links {
+    margin-left: 24px;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
+    pointer-events: auto;
 }
 
 .nav-item {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 14px;
-    letter-spacing: 3px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #111;
     text-decoration: none;
+    font-weight: 500;
     position: relative;
-    white-space: nowrap;
 }
 
 .nav-item::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -6px;
+    bottom: -4px;
     width: 0%;
     height: 1px;
     background: #111;
@@ -204,43 +210,7 @@ body {
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        top: 20px;
-        right: 20px;
-        padding: 10px 24px;
-        font-size: 11px;
-    }
-
-    .nav-overlay {
-        top: 20px;
-        right: 20px;
-    }
-
-    .nav-overlay.open {
-        width: calc(100% - 40px);
-        height: calc(100% - 40px);
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .nav-item {
-        font-size: 18px; /* Larger targets on mobile */
-    }
-}
-
-#app {
-    padding: 2rem;
-    transition:
-        opacity 200ms ease,
-        transform 200ms ease;
-}
-
-/* Animation states */
+/* Animation states for app content */
 .fade-in {
     opacity: 1;
     transform: translateY(0);
@@ -275,7 +245,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Fallback for browsers that don't support --vh */
     height: calc(var(--vh, 1vh) * 100);
     text-align: center;
     width: 100%;
@@ -1358,7 +1327,7 @@ a:hover {
 
 .poem {
     max-width: 720px;
-    margin: 120px auto;
+    margin: 80px auto;
     padding: 0 40px;
     animation: fadeIn 0.6s ease;
 }
@@ -1429,10 +1398,9 @@ a:hover {
 #reveal-overlay {
     position: fixed;
     inset: 0;
-    background: white; /* match your site background */
+    background: white;
     overflow: hidden;
     z-index: 9999;
-
     clip-path: circle(0px at 50% 100%);
 }
 
@@ -1441,70 +1409,30 @@ a:hover {
     position: relative;
 }
 
-#reveal-overlay {
-    position: fixed;
-    inset: 0;
-    background: white;
-    clip-path: circle(0px at 50% 100%);
-    pointer-events: none;
-    z-index: 9999;
-}
-
 /* =====================================
    MOBILE RESPONSIVE FIXES
 ===================================== */
 
 @media (max-width: 768px) {
-    /* ---------- NAVBAR ---------- */
-
-    .navbar {
-        gap: 20px;
-        padding: 18px 0;
-    }
-
-    .nav-item {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
-
-    /* ---------- APP PADDING ---------- */
-
     #app {
-        padding: 100px 1.25rem 2rem 1.25rem;
-    }
-
-    /* ---------- HOME HERO ---------- */
-
-    #main {
         padding: 1.5rem;
     }
 
-    /* ---------- SLIDES ---------- */
+    #main {
+        padding: 1rem;
+    }
 
     .slide {
-        /* Account for fixed navbar on mobile - push content down */
-        padding-top: 120px;
+        padding-top: 40px;
         padding-bottom: 40px;
         box-sizing: border-box;
-        /* Use actual viewport height for mobile */
         min-height: calc(var(--vh, 1vh) * 100);
-        /* Center content in remaining space after padding */
         align-items: center;
     }
 
-    /* Adjust hero content positioning on mobile */
-    #slide-title {
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
     #title {
-        font-size: 3.5rem; /* instead of 10em */
+        font-size: 3.5rem;
         letter-spacing: -3px;
-    }
-
-    #subtitle {
-        font-size: 1rem;
     }
 
     .patibrata-svg {
@@ -1513,10 +1441,8 @@ a:hover {
         opacity: 0.2;
     }
 
-    /* ---------- POEM PAGE ---------- */
-
     .poem {
-        margin: 80px auto;
+        margin: 40px auto;
         padding: 0 20px;
     }
 
@@ -1524,144 +1450,36 @@ a:hover {
         font-size: 28px;
     }
 
-    .poem h3 {
-        font-size: 10px;
-        letter-spacing: 3px;
-        margin-bottom: 40px;
-    }
-
     .poem p {
         font-size: 17px;
         line-height: 1.9;
     }
 
-    .back-link {
-        font-size: 11px;
-    }
-
-    /* ---------- HOME POEMS SLIDE ---------- */
-
-    #slide-poems {
-        padding: 2rem 0;
-    }
-
     .album-home h1 {
         font-size: 32px;
-        letter-spacing: 1px;
-    }
-
-    .album-home .subtitle {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    .album-home .ornament {
-        font-size: 18px;
-    }
-
-    .album-home .album-intro {
-        font-size: 15px;
-        margin-bottom: 30px;
-    }
-
-    .album-home .album-link {
-        font-size: 11px;
-        padding: 10px 24px;
-    }
-
-    /* ---------- HERO NEWS MARQUEE ---------- */
-
-    .hero-news {
-        padding: 30px 0 40px;
-    }
-
-    .news-track {
-        gap: 16px;
     }
 
     .news-card {
         width: 240px;
-        padding: 16px 20px;
     }
-
-    .news-card h3 {
-        font-size: 15px;
-    }
-
-    .news-card p {
-        font-size: 12px;
-    }
-
-    /* ---------- FLOATING PHOTOS ---------- */
 
     .floating-photo {
         width: 80px;
         height: 110px;
-        /* Disable expensive effects on mobile for performance */
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    /* Hide some floating photos on mobile for cleaner look */
     .floating-photo:nth-child(n + 5) {
         display: none;
     }
-
-    /* ---------- STORY SLIDES ---------- */
-
-    .story-title,
-    .journey-title {
-        font-size: 28px;
-    }
-
-    .story-text,
-    .journey-text {
-        font-size: 15px;
-    }
-
-    /* ---------- LOCATION SLIDE ---------- */
-
-    .location-card {
-        padding: 2rem;
-    }
-
-    .location-name {
-        font-size: 32px;
-    }
-
-    /* ---------- PILLARS SLIDE ---------- */
-
-    .pillars-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .pillar h3 {
-        font-size: 20px;
-    }
-
-    /* ---------- ABOUT PAGE ---------- */
 
     .about-hero-title {
         font-size: 42px;
     }
 
-    .about-hero-subtitle {
-        font-size: 16px;
-    }
-
-    .about-story-text h2 {
-        font-size: 28px;
-    }
-
-    .about-story-text p.lead {
-        font-size: 17px;
-    }
-
     .values-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
 
     .about-village {
@@ -1669,40 +1487,50 @@ a:hover {
         padding: 4rem 1.5rem;
     }
 
-    .village-info h2 {
-        font-size: 32px;
-    }
-
-    .village-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-
-    .stat-number {
-        font-size: 36px;
-    }
-
     .team-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
     }
 
-    .about-cta h2 {
-        font-size: 32px;
+    .nav-dock {
+        top: auto;
+        bottom: 24px;
+        flex-direction: column;
+        width: auto;
+        max-width: 64px;
+        height: auto;
+        max-height: 64px;
+        padding: 8px;
+        background: #111; /* High contrast dark background */
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .social-links {
-        gap: 1rem;
+    .nav-dock.open {
+        max-width: calc(100% - 40px);
+        max-height: 500px;
+        padding-bottom: 32px;
+        border-radius: 20px;
     }
 
-    .social-link {
-        width: 48px;
-        height: 48px;
+    .dock-logo {
+        filter: invert(1) brightness(2); /* Make logo white on dark background */
     }
 
-    .social-link svg {
-        width: 20px;
-        height: 20px;
+    .nav-item {
+        color: #fff; /* White text for links on mobile dark dock */
+    }
+
+    .nav-item::after {
+        background: #fff;
+    }
+
+    .nav-dock.open .dock-links {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 24px;
+        gap: 24px;
+        width: auto;
+        flex-wrap: wrap;
+        align-items: center;
     }
 }
 
@@ -1713,7 +1541,7 @@ a:hover {
 .gallery-container {
     max-width: 1400px;
     margin: 0 auto 80px;
-    padding: 120px 40px 0; /* 120px top padding for navbar spacing */
+    padding: 140px 40px 0;
 }
 
 .gallery-header {
@@ -1757,17 +1585,6 @@ a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.masonry-item.full-width {
-    column-span: all;
-    margin: 40px 0; /* extra space for the big feature video */
-}
-
-.masonry-item.video-item {
-    column-span: all;
-    margin-bottom: 40px;
-    margin-top: 20px;
-}
-
 .gallery-section {
     margin-bottom: 80px;
 }
@@ -1807,7 +1624,7 @@ a:hover {
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
 }
@@ -1833,8 +1650,7 @@ a:hover {
     }
 
     .gallery-container {
-        padding: 100px 20px 0;
-        margin-top: 0;
+        padding: 120px 20px 0;
     }
 
     .gallery-header h1 {

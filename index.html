@@ -11,14 +11,12 @@
         <!--<link rel="manifest" href="/manifest.json" />-->
     </head>
     <body>
-        <!-- Menu Elements (Outside smooth-wrapper for fixed positioning) -->
-        <button class="menu-toggle" id="menu-toggle">
-            <span class="menu-text">Menu</span>
-            <span class="close-text" style="display: none;">Close</span>
-        </button>
-
-        <nav class="nav-overlay" id="nav-overlay">
-            <div class="nav-links">
+        <!-- Floating Dock Navbar -->
+        <nav class="nav-dock" id="nav-dock">
+            <button class="dock-toggle" id="menu-toggle">
+                <img src="/assets/patibrata.svg" alt="Logo" class="dock-logo">
+            </button>
+            <div class="dock-links">
                 <a href="/" data-link class="nav-item">Home</a>
                 <a href="/poems" data-link class="nav-item">Poems from an Arborist</a>
                 <a href="/about" data-link class="nav-item">About</a>

@@ -89,25 +89,35 @@ ScrollSmoother.create({
 ========================= */
 
 const menuToggle = document.getElementById("menu-toggle");
-const navOverlay = document.getElementById("nav-overlay");
-const menuText = menuToggle.querySelector(".menu-text");
-const closeText = menuToggle.querySelector(".close-text");
+const navDock = document.getElementById("nav-dock");
+
+// Auto-expand on desktop load
+if (window.innerWidth > 768 && navDock) {
+    navDock.classList.add("open");
+}
 
 function toggleMenu() {
-    const isOpen = navOverlay.classList.toggle("open");
-    menuToggle.classList.toggle("active");
+    if (!navDock) return;
+    const isOpen = navDock.classList.toggle("open");
     
-    if (isOpen) {
-        menuText.style.display = "none";
-        closeText.style.display = "block";
-        // Prevent background scrolling
-        document.body.style.overflow = "hidden";
-    } else {
-        menuText.style.display = "block";
-        closeText.style.display = "none";
-        document.body.style.overflow = "";
-    }
+    // Optional: add active class to button for styling
+    if (menuToggle) menuToggle.classList.toggle("active");
 }
+
+// Close on scroll (Desktop only)
+window.addEventListener("scroll", () => {
+    if (window.innerWidth > 768 && navDock) {
+        if (window.scrollY > 50) {
+            if (navDock.classList.contains("open")) {
+                navDock.classList.remove("open");
+            }
+        } else {
+            if (!navDock.classList.contains("open")) {
+                navDock.classList.add("open");
+            }
+        }
+    }
+}, { passive: true });
 
 if (menuToggle) {
     menuToggle.addEventListener("click", toggleMenu);
@@ -117,8 +127,8 @@ document.addEventListener("click", (e) => {
     const link = e.target.closest("[data-link]");
     if (link) {
         e.preventDefault();
-        // Close menu if open
-        if (navOverlay && navOverlay.classList.contains("open")) {
+        // Close dock if open
+        if (navDock && navDock.classList.contains("open")) {
             toggleMenu();
         }
         navigateTo(new URL(link.href).pathname);
