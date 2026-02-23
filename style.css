@@ -116,11 +116,12 @@ html {
     transform: translateX(-50%);
     z-index: 2147483647;
     
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
+    /* High-Distortion Liquid Glass with SVG Refraction */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(25px) saturate(200%) brightness(1.1) url(#liquid-refraction);
+    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.1) url(#liquid-refraction);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
     
     display: flex;
     align-items: center;
@@ -136,12 +137,14 @@ html {
     width: auto;
     max-width: 60px; /* Collapsed state */
     height: 60px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .nav-dock.open {
     max-width: 1000px; /* Expanded state */
     padding-right: 32px;
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .dock-toggle {
@@ -1502,38 +1505,47 @@ a:hover {
         max-width: 64px;
         height: auto;
         max-height: 64px;
-        padding: 8px;
-        background: #111; /* High contrast dark background */
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        
+        /* High-Distortion Liquid Glass with SVG Refraction */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px) saturate(220%) brightness(1.1) url(#liquid-refraction);
+        -webkit-backdrop-filter: blur(20px) saturate(220%) brightness(1.1) url(#liquid-refraction);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
     }
 
     .nav-dock.open {
-        max-width: calc(100% - 40px);
-        max-height: 500px;
-        padding-bottom: 32px;
-        border-radius: 20px;
+        max-width: calc(100% - 48px);
+        max-height: 600px;
+        padding: 24px 20px 32px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.25);
     }
 
     .dock-logo {
-        filter: invert(1) brightness(2); /* Make logo white on dark background */
+        filter: none; /* Back to original colors */
+        width: 36px;
+        height: 36px;
     }
 
     .nav-item {
-        color: #fff; /* White text for links on mobile dark dock */
-    }
-
-    .nav-item::after {
-        background: #fff;
+        color: #111;
+        font-size: 16px;
+        text-align: center;
+        padding: 8px 0;
+        width: 100%;
     }
 
     .nav-dock.open .dock-links {
         flex-direction: column;
         margin-left: 0;
         margin-top: 24px;
-        gap: 24px;
-        width: auto;
-        flex-wrap: wrap;
+        gap: 16px;
+        width: 100%;
         align-items: center;
+        justify-content: center;
     }
 }
 

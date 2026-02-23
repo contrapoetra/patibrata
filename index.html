@@ -40,7 +40,17 @@
             <div id="smooth-content">
                 <main id="app"></main>
 
-                <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                <!-- SVG Filter for Liquid Glass Refraction -->
+        <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
+            <filter id="liquid-refraction">
+                <!-- Generate fractal noise -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="3" result="noise" />
+                <!-- Distort the background content based on the noise -->
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </svg>
+
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
                 <script src="/static/js/gsap.min.js"></script>
                 <script src="/static/js/ScrollTrigger.min.js"></script>
                 <script src="/static/js/ScrollSmoother.min.js"></script>
