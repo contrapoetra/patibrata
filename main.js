@@ -1,6 +1,6 @@
 import { router, navigateTo } from "./router.js";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Draggable);
 
 /* =========================
    MOBILE VIEWPORT HEIGHT FIX
@@ -350,8 +350,35 @@ function setupFloatingPhotos() {
 
       photo.addEventListener("mouseleave", () => {
         photo.classList.remove("is-hovered");
-        // We don't immediately reset style.transform here because it would snap.
-        // The ticker will resume updating once the class is removed.
+      });
+
+      // 3. Initialize Dragging with Physics
+      photo._dragOffset = { x: 0, y: 0 };
+      
+      Draggable.create(photo, {
+        type: "x,y",
+        inertia: true,
+        edgeResistance: 0.65,
+        onDragStart: function() {
+          photo._isDragging = true;
+          photo.style.zIndex = 2147483647;
+        },
+        onDrag: function() {
+          photo._dragOffset.x = this.x;
+          photo._dragOffset.y = this.y;
+        },
+        onThrowUpdate: function() {
+          // Keep updating the offset during the inertia phase
+          photo._dragOffset.x = this.x;
+          photo._dragOffset.y = this.y;
+        },
+        onDragEnd: function() {
+          photo._isDragging = false;
+          photo.style.zIndex = 2147483646;
+        },
+        onThrowComplete: function() {
+          photo._isDragging = false;
+        }
       });
     });
   });
@@ -380,8 +407,14 @@ function setupFloatingPhotos() {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
       const parallaxY = -scrollY * (speed - 1);
       
-      // Parent always handles parallax
-      photo.style.transform = `translateY(${parallaxY}px)`;
+      // Combine parallax motion with the manual drag offset
+      const finalX = photo._dragOffset ? photo._dragOffset.x : 0;
+      const finalY = parallaxY + (photo._dragOffset ? photo._dragOffset.y : 0);
+
+      // Only update position if NOT currently being dragged by user
+      if (!photo._isDragging) {
+        gsap.set(photo, { x: finalX, y: finalY });
+      }
 
       const inner = photo.querySelector(".photo-inner");
       if (inner && !isMobile) {
