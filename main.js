@@ -1,6 +1,6 @@
 import { router, navigateTo } from "./router.js";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Draggable);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Draggable, InertiaPlugin);
 
 /* =========================
    MOBILE VIEWPORT HEIGHT FIX
@@ -358,6 +358,7 @@ function setupFloatingPhotos() {
       Draggable.create(photo, {
         type: "x,y",
         inertia: true,
+        bounds: window, // Keep within the screen
         edgeResistance: 0.65,
         onDragStart: function() {
           photo._isDragging = true;
