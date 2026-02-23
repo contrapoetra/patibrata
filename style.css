@@ -77,7 +77,9 @@
 
 #app {
     padding: 2rem;
-    transition: opacity 200ms ease, transform 200ms ease;
+    transition:
+        opacity 200ms ease,
+        transform 200ms ease;
 }
 
 /* Home page slides - fullscreen */
@@ -115,30 +117,32 @@ html {
     left: 50%;
     transform: translateX(-50%);
     z-index: 2147483647;
-    
+
     /* Standard Glassmorphism */
-    background: rgba(255, 255, 255, 0.7); 
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 16px;
-    
+
     display: flex;
     align-items: center;
     padding: 8px;
     overflow: hidden;
-    
+
     /* Fluid morphing animation */
-    transition: max-width 0.8s cubic-bezier(0.7, 0, 0.3, 1), 
-                height 0.8s cubic-bezier(0.7, 0, 0.3, 1),
-                padding 0.8s cubic-bezier(0.7, 0, 0.3, 1),
-                background 0.4s ease;
-    
+    transition:
+        max-width 0.8s cubic-bezier(0.7, 0, 0.3, 1),
+        height 0.8s cubic-bezier(0.7, 0, 0.3, 1),
+        padding 0.8s cubic-bezier(0.7, 0, 0.3, 1),
+        background 0.4s ease;
+
     width: auto;
     max-width: 60px; /* Collapsed state */
     height: 60px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .nav-dock.open {
@@ -397,14 +401,15 @@ html {
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(255, 255, 255, 0.9) 30%
+        rgba(255, 255, 255, 0.4) 100% /* Much lighter gradient */
     );
+    z-index: 5; /* Ensure it's above the background logo but below floating photos */
 }
 
 .news-marquee {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Important: don't clip the cards or their shadows */
 }
 
 .news-track {
@@ -418,17 +423,22 @@ html {
     flex-shrink: 0;
     width: 280px;
     padding: 20px 24px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #e8e4df;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.4); /* Transparent glass base */
+    backdrop-filter: blur(15px); /* Strong blur */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Crisp glass edge */
+    border-radius: 12px;
+    z-index: 1;
     transition:
-        transform 0.3s ease,
+        transform 0.3s cubic-bezier(0.2, 1, 0.3, 1),
+        background 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 .news-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .news-date {
@@ -503,11 +513,12 @@ html {
     -webkit-backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.25);
     will-change: transform, filter;
-    
+
     /* Buttery Smooth CSS Transitions */
-    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1), 
-                filter 1.5s ease,
-                scale 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+    transition:
+        transform 1.5s cubic-bezier(0.2, 1, 0.2, 1),
+        filter 1.5s ease,
+        scale 1.5s cubic-bezier(0.2, 1, 0.2, 1);
     pointer-events: none;
 }
 
@@ -1525,14 +1536,15 @@ a:hover {
         height: auto;
         max-height: 64px;
         padding: 10px;
-        
+
         /* Standard Glassmorphism */
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 
-                    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.15),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.2);
     }
 
     .nav-dock.open {
@@ -1611,7 +1623,9 @@ a:hover {
     border-radius: 8px;
     overflow: hidden;
     background: #f0ede8;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .masonry-item:hover {
