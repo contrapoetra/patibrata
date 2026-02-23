@@ -24,23 +24,22 @@
             </div>
         </nav>
 
-        <!-- Floating Photos -->
-        <div class="floating-photos" id="floating-photos" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-            <div class="floating-photo" data-speed="1.4" style="top: 12%; left: 4%;"></div>
-            <div class="floating-photo" data-speed="1.6" style="top: 35%; right: 6%;"></div>
-            <div class="floating-photo" data-speed="1.3" style="top: 65%; left: 8%;"></div>
-            <div class="floating-photo" data-speed="1.5" style="top: 110%; right: 4%;"></div>
-            <div class="floating-photo" data-speed="1.45" style="top: 160%; left: 2%;"></div>
-            <div class="floating-photo" data-speed="1.55" style="top: 210%; right: 10%;"></div>
-            <div class="floating-photo" data-speed="1.35" style="top: 260%; left: 6%;"></div>
-            <div class="floating-photo" data-speed="1.5" style="top: 320%; right: 5%;"></div>
-            <!-- Closest Foreground Photos (Lower down) -->
-            <div class="floating-photo" data-speed="1.8" style="top: 280%; right: 15%;"></div>
-            <div class="floating-photo" data-speed="1.9" style="top: 340%; left: 12%;"></div>
-        </div>
-
         <div id="smooth-wrapper">
             <div id="smooth-content">
+                <!-- Floating Photos (Inside smooth-content for full page bounds) -->
+                <div class="floating-photos" id="floating-photos" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div class="floating-photo" data-speed="1.4"></div>
+                    <div class="floating-photo" data-speed="1.6"></div>
+                    <div class="floating-photo" data-speed="1.3"></div>
+                    <div class="floating-photo" data-speed="1.5"></div>
+                    <div class="floating-photo" data-speed="1.45"></div>
+                    <div class="floating-photo" data-speed="1.55"></div>
+                    <div class="floating-photo" data-speed="1.35"></div>
+                    <div class="floating-photo" data-speed="1.5"></div>
+                    <div class="floating-photo" data-speed="1.8"></div>
+                    <div class="floating-photo" data-speed="1.9"></div>
+                </div>
+
                 <main id="app"></main>
 
                 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
