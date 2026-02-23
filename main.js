@@ -288,6 +288,18 @@ function setupFloatingPhotos() {
         }
       });
     });
+
+    // 🔹 Entrance Animation
+    gsap.fromTo(photos, 
+      { opacity: 0, scale: 0.5 }, 
+      { 
+        opacity: 1, 
+        scale: 1, 
+        duration: 1, 
+        stagger: { amount: 0.4, from: "center" },
+        ease: "elastic.out(1, 0.8)" 
+      }
+    );
   });
 
   const smoother = ScrollSmoother.get();

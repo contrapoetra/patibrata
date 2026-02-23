@@ -30,6 +30,21 @@ export async function router() {
   app.classList.remove("fade-in");
   app.classList.add("fade-out");
 
+  // 🔹 Photocard Exit Animation
+  const photos = document.querySelectorAll(".floating-photo");
+  if (photos.length > 0) {
+    gsap.to(photos, {
+      opacity: 0,
+      scale: 1.5,
+      duration: 0.6,
+      stagger: {
+        amount: 0.2,
+        from: "random"
+      },
+      ease: "power2.in"
+    });
+  }
+
   setTimeout(async () => {
     try {
       // 🔹 Dynamic poem route
