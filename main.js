@@ -88,12 +88,42 @@ ScrollSmoother.create({
    SPA LINK HANDLING
 ========================= */
 
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-link]");
-  if (!link) return;
+const menuToggle = document.getElementById("menu-toggle");
+const navOverlay = document.getElementById("nav-overlay");
+const menuText = menuToggle.querySelector(".menu-text");
+const closeText = menuToggle.querySelector(".close-text");
 
-  e.preventDefault();
-  navigateTo(new URL(link.href).pathname);
+function toggleMenu() {
+    const isOpen = navOverlay.classList.toggle("open");
+    menuToggle.classList.toggle("active");
+    
+    if (isOpen) {
+        menuText.style.display = "none";
+        closeText.style.display = "block";
+        // Prevent background scrolling
+        document.body.style.overflow = "hidden";
+    } else {
+        menuText.style.display = "block";
+        closeText.style.display = "none";
+        document.body.style.overflow = "";
+    }
+}
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", toggleMenu);
+}
+
+document.addEventListener("click", (e) => {
+    const link = e.target.closest("[data-link]");
+    if (link) {
+        e.preventDefault();
+        // Close menu if open
+        if (navOverlay && navOverlay.classList.contains("open")) {
+            toggleMenu();
+        }
+        navigateTo(new URL(link.href).pathname);
+        return;
+    }
 });
 
 window.addEventListener("popstate", router);

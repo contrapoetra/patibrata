@@ -11,7 +11,22 @@
         <!--<link rel="manifest" href="/manifest.json" />-->
     </head>
     <body>
-        <!-- Floating Photos (outside smooth-wrapper for proper fixed positioning) -->
+        <!-- Menu Elements (Outside smooth-wrapper for fixed positioning) -->
+        <button class="menu-toggle" id="menu-toggle">
+            <span class="menu-text">Menu</span>
+            <span class="close-text" style="display: none;">Close</span>
+        </button>
+
+        <nav class="nav-overlay" id="nav-overlay">
+            <div class="nav-links">
+                <a href="/" data-link class="nav-item">Home</a>
+                <a href="/poems" data-link class="nav-item">Poems from an Arborist</a>
+                <a href="/about" data-link class="nav-item">About</a>
+                <a href="/gallery" data-link class="nav-item">Gallery</a>
+            </div>
+        </nav>
+
+        <!-- Floating Photos -->
         <div class="floating-photos" id="floating-photos" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
             <div class="floating-photo" data-speed="1.4" style="top: 12%; left: 4%;"></div>
             <div class="floating-photo" data-speed="1.6" style="top: 35%; right: 6%;"></div>
@@ -25,15 +40,6 @@
 
         <div id="smooth-wrapper">
             <div id="smooth-content">
-                <nav class="navbar">
-                    <a href="/" data-link class="nav-item">Home</a>
-                    <a href="/poems" data-link class="nav-item"
-                        >Poems from an Arborist</a
-                    >
-                    <a href="/about" data-link class="nav-item">About</a>
-                    <a href="/gallery" data-link class="nav-item">Gallery</a>
-                </nav>
-
                 <main id="app"></main>
 
                 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
