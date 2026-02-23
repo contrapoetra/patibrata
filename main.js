@@ -358,20 +358,23 @@ function setupFloatingPhotos() {
       Draggable.create(photo, {
         type: "x,y",
         inertia: true,
-        bounds: window, // Keep within the screen
         edgeResistance: 0.65,
         onDragStart: function() {
           photo._isDragging = true;
           photo.style.zIndex = 2147483647;
         },
         onDrag: function() {
+          // Calculate manual offset relative to scroll drift
+          const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+          const driftY = -scrollY * (parseFloat(photo.dataset.speed) - 1);
           photo._dragOffset.x = this.x;
-          photo._dragOffset.y = this.y;
+          photo._dragOffset.y = this.y - driftY;
         },
         onThrowUpdate: function() {
-          // Keep updating the offset during the inertia phase
+          const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+          const driftY = -scrollY * (parseFloat(photo.dataset.speed) - 1);
           photo._dragOffset.x = this.x;
-          photo._dragOffset.y = this.y;
+          photo._dragOffset.y = this.y - driftY;
         },
         onDragEnd: function() {
           photo._isDragging = false;
@@ -406,11 +409,13 @@ function setupFloatingPhotos() {
 
     photos.forEach((photo) => {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
-      const parallaxY = -scrollY * (speed - 1);
       
-      // Combine parallax motion with the manual drag offset
+      // Calculate current parallax drift
+      const driftY = -scrollY * (speed - 1);
+      
+      // Final position = User's drag offset + current scroll drift
       const finalX = photo._dragOffset ? photo._dragOffset.x : 0;
-      const finalY = parallaxY + (photo._dragOffset ? photo._dragOffset.y : 0);
+      const finalY = driftY + (photo._dragOffset ? photo._dragOffset.y : 0);
 
       // Only update position if NOT currently being dragged by user
       if (!photo._isDragging) {
