@@ -269,28 +269,24 @@ function setupFloatingPhotos() {
     selectedCards.map((card) => loadImage(`/assets/photocards/${card}`)),
   ).then((dimensions) => {
     photos.forEach((photo, index) => {
-      // Set the image
-      photo.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
-      photo.style.backgroundSize = "cover";
-      photo.style.backgroundPosition = "center";
+      // Create inner visual element
+      photo.innerHTML = `<div class="photo-inner"></div>`;
+      const inner = photo.querySelector(".photo-inner");
+
+      // Set the image on the inner element
+      inner.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
 
       // Set speed from predefined array
       const speed = speeds[index];
       photo.dataset.speed = speed;
 
-      // Add subtle blur based on speed (reduced range) - DISABLED on mobile for performance
+      // Add base blur data to inner
       if (!isMobile) {
-        const blur = Math.round((speed - 1.3) * 8); // 0-2.5px range - subtle
-        photo.dataset.baseBlur = blur;
-        photo.style.filter = `blur(${blur}px)`;
-        photo.style.webkitFilter = `blur(${blur}px)`;
+        const blur = Math.round((speed - 1.3) * 8);
+        inner.dataset.baseBlur = blur;
+        inner.style.filter = `blur(${blur}px)`;
+        inner.style.webkitFilter = `blur(${blur}px)`;
       }
-
-      // GPU acceleration hint
-      photo.style.willChange = "transform";
-
-      // Enable pointer events for hover
-      photo.style.pointerEvents = "auto";
 
       // Calculate size based on image's natural aspect ratio
       const baseWidth = isMobile ? 100 : 250;
@@ -300,42 +296,60 @@ function setupFloatingPhotos() {
       const aspectRatio = dim.height / dim.width;
       const height = Math.round(width * aspectRatio);
 
-      photo.style.width = `${width}px`;
-      photo.style.height = `${height}px`;
+      // IMPORTANT: The parent 'photo' is a stable SQUARE hit-area
+      // large enough to contain the image at any rotation
+      const maxDim = Math.max(width, height) * 1.2;
+      photo.style.width = `${maxDim}px`;
+      photo.style.height = `${maxDim}px`;
+
+      // The 'inner' has the actual image dimensions
+      inner.style.width = `${width}px`;
+      inner.style.height = `${height}px`;
+
+      // store rotation data
+      inner._rotationSpeed = 0.03;
+      inner._baseRotation = !isMobile ? gsap.utils.random(0, 360) : 0;
+      inner._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1;
+
+      // Add hover listeners
+      photo.addEventListener("mouseenter", () => {
+        photo.classList.add("is-hovered");
+        
+        // Calculate the current rotation at the moment of hover
+        const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+        const currentAuto = inner._baseRotation + (tickCount * 0.1 + scrollY * inner._rotationSpeed) * inner._rotationDirection;
+        const currentRotation = photo._lastRotation || currentAuto;
+        
+        // Find nearest upright angle (multiple of 360)
+        const targetRotation = Math.round(currentRotation / 360) * 360;
+        
+        // Set the CSS transform - the transition in CSS will handle the rest
+        inner.style.transform = `rotate(${targetRotation}deg) scale(1.1)`;
+      });
+
+      photo.addEventListener("mouseleave", () => {
+        photo.classList.remove("is-hovered");
+        // We don't immediately reset style.transform here because it would snap.
+        // The ticker will resume updating once the class is removed.
+      });
     });
   });
 
-  // Get ScrollSmoother instance for scroll position
+  // Get ScrollSmoother instance
   const smoother = ScrollSmoother.get();
 
-  // Remove old handler if exists
   if (floatingPhotosHandler) {
     gsap.ticker.remove(floatingPhotosHandler);
   }
 
-  // Assign rotation speed and calculate when each photo enters viewport
-  // On mobile, skip rotation for better performance
-  const enableRotation = !isMobile;
-  photos.forEach((photo) => {
-    photo._rotationSpeed = 0.03; // slower scroll-based rotation
-    photo._baseRotation = enableRotation ? gsap.utils.random(0, 360) : 0; // Starting rotation position
-    photo._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1; // Clockwise or counter-clockwise
-    // Get the scroll position where this photo starts to become visible
-    const topPercent = parseFloat(photo.style.top) / 100;
-    photo._startY = window.innerHeight * topPercent;
-  });
-
-  // Use gsap.ticker for smooth frame-by-frame updates
-  // On mobile, throttle updates for better performance
   let tickCount = 0;
   let lastScrollY = 0;
-  const scrollThreshold = isMobile ? 5 : 0; // Only update every 5px on mobile
+  const scrollThreshold = isMobile ? 5 : 0;
 
   floatingPhotosHandler = () => {
     tickCount++;
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
 
-    // Throttle on mobile - skip update if scroll hasn't changed enough
     if (isMobile && Math.abs(scrollY - lastScrollY) < scrollThreshold) {
       return;
     }
@@ -343,25 +357,27 @@ function setupFloatingPhotos() {
 
     photos.forEach((photo) => {
       const speed = parseFloat(photo.dataset.speed) || 1.4;
-      // Move UP faster than scroll to appear closer/foreground
       const parallaxY = -scrollY * (speed - 1);
+      
+      // Parent always handles parallax
+      photo.style.transform = `translateY(${parallaxY}px)`;
 
-      if (enableRotation) {
-        // Constant slow rotation (always running)
-        const continuousRotation =
-          photo._baseRotation + tickCount * 0.1 * photo._rotationDirection;
-        // Scroll-based rotation in SAME direction
-        const scrollRotation =
-          scrollY * photo._rotationSpeed * photo._rotationDirection;
-        const rotation = continuousRotation + scrollRotation;
-
-        photo.style.transform = `translateY(${parallaxY}px) rotate(${rotation}deg)`;
-      } else {
-        // On mobile, just do parallax without rotation
-        photo.style.transform = `translateY(${parallaxY}px)`;
+      const inner = photo.querySelector(".photo-inner");
+      if (inner && !isMobile) {
+        if (!photo.classList.contains("is-hovered")) {
+          // If NOT hovered, JS ticker controls the rotation
+          const auto = inner._baseRotation + (tickCount * 0.1 + scrollY * inner._rotationSpeed) * inner._rotationDirection;
+          inner.style.transform = `rotate(${auto}deg) scale(1)`;
+          photo._lastRotation = auto;
+        } else {
+          // If hovered, we do NOTHING. We let the CSS transition set in mouseenter finish.
+        }
       }
     });
   };
+
+  gsap.ticker.add(floatingPhotosHandler);
+  floatingPhotosHandler();
 
   // Add to ticker for smooth animation on every frame
   gsap.ticker.add(floatingPhotosHandler);

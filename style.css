@@ -485,17 +485,37 @@ html {
 .floating-photo {
     position: absolute;
     border-radius: 6px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    will-change: transform, filter;
+    will-change: transform;
     z-index: 2147483647 !important;
+    pointer-events: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.photo-inner {
+    border-radius: inherit;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.25);
-    pointer-events: auto;
-    cursor: pointer;
-    transition:
-        filter 0.3s ease,
-        z-index 0s;
+    will-change: transform, filter;
+    
+    /* Buttery Smooth CSS Transitions */
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1), 
+                filter 1.5s ease,
+                scale 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+    pointer-events: none;
+}
+
+/* State when hovered - JS will handle the specific rotation logic */
+.floating-photo.is-hovered .photo-inner {
+    filter: blur(0px) !important;
+    -webkit-filter: blur(0px) !important;
 }
 
 /* When hovering a photo, unblur the hovered one */
