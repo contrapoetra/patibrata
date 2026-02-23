@@ -1,15 +1,15 @@
 const connections = {
   "/": "/about",
-  "/about": "/contact",
-  "/contact": "/poems",
-  "/poems": "/",
+  "/about": "/poems",
+  "/poems": "/gallery",
+  "/gallery": "/",
 };
 
 const routes = {
   "/": "/pages/home.html",
   "/about": "/pages/about.html",
-  "/contact": "/pages/contact.html",
   "/poems": "/pages/poems.html",
+  "/gallery": "/pages/gallery.html",
 };
 
 export function navigateTo(url) {
@@ -95,6 +95,8 @@ export async function router() {
         // Add body class for home page
         if (path === "/") {
           body.classList.add("home");
+        } else if (path === "/gallery") {
+          body.classList.add("gallery");
         }
       }
 

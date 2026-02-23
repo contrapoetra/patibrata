@@ -63,7 +63,8 @@ function animatePoemText() {
 const connections = {
   "/": "/about",
   "/about": "/poems",
-  "/poems": "/",
+  "/poems": "/gallery",
+  "/gallery": "/",
 };
 
 /* =========================

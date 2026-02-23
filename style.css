@@ -80,7 +80,8 @@
 }
 
 /* Home page slides - fullscreen */
-body.home #app {
+body.home #app,
+body.gallery #app {
     padding: 0;
 }
 
@@ -90,7 +91,7 @@ body.home #main {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -1620,5 +1621,85 @@ a:hover {
     .social-link svg {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* =====================================
+   GALLERY PAGE
+===================================== */
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.gallery-header h1 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.gallery-header p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.masonry {
+    column-count: 3;
+    column-gap: 20px;
+    width: 100%;
+}
+
+.masonry-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f0ede8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.masonry-item img,
+.masonry-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry {
+        column-count: 1;
+    }
+
+    .gallery-container {
+        padding: 0 20px;
+        margin-top: 100px;
+    }
+
+    .gallery-header h1 {
+        font-size: 32px;
     }
 }
