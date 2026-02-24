@@ -66,25 +66,32 @@ export async function router() {
         // Animate poem text
         const poemContent = document.querySelectorAll(".poem p");
         poemContent.forEach((poem) => {
-          // Process each child node (text nodes and br elements)
           const originalNodes = Array.from(poem.childNodes);
           poem.innerHTML = "";
 
-          originalNodes.forEach((node) => {
+          const processNode = (node, parent) => {
             if (node.nodeType === Node.TEXT_NODE) {
-              // Split text node by spaces and wrap words in spans
               const text = node.textContent || "";
-              const words = text.match(/\S+\s*/g) || [];
+              const words = text.split(/(\s+)/).filter((word) => word.length > 0);
               words.forEach((word) => {
                 const span = document.createElement("span");
                 span.textContent = word;
-                poem.appendChild(span);
+                parent.appendChild(span);
               });
-            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
-              // Keep <br> elements as-is
-              poem.appendChild(node.cloneNode(true));
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.tagName === "BR") {
+                parent.appendChild(node.cloneNode(true));
+              } else {
+                const newElement = node.cloneNode(false);
+                parent.appendChild(newElement);
+                Array.from(node.childNodes).forEach((child) =>
+                  processNode(child, newElement)
+                );
+              }
             }
-          });
+          };
+
+          originalNodes.forEach((node) => processNode(node, poem));
 
           gsap.from(poem.querySelectorAll("span"), {
             y: 20,
