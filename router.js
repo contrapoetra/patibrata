@@ -35,13 +35,13 @@ export async function router() {
   if (photos.length > 0) {
     gsap.to(photos, {
       opacity: 0,
-      scale: 1.5,
-      duration: 0.6,
+      scale: 2, // Larger explosion
+      duration: 1.2, // Doubled duration
       stagger: {
-        amount: 0.2,
+        amount: 0.4,
         from: "random"
       },
-      ease: "power2.in"
+      ease: "power2.inOut" // Smoother curve
     });
   }
 
