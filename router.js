@@ -26,6 +26,11 @@ export async function router() {
 
   // Update body class based on current page
   body.className = "";
+  if (path === "/") {
+    body.classList.add("home");
+  } else if (path === "/gallery") {
+    body.classList.add("gallery");
+  }
 
   app.classList.remove("fade-in");
   app.classList.add("fade-out");
@@ -113,13 +118,6 @@ export async function router() {
         const res = await fetch(routes[path]);
         const html = await res.text();
         app.innerHTML = html;
-
-        // Add body class for home page
-        if (path === "/") {
-          body.classList.add("home");
-        } else if (path === "/gallery") {
-          body.classList.add("gallery");
-        }
       }
 
       // 🔹 404

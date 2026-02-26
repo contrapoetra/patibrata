@@ -364,22 +364,38 @@ function setupSlideBackgrounds() {
   slides.forEach((slide) => {
     const bg = slide.querySelector(".slide-image-bg");
     if (!bg) return;
-    if (Math.random() > 0.2) {
-      bg.style.backgroundImage = `url(/assets/photocards/${shuffled[imageIndex++]})`;
-      bg.style.display = "block";
-      bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
-    } else {
-      bg.style.display = "none";
-    }
+    
+    // Always assign an image, wrap around if we run out of shuffled images
+    const imagePath = shuffled[imageIndex % shuffled.length];
+    bg.style.backgroundImage = `url(/assets/photocards/${imagePath})`;
+    bg.style.display = "block";
+    bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
+    imageIndex++;
   });
 
   slideBackgroundsHandler = () => {
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+    const vh = window.innerHeight;
+
     slides.forEach((slide) => {
       const bg = slide.querySelector(".slide-image-bg");
       if (!bg || bg.style.display === "none") return;
+
+      // Calculate slide's distance from the center of the viewport
+      const rect = slide.getBoundingClientRect();
+      const slideTop = rect.top + scrollY;
+      const slideHeight = rect.height;
+      
+      // Center of slide relative to scroll
+      const slideCenter = slideTop + slideHeight / 2;
+      // Center of viewport relative to scroll
+      const viewCenter = scrollY + vh / 2;
+      
       const speed = bg._parallaxSpeed || 0.15;
-      const parallaxY = scrollY * speed;
+      // Calculate offset based on how far the slide is from the viewport center
+      const diff = viewCenter - slideCenter;
+      const parallaxY = diff * speed;
+      
       bg.style.transform = `translateY(${parallaxY}px)`;
     });
   };

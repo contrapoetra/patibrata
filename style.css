@@ -275,6 +275,7 @@ html {
     text-align: center;
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #slide-title {
@@ -578,36 +579,39 @@ html {
     background: none !important;
 }
 
-.slide-image .story-content {
+.slide-image .story-content,
+.slide-image .pillars-container,
+.slide-image .journey-content,
+.slide-image .location-card {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 3rem;
-    border-radius: 4px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Slide with background image */
-.slide-image {
-    position: relative;
-    overflow: hidden;
+.slide-image .pillars-container {
+    max-width: 1000px;
 }
 
-.slide-image-bg {
-    position: absolute;
-    inset: -25%;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
+.slide-image .location-card {
+    max-width: 500px;
+    padding: 4rem; /* Keeping original padding for the location card */
 }
 
-.slide-image .story-content {
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 3rem;
-    border-radius: 4px;
+/* Remove or override specific backgrounds that might clash */
+.slide-image.slide-story,
+.slide-image.slide-location,
+.slide-image.slide-dark,
+.slide-image.slide-pillars,
+.slide-image.slide-journey {
+    background: none !important;
 }
 
 .story-content {
