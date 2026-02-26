@@ -37,12 +37,12 @@ even though you can
 because i tried to get you to sing
 but you look like you're sleepy
 then buddy Jo came along
-and in an instant you spill out
+and in an instant you spill
 your entire heart out
 told him your childhood
 told him your life's story
 while your back was staring
-at me crying my eyes out just the way i do
+at me crying my eyes out
 
 but then i stop
 a few of those baby oranges
@@ -68,7 +68,24 @@ you told me that it wasn't personal
 and not to think about it too much
 but honestly I can't
 i can't not think about that time, 
-when i was struggling
+when i was failing
+to get the bracelet off
+i tried to rip the paper
+and it turned into a sheet of stainless steel
+and you called out to me
+with your hands uncuffed
+and tried your best to set me free
+then, that time when we were surveying
+and this old man's goats
+were calling out to me, but
+i didn't understand them
+but you did, so you told me
+and with a wide smile
+i walked towards them
+and said "hi" back
+and you took my arms and pulled me back
+while your laughter resonated with mine
+that time when i was struggling
 to get the other end of my backpack
 and you pulled it out for me
 that time when
@@ -86,8 +103,10 @@ reminding me of the fun we had at the seashore
 we had so much
 but even with all that
 i am still the furthest to you
-compared to buddy Jo, big brother, and little Poppy.
-so if one had never went with you on this journey
+compared to buddy Jo, big brother, and little Poppy
+that night, your Poppy demanded the truth from you
+if one had never went with you on this journey
+who would it have been?
 if the boat was overcrowded
 and someone had to be thrown overboard
 you chose for it to be me
@@ -96,6 +115,15 @@ of your revolver, and you pulled the trigger
 
 and you shot me between the eyes
 and i sobbed the rest of the night
+
+and to think that
+i knew it was gonna be me
+you wouldn't throw your sisters overboard
+your limitless affection to buddy Jo, big brother, and your Poppy
+so that leaves me
+i held my head down, nodding
+as you told me not to take this personal
+but i could not handle the truth
 
 what i can take is that
 i failed to get your attention
