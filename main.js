@@ -431,6 +431,7 @@ window.initScrollReveal = function initScrollReveal() {
 
   setupFloatingPhotos();
   if (currentPath === "/") setupHomeParallax();
+  if (currentPath === "/about") randomizeTeamPhotos();
   if (!nextPath) return;
 
   if (overlay) overlay.remove();
@@ -454,6 +455,74 @@ window.initScrollReveal = function initScrollReveal() {
     },
   });
 };
+
+let cachedPfps = null;
+
+async function randomizeTeamPhotos() {
+  const members = document.querySelectorAll(".team-member");
+  const teamGrid = document.querySelector(".team-grid");
+  if (members.length === 0 || !teamGrid) return;
+
+  try {
+    if (!cachedPfps) {
+      const response = await fetch("/assets/pfps.json");
+      cachedPfps = await response.json();
+    }
+
+    members.forEach((member) => {
+      const memberId = member.getAttribute("data-member");
+      const photos = cachedPfps[memberId];
+      if (photos && photos.length > 0) {
+        const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+        const img = member.querySelector("img");
+        if (img) {
+          img.src = randomPhoto;
+        }
+      }
+    });
+
+    // Event delegation for clicking to switch photos
+    if (!teamGrid._hasClickListener) {
+      teamGrid.addEventListener("click", (e) => {
+        const member = e.target.closest(".team-member");
+        if (!member) return;
+
+        const memberId = member.getAttribute("data-member");
+        const photos = cachedPfps[memberId];
+        if (!photos || photos.length <= 1) return;
+
+        const img = member.querySelector("img");
+        if (!img) return;
+
+        // Find a different photo than the current one
+        let newPhoto;
+        do {
+          newPhoto = photos[Math.floor(Math.random() * photos.length)];
+        } while (newPhoto === img.src && photos.length > 1);
+
+        // Animation for switching
+        gsap.to(img, {
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.2,
+          onComplete: () => {
+            img.src = newPhoto;
+            gsap.to(img, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.3,
+              ease: "back.out(1.7)"
+            });
+          }
+        });
+      });
+      teamGrid._hasClickListener = true;
+      teamGrid.style.cursor = "pointer";
+    }
+  } catch (error) {
+    console.error("Error loading profile pictures:", error);
+  }
+}
 
 async function loadNextPageIntoOverlay() {
   const routePath = nextPath === "/" ? "/pages/home.html" : `/pages${nextPath}.html`;
