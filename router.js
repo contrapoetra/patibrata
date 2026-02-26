@@ -141,6 +141,11 @@ export async function router() {
     app.classList.remove("fade-out");
     app.classList.add("fade-in");
 
+    // Load gallery if on the gallery page
+    if (path === "/gallery" && typeof loadGallery === "function") {
+      loadGallery();
+    }
+
     // Re-initialize scroll effects after content loads
     if (typeof initScrollReveal === "function") {
       setTimeout(initScrollReveal, 100);

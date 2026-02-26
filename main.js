@@ -448,6 +448,7 @@ window.initScrollReveal = function initScrollReveal() {
   setupFloatingPhotos();
   if (currentPath === "/") setupHomeParallax();
   if (currentPath === "/about") randomizeTeamPhotos();
+  if (currentPath === "/gallery") loadGallery();
   if (!nextPath) return;
 
   if (overlay) overlay.remove();
@@ -561,3 +562,121 @@ setTimeout(() => {
   initScrollReveal();
   setupFloatingPhotos();
 }, 300);
+
+async function loadGallery() {
+  const container = document.getElementById("gallery-content");
+  if (!container) return;
+
+  const API_LIST = "https://patibrata-gallery-ls.poetra.workers.dev/list/moments";
+  const API_IMAGE_BASE = "https://patibrata-gallery.r2.contrapoetra.com/moments";
+
+  try {
+    const response = await fetch(API_LIST);
+    const albums = await response.json();
+
+    let html = "";
+    
+    // Sort albums alphabetically
+    const albumKeys = Object.keys(albums).sort();
+
+    albumKeys.forEach((albumKey) => {
+      const albumData = albums[albumKey];
+      const images = albumData.images;
+      const thumbs = albumData.thumbs;
+      const title = formatAlbumName(albumKey);
+
+      html += `
+        <section class="album-section" id="album-${albumKey}">
+          <header class="album-header">
+            <h2 class="album-title">${title}</h2>
+            <span class="album-count">${images.length} Photos</span>
+          </header>
+          <div class="masonry">
+            ${images.map((img, index) => {
+              const thumbImg = thumbs[index];
+              return `
+              <div class="masonry-item" onclick="openLightbox('${API_IMAGE_BASE}/${albumKey}/${img}', '${title}')">
+                <img src="${API_IMAGE_BASE}/${albumKey}/thumb/${thumbImg}" alt="${title}" loading="lazy">
+              </div>
+            `}).join("")}
+          </div>
+        </section>
+      `;
+    });
+
+    container.innerHTML = html;
+
+    // Entrance animation for albums
+    gsap.to(".album-section", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".gallery-container",
+        start: "top 80%",
+      }
+    });
+
+  } catch (error) {
+    console.error("Error loading gallery:", error);
+    container.innerHTML = `<p class="error">Failed to load moments. Please try again later.</p>`;
+  }
+}
+
+function formatAlbumName(slug) {
+  return slug
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+window.openLightbox = function(src, alt) {
+  let lightbox = document.getElementById("gallery-lightbox");
+  if (!lightbox) {
+    lightbox = document.createElement("div");
+    lightbox.id = "gallery-lightbox";
+    lightbox.innerHTML = `
+      <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+      <div class="lightbox-content">
+        <div class="lightbox-loader"></div>
+        <img src="" alt="" style="opacity: 0;">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <p class="lightbox-caption"></p>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const img = lightbox.querySelector("img");
+  const caption = lightbox.querySelector(".lightbox-caption");
+  const loader = lightbox.querySelector(".lightbox-loader");
+  
+  // Reset state
+  img.style.opacity = "0";
+  img.src = ""; 
+  caption.textContent = "";
+  if (loader) loader.style.display = "block";
+  
+  // Set new content
+  img.onload = () => {
+    if (loader) loader.style.display = "none";
+    gsap.to(img, { opacity: 1, duration: 0.4 });
+  };
+  
+  img.src = src;
+  img.alt = alt;
+  caption.textContent = alt;
+  
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevent scrolling
+};
+
+window.closeLightbox = function() {
+  const lightbox = document.getElementById("gallery-lightbox");
+  if (lightbox) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = ""; // Re-enable scrolling
+  }
+};

@@ -1,92 +1,17 @@
-<div class="gallery-container">
-    <div class="gallery-header">
-        <h1>Gallery</h1>
-        <p>A collection of memories & moments</p>
-    </div>
+<div class="gallery-page">
+    <div class="gallery-container">
+        <header class="gallery-header">
+            <span class="about-label">Moments</span>
+            <h1>Our Gallery</h1>
+            <p>Capturing the essence of Lombok through our lens</p>
+        </header>
 
-    <!-- Section 1: Introduction Masonry -->
-    <div class="gallery-section">
-        <div class="masonry">
-            <div class="masonry-item"><img src="/assets/photocards/IMG20251220125211.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20251220125221.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20251231193021.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260107111310.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260107111319.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108163626.jpg" alt="Memory" loading="lazy"></div>
-        </div>
-    </div>
-
-    <!-- Video Feature 1 -->
-    <div class="video-feature">
-        <div class="video-info">
-            <h2>The Arborist's Path</h2>
-            <p>A journey through the whispering canopy, where every leaf tells a story of patience and growth.</p>
-        </div>
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube-nocookie.com/embed/hfWY2fPpixo?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&playlist=hfWY2fPpixo" 
-                title="Gallery Video" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-    <!-- Section 2: Mid-Gallery Masonry -->
-    <div class="gallery-section">
-        <div class="masonry">
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108163922.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108164456.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108164858.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108165023.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260108165303.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260111232548.jpg" alt="Memory" loading="lazy"></div>
-        </div>
-    </div>
-
-    <!-- Video Feature 2 (Placeholder) -->
-    <div class="video-feature">
-        <div class="video-info">
-            <h2>Light & Shadow</h2>
-            <p>Capturing the ephemeral dance of sunbeams filtering through ancient branches at dawn.</p>
-        </div>
-        <div class="video-container" style="background: #eee; display: flex; align-items: center; justify-content: center;">
-            <p style="font-family: 'Plus Jakarta Sans', sans-serif; opacity: 0.4;">[ Video Link Pending ]</p>
-        </div>
-    </div>
-
-    <!-- Section 3: Late-Gallery Masonry -->
-    <div class="gallery-section">
-        <div class="masonry">
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260113213603.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120172111.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120173209.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120173234.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120174108.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120174207.jpg" alt="Memory" loading="lazy"></div>
-        </div>
-    </div>
-
-    <!-- Video Feature 3 (Placeholder) -->
-    <div class="video-feature">
-        <div class="video-info">
-            <h2>Roots of Memory</h2>
-            <p>Where the earth meets the soul, documenting the connection between man and forest.</p>
-        </div>
-        <div class="video-container" style="background: #eee; display: flex; align-items: center; justify-content: center;">
-            <p style="font-family: 'Plus Jakarta Sans', sans-serif; opacity: 0.4;">[ Video Link Pending ]</p>
-        </div>
-    </div>
-
-    <!-- Section 4: Final Masonry -->
-    <div class="gallery-section">
-        <div class="masonry">
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120174421.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260120174453.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260125112742.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260126141239.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260127134517.jpg" alt="Memory" loading="lazy"></div>
-            <div class="masonry-item"><img src="/assets/photocards/IMG20260127141112.jpg" alt="Memory" loading="lazy"></div>
+        <div id="gallery-content">
+            <!-- Albums will be dynamically loaded here -->
+            <div class="gallery-loader">
+                <div class="loader-spinner"></div>
+                <p>Loading moments...</p>
+            </div>
         </div>
     </div>
 </div>
