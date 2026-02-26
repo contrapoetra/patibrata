@@ -156,19 +156,7 @@ function setupHomeParallax() {
 
 let floatingPhotosHandler = null;
 
-const photocards = [
-  "IMG20251220125211.jpg", "IMG20251220125221.jpg", "IMG20251231193021.jpg",
-  "IMG20260107111310.jpg", "IMG20260107111319.jpg", "IMG20260108163626.jpg",
-  "IMG20260108163922.jpg", "IMG20260108164456.jpg", "IMG20260108164858.jpg",
-  "IMG20260108165023.jpg", "IMG20260108165303.jpg", "IMG20260111232548.jpg",
-  "IMG20260113213603.jpg", "IMG20260120172111.jpg", "IMG20260120173209.jpg",
-  "IMG20260120173234.jpg", "IMG20260120174108.jpg", "IMG20260120174207.jpg",
-  "IMG20260120174421.jpg", "IMG20260120174453.jpg", "IMG20260125112742.jpg",
-  "IMG20260126141239.jpg", "IMG20260127134517.jpg", "IMG20260127134528.jpg",
-  "IMG20260127134555.jpg", "IMG20260127141112.jpg"
-];
-
-function setupFloatingPhotos() {
+async function setupFloatingPhotos() {
   const container = document.getElementById("floating-photos");
   const photos = document.querySelectorAll(".floating-photo");
   if (!container || photos.length === 0) return;
@@ -180,8 +168,29 @@ function setupFloatingPhotos() {
   }
   container.style.display = "block";
 
-  const shuffled = [...photocards].sort(() => Math.random() - 0.5);
+  // Fetch dynamic image list from API
+  let allImages = [];
+  try {
+    const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
+    const albums = await response.json();
+    
+    Object.keys(albums).forEach(albumKey => {
+      albums[albumKey].thumbs.forEach(thumb => {
+        allImages.push({
+          album: albumKey,
+          file: thumb
+        });
+      });
+    });
+  } catch (error) {
+    console.error("Error fetching photos for homepage:", error);
+    return;
+  }
+
+  const shuffled = allImages.sort(() => Math.random() - 0.5);
   const selectedCards = shuffled.slice(0, photos.length);
+  const API_IMAGE_BASE = "https://patibrata-gallery.r2.contrapoetra.com/moments";
+  
   const speeds = [1.3, 1.5, 1.4, 1.6, 1.35, 1.55, 1.45, 1.5, 1.8, 1.9];
   const isMobile = window.innerWidth <= 768;
 
@@ -195,11 +204,12 @@ function setupFloatingPhotos() {
   };
 
   Promise.all(
-    selectedCards.map((card) => loadImage(`/assets/photocards/${card}`)),
+    selectedCards.map((card) => loadImage(`${API_IMAGE_BASE}/${card.album}/thumb/${card.file}`)),
   ).then((dimensions) => {
     const docHeight = document.documentElement.scrollHeight || 5000;
 
     photos.forEach((photo, index) => {
+      const card = selectedCards[index];
       const side = Math.random() > 0.5 ? "left" : "right";
       const horizontalPos = side === "left" ? gsap.utils.random(2, 30) : gsap.utils.random(70, 95);
       const verticalPos = gsap.utils.random(100, docHeight - 500);
@@ -216,7 +226,7 @@ function setupFloatingPhotos() {
       photo._dragOffset = { x: 0, y: 0 };
       photo.innerHTML = `<div class="photo-inner"></div>`;
       const inner = photo.querySelector(".photo-inner");
-      inner.style.backgroundImage = `url(/assets/photocards/${selectedCards[index]})`;
+      inner.style.backgroundImage = `url(${API_IMAGE_BASE}/${card.album}/thumb/${card.file})`;
 
       const speed = speeds[index] || 1.4;
       photo.dataset.speed = speed;
@@ -343,7 +353,7 @@ function setupFloatingPhotos() {
 
 let slideBackgroundsHandler = null;
 
-function setupSlideBackgrounds() {
+async function setupSlideBackgrounds() {
   const slides = document.querySelectorAll(".slide-image");
   if (slides.length === 0) return;
 
@@ -358,7 +368,22 @@ function setupSlideBackgrounds() {
   const smoother = ScrollSmoother.get();
   if (slideBackgroundsHandler) gsap.ticker.remove(slideBackgroundsHandler);
 
-  const shuffled = [...photocards].sort(() => Math.random() - 0.5);
+  let allImages = [];
+  try {
+    const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
+    const albums = await response.json();
+    Object.keys(albums).forEach(albumKey => {
+      albums[albumKey].thumbs.forEach(thumb => {
+        allImages.push({ album: albumKey, file: thumb });
+      });
+    });
+  } catch (error) {
+    console.error("Error fetching slide backgrounds:", error);
+    return;
+  }
+
+  const shuffled = allImages.sort(() => Math.random() - 0.5);
+  const API_IMAGE_BASE = "https://patibrata-gallery.r2.contrapoetra.com/moments";
   let imageIndex = 0;
 
   slides.forEach((slide) => {
@@ -366,8 +391,8 @@ function setupSlideBackgrounds() {
     if (!bg) return;
     
     // Always assign an image, wrap around if we run out of shuffled images
-    const imagePath = shuffled[imageIndex % shuffled.length];
-    bg.style.backgroundImage = `url(/assets/photocards/${imagePath})`;
+    const card = shuffled[imageIndex % shuffled.length];
+    bg.style.backgroundImage = `url(${API_IMAGE_BASE}/${card.album}/thumb/${card.file})`;
     bg.style.display = "block";
     bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
     imageIndex++;
