@@ -241,10 +241,19 @@ async function setupFloatingPhotos(albums = null) {
   const loadImage = (src, photoInner) => {
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = () => {
-        photoInner.style.backgroundImage = `url(${src})`;
-        loadingManager.itemLoaded();
-        resolve({ width: img.width, height: img.height });
+      img.onload = async () => {
+        try {
+          // Use modern decode() API to ensure image is decompressed and ready to paint
+          if ("decode" in img) await img.decode();
+          
+          photoInner.style.backgroundImage = `url(${src})`;
+          loadingManager.itemLoaded();
+          resolve({ width: img.width, height: img.height });
+        } catch (e) {
+          console.error("Image decode failed", e);
+          loadingManager.itemLoaded();
+          resolve({ width: 100, height: 100 });
+        }
       };
       img.onerror = () => {
         loadingManager.itemLoaded();
@@ -456,11 +465,18 @@ async function setupSlideBackgrounds(albums = null) {
       const src = `${API_IMAGE_BASE}/${card.album}/${card.file}`;
       
       const img = new Image();
-      img.onload = () => {
-        bg.style.backgroundImage = `url(${src})`;
-        bg.style.opacity = "1";
-        loadingManager.itemLoaded();
-        resolve();
+      img.onload = async () => {
+        try {
+          if ("decode" in img) await img.decode();
+          bg.style.backgroundImage = `url(${src})`;
+          bg.style.opacity = "1";
+          loadingManager.itemLoaded();
+          resolve();
+        } catch (e) {
+          console.error("Slide bg decode failed", e);
+          loadingManager.itemLoaded();
+          resolve();
+        }
       };
       img.onerror = () => {
         loadingManager.itemLoaded();
