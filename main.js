@@ -3,6 +3,51 @@ import { router, navigateTo } from "./router.js";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Draggable, InertiaPlugin);
 
 /* =========================
+   LOADING MANAGER
+========================= */
+
+const loadingManager = {
+  totalItems: 0,
+  itemsLoaded: 0,
+  
+  init(total) {
+    this.totalItems = total;
+    this.itemsLoaded = 0;
+    this.updateUI();
+  },
+  
+  itemLoaded() {
+    this.itemsLoaded++;
+    this.updateUI();
+    if (this.itemsLoaded >= this.totalItems) {
+      this.finish();
+    }
+  },
+  
+  updateUI() {
+    const percentage = Math.round((this.itemsLoaded / this.totalItems) * 100) || 0;
+    const bar = document.getElementById("loader-bar");
+    const text = document.getElementById("loader-percentage");
+    if (bar) bar.style.width = `${percentage}%`;
+    if (text) text.textContent = `${percentage}%`;
+  },
+  
+  finish() {
+    const loader = document.getElementById("loader");
+    if (loader) {
+      loader.classList.add("loaded");
+      // Re-enable scrolling if it was disabled
+      document.body.style.overflow = "";
+    }
+  }
+};
+
+// Disable scroll during loading
+if (document.getElementById("loader")) {
+    document.body.style.overflow = "hidden";
+}
+
+/* =========================
    MOBILE VIEWPORT HEIGHT FIX
 ========================= */
 
@@ -175,10 +220,10 @@ async function setupFloatingPhotos() {
     const albums = await response.json();
     
     Object.keys(albums).forEach(albumKey => {
-      albums[albumKey].thumbs.forEach(thumb => {
+      albums[albumKey].images.forEach(img => {
         allImages.push({
           album: albumKey,
-          file: thumb
+          file: img
         });
       });
     });
@@ -197,14 +242,20 @@ async function setupFloatingPhotos() {
   const loadImage = (src) => {
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = () => resolve({ width: img.width, height: img.height });
-      img.onerror = () => resolve({ width: 100, height: 100 });
+      img.onload = () => {
+        loadingManager.itemLoaded();
+        resolve({ width: img.width, height: img.height });
+      };
+      img.onerror = () => {
+        loadingManager.itemLoaded();
+        resolve({ width: 100, height: 100 });
+      };
       img.src = src;
     });
   };
 
-  Promise.all(
-    selectedCards.map((card) => loadImage(`${API_IMAGE_BASE}/${card.album}/thumb/${card.file}`)),
+  return Promise.all(
+    selectedCards.map((card) => loadImage(`${API_IMAGE_BASE}/${card.album}/${card.file}`)),
   ).then((dimensions) => {
     const docHeight = document.documentElement.scrollHeight || 5000;
 
@@ -226,7 +277,7 @@ async function setupFloatingPhotos() {
       photo._dragOffset = { x: 0, y: 0 };
       photo.innerHTML = `<div class="photo-inner"></div>`;
       const inner = photo.querySelector(".photo-inner");
-      inner.style.backgroundImage = `url(${API_IMAGE_BASE}/${card.album}/thumb/${card.file})`;
+      inner.style.backgroundImage = `url(${API_IMAGE_BASE}/${card.album}/${card.file})`;
 
       const speed = speeds[index] || 1.4;
       photo.dataset.speed = speed;
@@ -310,45 +361,43 @@ async function setupFloatingPhotos() {
         ease: "elastic.out(1, 0.8)" 
       }
     );
+
+    const smoother = ScrollSmoother.get();
+    if (floatingPhotosHandler) gsap.ticker.remove(floatingPhotosHandler);
+
+    let tickCount = 0;
+    let lastScrollY = 0;
+    const scrollThreshold = isMobile ? 5 : 0;
+
+    floatingPhotosHandler = () => {
+      tickCount++;
+      const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+      if (isMobile && Math.abs(scrollY - lastScrollY) < scrollThreshold) return;
+      lastScrollY = scrollY;
+
+      photos.forEach((photo) => {
+        const speed = parseFloat(photo.dataset.speed) || 1.4;
+        const driftY = -scrollY * (speed - 1);
+        const finalX = photo._dragOffset ? photo._dragOffset.x : 0;
+        const finalY = driftY + (photo._dragOffset ? photo._dragOffset.y : 0);
+
+        // Only skip update if the user's MOUSE is currently DOWN dragging
+        if (!photo._isDraggingActive) {
+          gsap.set(photo, { x: finalX, y: finalY });
+        }
+
+        const inner = photo.querySelector(".photo-inner");
+        if (inner && !isMobile && !photo.classList.contains("is-hovered")) {
+          const auto = (inner._baseRotation || 0) + (tickCount * 0.1 + scrollY * (inner._rotationSpeed || 0.03)) * (inner._rotationDirection || 1);
+          inner.style.transform = `rotate(${auto}deg) scale(1)`;
+          photo._lastRotation = auto;
+        }
+      });
+    };
+
+    gsap.ticker.add(floatingPhotosHandler);
+    floatingPhotosHandler();
   });
-
-  const smoother = ScrollSmoother.get();
-  if (floatingPhotosHandler) gsap.ticker.remove(floatingPhotosHandler);
-
-  let tickCount = 0;
-  let lastScrollY = 0;
-  const scrollThreshold = isMobile ? 5 : 0;
-
-  floatingPhotosHandler = () => {
-    tickCount++;
-    const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
-    if (isMobile && Math.abs(scrollY - lastScrollY) < scrollThreshold) return;
-    lastScrollY = scrollY;
-
-    photos.forEach((photo) => {
-      const speed = parseFloat(photo.dataset.speed) || 1.4;
-      const driftY = -scrollY * (speed - 1);
-      const finalX = photo._dragOffset ? photo._dragOffset.x : 0;
-      const finalY = driftY + (photo._dragOffset ? photo._dragOffset.y : 0);
-
-      // Only skip update if the user's MOUSE is currently DOWN dragging
-      // This allows the ticker to handle the physics-based throw motion
-      if (!photo._isDraggingActive) {
-        gsap.set(photo, { x: finalX, y: finalY });
-      }
-
-      const inner = photo.querySelector(".photo-inner");
-      if (inner && !isMobile && !photo.classList.contains("is-hovered")) {
-        const auto = inner._baseRotation + (tickCount * 0.1 + scrollY * inner._rotationSpeed) * inner._rotationDirection;
-        inner.style.transform = `rotate(${auto}deg) scale(1)`;
-        photo._lastRotation = auto;
-      }
-    });
-  };
-
-  gsap.ticker.add(floatingPhotosHandler);
-  floatingPhotosHandler();
-  setupSlideBackgrounds();
 }
 
 let slideBackgroundsHandler = null;
@@ -360,7 +409,7 @@ async function setupSlideBackgrounds() {
   if (window.location.pathname !== "/") {
     slides.forEach((slide) => {
       const bg = slide.querySelector(".slide-image-bg");
-      if (bg) bg.style.display = "none";
+      if (bg) bg.style.opacity = "0";
     });
     return;
   }
@@ -373,8 +422,8 @@ async function setupSlideBackgrounds() {
     const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
     const albums = await response.json();
     Object.keys(albums).forEach(albumKey => {
-      albums[albumKey].thumbs.forEach(thumb => {
-        allImages.push({ album: albumKey, file: thumb });
+      albums[albumKey].images.forEach(img => {
+        allImages.push({ album: albumKey, file: img });
       });
     });
   } catch (error) {
@@ -386,16 +435,32 @@ async function setupSlideBackgrounds() {
   const API_IMAGE_BASE = "https://patibrata-gallery.r2.contrapoetra.com/moments";
   let imageIndex = 0;
 
-  slides.forEach((slide) => {
-    const bg = slide.querySelector(".slide-image-bg");
-    if (!bg) return;
-    
-    // Always assign an image, wrap around if we run out of shuffled images
-    const card = shuffled[imageIndex % shuffled.length];
-    bg.style.backgroundImage = `url(${API_IMAGE_BASE}/${card.album}/thumb/${card.file})`;
-    bg.style.display = "block";
-    bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
-    imageIndex++;
+  const slidePromises = Array.from(slides).map((slide) => {
+    return new Promise((resolve) => {
+      const bg = slide.querySelector(".slide-image-bg");
+      if (!bg) {
+        resolve();
+        return;
+      }
+      
+      const card = shuffled[imageIndex % shuffled.length];
+      imageIndex++;
+      
+      const img = new Image();
+      img.onload = () => {
+        bg.style.backgroundImage = `url(${img.src})`;
+        bg.style.opacity = "1";
+        loadingManager.itemLoaded();
+        resolve();
+      };
+      img.onerror = () => {
+        loadingManager.itemLoaded();
+        resolve();
+      };
+      img.src = `${API_IMAGE_BASE}/${card.album}/${card.file}`;
+      
+      bg._parallaxSpeed = gsap.utils.random(0.1, 0.25);
+    });
   });
 
   slideBackgroundsHandler = () => {
@@ -404,7 +469,7 @@ async function setupSlideBackgrounds() {
 
     slides.forEach((slide) => {
       const bg = slide.querySelector(".slide-image-bg");
-      if (!bg || bg.style.display === "none") return;
+      if (!bg || parseFloat(bg.style.opacity) === 0) return;
 
       // Calculate slide's distance from the center of the viewport
       const rect = slide.getBoundingClientRect();
@@ -427,6 +492,8 @@ async function setupSlideBackgrounds() {
 
   gsap.ticker.add(slideBackgroundsHandler);
   slideBackgroundsHandler();
+
+  return Promise.all(slidePromises);
 }
 
 function setupFallingLetters() {
@@ -460,7 +527,7 @@ function setupFallingLetters() {
   });
 }
 
-window.initScrollReveal = function initScrollReveal() {
+window.initScrollReveal = function initScrollReveal(skipSetup = false) {
   const currentPath = window.location.pathname;
   nextPath = connections[currentPath];
 
@@ -470,8 +537,11 @@ window.initScrollReveal = function initScrollReveal() {
     }
   });
 
-  setupFloatingPhotos();
-  if (currentPath === "/") setupHomeParallax();
+  if (!skipSetup) {
+    setupFloatingPhotos();
+    if (currentPath === "/") setupHomeParallax();
+  }
+  
   if (currentPath === "/about") randomizeTeamPhotos();
   if (currentPath === "/gallery") loadGallery();
   if (!nextPath) return;
@@ -583,10 +653,30 @@ function finalizeReveal() {
 }
 
 router();
-setTimeout(() => {
-  initScrollReveal();
-  setupFloatingPhotos();
-}, 300);
+
+async function initApp() {
+  const currentPath = window.location.pathname;
+  if (currentPath === "/") {
+    const floatingPhotosCount = document.querySelectorAll(".floating-photo").length;
+    const slidesCount = document.querySelectorAll(".slide-image").length;
+    loadingManager.init(floatingPhotosCount + slidesCount);
+    
+    // Both setup functions now return promises that resolve when their images load
+    await Promise.all([
+      initScrollReveal(true),
+      setupFloatingPhotos(),
+      setupSlideBackgrounds()
+    ]);
+    setupHomeParallax();
+  } else {
+    // For other pages, hide loader immediately or don't use it
+    loadingManager.finish();
+    initScrollReveal();
+    setupFloatingPhotos();
+  }
+}
+
+setTimeout(initApp, 300);
 
 async function loadGallery() {
   const container = document.getElementById("gallery-content");
