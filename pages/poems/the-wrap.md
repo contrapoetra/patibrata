@@ -34,7 +34,7 @@ that's how he never lets you blink
 that is why talking
 is not our thing
 
-                 you were in the back
+you were in the back of your beloved Blackie
 twenty-six meters each second
 each other wolves pass by
 and they are sharing life lessons
