@@ -90,7 +90,7 @@ async function setup3DModel() {
     const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = -Math.PI / 2;
-    plane.position.y = -1; // Position it slightly below the centered model
+    plane.position.y = -0.65; // Final chosen height
     plane.receiveShadow = true;
     scene.add(plane);
 
