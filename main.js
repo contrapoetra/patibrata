@@ -147,6 +147,7 @@ async function setup3DModel() {
       const modelTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#slide-3d",
+          scroller: "#smooth-content",
           start: "top 20%", // Starts as soon as the slide enters from the bottom
           end: "bottom bottom", // Finishes at the very end of the page
           scrub: true,
