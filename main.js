@@ -74,7 +74,7 @@ async function setup3DModel() {
     }
 
     // Final coordinates from orbit debug: Y: 1.1, Distance: 5.1, Rot: 0deg
-    const endX = 0; 
+    const endX = 0;
     const endZ = 5.1;
     const endY = 1.1;
 
@@ -82,7 +82,7 @@ async function setup3DModel() {
     camera.position.set(endX, endY, endZ);
     camera.lookAt(0, 0, 0);
     const lockedRotation = camera.rotation.clone();
-    
+
     // Set to start height
     camera.position.y = 20; // Lowered to 20 so the descent is much slower over the whole page
     camera.rotation.copy(lockedRotation);
@@ -94,7 +94,7 @@ async function setup3DModel() {
         start: "top top",
         end: "bottom bottom", // Entire page scroll
         scrub: true,
-      }
+      },
     });
 
     cameraTl.to(camera.position, {
@@ -103,20 +103,20 @@ async function setup3DModel() {
       onUpdate: () => {
         // Force the rotation to remain locked
         camera.rotation.copy(lockedRotation);
-      }
+      },
     });
 
-    // 2. MODEL ANIMATION (Only when slide-3d is entering/visible)
+    // 2. MODEL ANIMATION (Starts as soon as the slide-3d section enters the viewport)
     if (maxDuration > 0) {
       const animProxy = { time: 0 };
       const modelTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#slide-3d",
-          start: "top bottom", // Starts as soon as slide-3d peeks in
-          end: "bottom bottom", // Finishes at the bottom
+          start: "top 20%", // Starts as soon as the slide enters from the bottom
+          end: "bottom bottom", // Finishes at the very end of the page
           scrub: true,
           markers: true,
-        }
+        },
       });
 
       modelTl.to(animProxy, {
@@ -125,7 +125,7 @@ async function setup3DModel() {
         onUpdate: function () {
           mixer.setTime(animProxy.time);
           mixer.update(0);
-        }
+        },
       });
     }
 
