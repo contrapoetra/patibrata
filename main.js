@@ -155,10 +155,10 @@ async function setup3DModel() {
       });
 
       modelTl.to(animProxy, {
-        time: maxDuration,
+        time: maxDuration - 0.0001,
         ease: "none",
         onUpdate: function () {
-          action.time = animProxy.time;
+          mixer.setTime(animProxy.time);
           mixer.update(0);
         },
       });
