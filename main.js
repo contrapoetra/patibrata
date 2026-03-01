@@ -101,9 +101,9 @@ async function setup3DModel() {
     if (gltf.animations && gltf.animations.length > 0) {
       gltf.animations.forEach((clip) => {
         const action = mixer.clipAction(clip);
-        action.setLoop(THREE.LoopOnce);
-        action.clampWhenFinished = true;
         action.play();
+        action.paused = true; // <-- THIS is the key
+        action.time = 0; // <-- start at first frame
         maxDuration = Math.max(maxDuration, clip.duration);
       });
       // Force it to the first frame immediately
@@ -147,7 +147,6 @@ async function setup3DModel() {
       const modelTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#slide-3d",
-          scroller: "#smooth-content",
           start: "top 20%", // Starts as soon as the slide enters from the bottom
           end: "bottom bottom", // Finishes at the very end of the page
           scrub: true,
