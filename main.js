@@ -59,7 +59,7 @@ async function setup3DModel() {
   try {
     const gltf = await new Promise((resolve, reject) => {
       loader.load(
-        "/assets/patibrata.glb",
+        "/assets/patibrata-min.glb",
         resolve,
         (xhr) => {
           // Optional: Progress reporting
