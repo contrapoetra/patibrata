@@ -83,6 +83,15 @@ async function setup3DModel() {
 
     scene.add(model);
 
+    // Ground Plane to receive shadows
+    const planeGeometry = new THREE.PlaneGeometry(100, 100);
+    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -1; // Position it slightly below the centered model
+    plane.receiveShadow = true;
+    scene.add(plane);
+
     // Animations
     const mixer = new THREE.AnimationMixer(model);
     let maxDuration = 0;
