@@ -1,3 +1,5 @@
+import { loadingManager, initApp } from "./main.js";
+
 const connections = {
   "/": "/about",
   "/about": "/poems",
@@ -23,6 +25,9 @@ export async function router() {
   const body = document.body;
 
   if (!app) return;
+
+  // Show loader and disable scroll/menu
+  loadingManager.show();
 
   // Update body class based on current page
   body.className = "";
@@ -127,12 +132,6 @@ export async function router() {
           <p>Page not found.</p>
         `;
       }
-      // } catch {
-      //   app.innerHTML = `
-      //     <h1>Error</h1>
-      //     <p>Something went wrong.</p>
-      //   `;
-      // }
     } catch (err) {
       console.error(err);
       app.innerHTML = `<pre>${err}</pre>`;
@@ -141,14 +140,7 @@ export async function router() {
     app.classList.remove("fade-out");
     app.classList.add("fade-in");
 
-    // Load gallery if on the gallery page
-    if (path === "/gallery" && typeof loadGallery === "function") {
-      loadGallery();
-    }
-
-    // Re-initialize scroll effects after content loads
-    if (typeof initScrollReveal === "function") {
-      setTimeout(initScrollReveal, 100);
-    }
+    // Initialize application logic for the current page
+    await initApp();
   }, 200);
 }

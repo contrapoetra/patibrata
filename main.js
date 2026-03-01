@@ -190,17 +190,9 @@ async function setup3DModel() {
 
 /* =========================
    LOADING MANAGER
-  } catch (error) {
-    console.error("Error loading 3D model:", error);
-    loadingManager.itemLoaded(); // Still call it so loader finishes
-  }
-}
-
-/* =========================
-   LOADING MANAGER
 ========================= */
 
-const loadingManager = {
+export const loadingManager = {
   totalItems: 0,
   itemsLoaded: 0,
 
@@ -208,6 +200,21 @@ const loadingManager = {
     this.totalItems = total;
     this.itemsLoaded = 0;
     this.updateUI();
+  },
+
+  show() {
+    const loader = document.getElementById("loader");
+    const navDock = document.getElementById("nav-dock");
+    if (loader) {
+      loader.classList.remove("loaded");
+      this.itemsLoaded = 0;
+      this.totalItems = 1; // Default to 1 so progress is 0%
+      this.updateUI();
+      document.body.style.overflow = "hidden";
+    }
+    if (navDock) {
+      navDock.style.display = "none";
+    }
   },
 
   itemLoaded() {
@@ -229,17 +236,22 @@ const loadingManager = {
 
   finish() {
     const loader = document.getElementById("loader");
+    const navDock = document.getElementById("nav-dock");
     if (loader) {
       loader.classList.add("loaded");
-      // Re-enable scrolling if it was disabled
       document.body.style.overflow = "";
+    }
+    if (navDock) {
+      navDock.style.display = "flex";
     }
   },
 };
 
-// Disable scroll during loading
+// Disable scroll and hide menu during initial loading
 if (document.getElementById("loader")) {
   document.body.style.overflow = "hidden";
+  const navDock = document.getElementById("nav-dock");
+  if (navDock) navDock.style.display = "none";
 }
 
 /* =========================
@@ -406,7 +418,7 @@ function setupHomeParallax() {
 let cachedAlbums = null;
 let albumsPromise = null;
 
-async function fetchAlbums() {
+export async function fetchAlbums() {
   if (cachedAlbums) return cachedAlbums;
   if (albumsPromise) return albumsPromise;
 
@@ -943,7 +955,7 @@ function finalizeReveal() {
 
 router();
 
-async function initApp() {
+export async function initApp() {
   const currentPath = window.location.pathname;
 
   if (currentPath === "/") {
@@ -953,6 +965,9 @@ async function initApp() {
       document.querySelectorAll(".floating-photo").length;
     const slidesCount = document.querySelectorAll(".slide-image").length;
     const hasModel = !!document.getElementById("model-container");
+
+    // Reset and initialize loading manager for home page
+    loadingManager.show();
     loadingManager.init(floatingPhotosCount + slidesCount + (hasModel ? 1 : 0));
 
     // Both setup functions now return promises that resolve when their images load
@@ -963,16 +978,23 @@ async function initApp() {
       setup3DModel(),
     ]);
     setupHomeParallax();
+  } else if (currentPath === "/gallery") {
+    loadingManager.show();
+    await loadGallery();
+    loadingManager.finish();
+    initScrollReveal();
+  } else if (currentPath === "/about") {
+    loadingManager.finish();
+    randomizeTeamPhotos();
+    initScrollReveal();
   } else {
-    // For other pages, hide loader immediately or don't use it
+    // For other pages (like poems), hide loader immediately
     loadingManager.finish();
     initScrollReveal();
     // Also fetch albums in background to cache them
     fetchAlbums();
   }
 }
-
-setTimeout(initApp, 300);
 
 async function loadGallery() {
   const container = document.getElementById("gallery-content");
