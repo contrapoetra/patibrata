@@ -27,14 +27,30 @@ async function setup3DModel() {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.appendChild(renderer.domElement);
 
   // Lights
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-  directionalLight.position.set(2, 2, 5);
-  scene.add(directionalLight);
+
+  const mainLight = new THREE.DirectionalLight(0xffffff, 2);
+  mainLight.position.set(5, 10, 7);
+  mainLight.castShadow = true;
+  mainLight.shadow.mapSize.width = 1024;
+  mainLight.shadow.mapSize.height = 1024;
+  mainLight.shadow.camera.near = 0.5;
+  mainLight.shadow.camera.far = 50;
+  scene.add(mainLight);
+
+  const fillLight = new THREE.PointLight(0xffffff, 1.5);
+  fillLight.position.set(-5, 3, 2);
+  scene.add(fillLight);
+
+  const rimLight = new THREE.PointLight(0xffffff, 1);
+  rimLight.position.set(0, -2, -5);
+  scene.add(rimLight);
 
   // Load model
   const loader = new GLTFLoader();
@@ -51,6 +67,14 @@ async function setup3DModel() {
     });
 
     const model = gltf.scene;
+
+    // Enable shadows for all meshes in the model
+    model.traverse((node) => {
+      if (node.isMesh) {
+        node.castShadow = true;
+        node.receiveShadow = true;
+      }
+    });
 
     // Center model
     const box = new THREE.Box3().setFromObject(model);
