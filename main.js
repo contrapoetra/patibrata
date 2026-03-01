@@ -91,18 +91,15 @@ async function setup3DModel() {
     camera.rotation.copy(lockedRotation);
 
     // 1. CAMERA DESCENT (Entire Page)
-    const cameraTl = gsap.timeline({
+    const cameraAnim = gsap.to(camera.position, {
+      y: endY,
+      ease: "none",
       scrollTrigger: {
         trigger: "#smooth-content",
         start: "top top",
         end: "bottom bottom", // Entire page scroll
         scrub: true,
       },
-    });
-
-    cameraTl.to(camera.position, {
-      y: endY,
-      ease: "none",
       onUpdate: () => {
         // Force the rotation to remain locked
         camera.rotation.copy(lockedRotation);
