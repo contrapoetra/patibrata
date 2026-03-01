@@ -115,7 +115,7 @@ async function setup3DModel() {
           start: "top 20%", // Starts as soon as the slide enters from the bottom
           end: "bottom bottom", // Finishes at the very end of the page
           scrub: true,
-          markers: true,
+          markers: false,
         },
       });
 
@@ -138,54 +138,6 @@ async function setup3DModel() {
     }
     animate();
 
-    // Force refresh to ensure ScrollTrigger knows the full page height
-    ScrollTrigger.refresh();
-
-    // 🛠 RESTORED CAMERA DEBUG GUI
-    const gui = document.createElement("div");
-    gui.style.cssText =
-      "position:fixed;bottom:20px;right:20px;background:rgba(0,0,0,0.8);color:white;padding:15px;border-radius:8px;z-index:999999;font-family:monospace;font-size:12px;display:flex;flex-direction:column;gap:10px;";
-    gui.innerHTML = `
-      <div style="font-weight:bold;margin-bottom:5px;border-bottom:1px solid #444;padding-bottom:5px;">CAMERA DEBUG</div>
-      <div>Height (Y): <span id="val-y">1.1</span><br><input type="range" id="gui-y" min="-10" max="15" step="0.1" value="1.1"></div>
-      <div>Distance (Z): <span id="val-z">5.1</span><br><input type="range" id="gui-z" min="1" max="20" step="0.1" value="5.1"></div>
-      <div>Rotation (Y): <span id="val-rot">0</span><br><input type="range" id="gui-rot" min="-180" max="180" step="1" value="0"></div>
-      <div style="font-size:10px;color:#ff4444;margin-top:5px;">Note: Adjusting sliders disables scroll animation for these props.</div>
-    `;
-    document.body.appendChild(gui);
-
-    const updateCameraFromGUI = (e) => {
-      // ONLY kill the animation if it's a real user interaction (input event)
-      if (e && e.type === "input") {
-        cameraAnim.kill();
-      }
-
-      const y = parseFloat(document.getElementById("gui-y").value);
-      const z = parseFloat(document.getElementById("gui-z").value);
-      const rot =
-        parseFloat(document.getElementById("gui-rot").value) * (Math.PI / 180);
-
-      document.getElementById("val-y").textContent = y;
-      document.getElementById("val-z").textContent = z;
-      document.getElementById("val-rot").textContent =
-        (rot * (180 / Math.PI)).toFixed(0) + "°";
-
-      camera.position.y = y;
-      camera.position.x = Math.sin(rot) * z;
-      camera.position.z = Math.cos(rot) * z;
-      camera.lookAt(0, 0, 0);
-    };
-
-    document
-      .getElementById("gui-y")
-      .addEventListener("input", updateCameraFromGUI);
-    document
-      .getElementById("gui-z")
-      .addEventListener("input", updateCameraFromGUI);
-    document
-      .getElementById("gui-rot")
-      .addEventListener("input", updateCameraFromGUI);
-
     // Force refresh to ensure ScrollTrigger knows where the slide is
     ScrollTrigger.refresh();
 
@@ -195,6 +147,14 @@ async function setup3DModel() {
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
     });
+  } catch (error) {
+    console.error("Error loading 3D model:", error);
+    loadingManager.itemLoaded(); // Still call it so loader finishes
+  }
+}
+
+/* =========================
+   LOADING MANAGER
   } catch (error) {
     console.error("Error loading 3D model:", error);
     loadingManager.itemLoaded(); // Still call it so loader finishes
