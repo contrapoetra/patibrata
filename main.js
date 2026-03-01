@@ -174,7 +174,10 @@ async function setup3DModel() {
     animate();
 
     // Force refresh to ensure ScrollTrigger knows where the slide is
-    ScrollTrigger.refresh();
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+      setTimeout(() => ScrollTrigger.refresh(true), 150);
+    });
 
     // Handle Resize
     window.addEventListener("resize", () => {
