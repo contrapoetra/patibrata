@@ -74,60 +74,60 @@ async function setup3DModel() {
     }
 
     // Final coordinates from orbit debug: Y: 1.1, Distance: 5.1, Rot: 0deg
-    const endRad = 0 * (Math.PI / 180);
-    const endX = Math.sin(endRad) * 5.1;
-    const endZ = Math.cos(endRad) * 5.1;
+    const endX = 0; 
+    const endZ = 5.1;
+    const endY = 1.1;
 
-    // Set initial camera position to the START of the animation
-    camera.position.set(endX, 15, endZ);
+    // Set initial camera position and FIXED rotation
+    camera.position.set(endX, endY, endZ);
     camera.lookAt(0, 0, 0);
+    const lockedRotation = camera.rotation.clone();
+    
+    // Set to start height
+    camera.position.y = 100; // Lowered to 100 for better visibility of descent
+    camera.rotation.copy(lockedRotation);
 
-    // Scroll-driven Animation Timeline
-    const tl = gsap.timeline({
+    // 1. CAMERA DESCENT (Entire Page)
+    const cameraTl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#slide-3d",
-        start: "10% bottom", // Starts when the previous slide is halfway through
-        end: "bottom bottom", // Ends exactly at the bottom of the page
+        trigger: "#smooth-content",
+        start: "top top",
+        end: "bottom bottom",
         scrub: true,
-        markers: true,
-      },
+      }
     });
 
-    // Scrub ALL model animations
-    if (maxDuration > 0) {
-      const proxy = { time: 0 };
-      tl.to(
-        proxy,
-        {
-          time: maxDuration,
-          duration: 1,
-          ease: "none", // Linear mapping to scroll
-          onUpdate: function () {
-            mixer.setTime(proxy.time);
-            mixer.update(0);
-          },
-        },
-        0,
-      );
-    }
+    cameraTl.to(camera.position, {
+      y: endY,
+      ease: "none",
+      onUpdate: () => {
+        // Force the rotation to remain locked during the entire movement
+        camera.rotation.copy(lockedRotation);
+      }
+    });
 
-    // Animate camera position (descending vertically at a fixed distance)
-    const cameraAnim = tl.fromTo(
-      camera.position,
-      {
-        x: endX,
-        y: 15, // High start
-        z: endZ,
-      },
-      {
-        x: endX,
-        y: 1.1,
-        z: endZ,
-        ease: "none", // Linear descent
-        onUpdate: () => camera.lookAt(0, 0, 0),
-      },
-      0,
-    );
+    // 2. MODEL ANIMATION (Starts at 30% into view)
+    if (maxDuration > 0) {
+      const animProxy = { time: 0 };
+      const modelTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#slide-3d",
+          start: "top 70%", // 30% from bottom
+          end: "bottom bottom",
+          scrub: true,
+          markers: true,
+        }
+      });
+
+      modelTl.to(animProxy, {
+        time: maxDuration,
+        ease: "none",
+        onUpdate: function () {
+          mixer.setTime(animProxy.time);
+          mixer.update(0);
+        }
+      });
+    }
 
     loadingManager.itemLoaded();
 
@@ -137,6 +137,9 @@ async function setup3DModel() {
       renderer.render(scene, camera);
     }
     animate();
+
+    // Force refresh to ensure ScrollTrigger knows the full page height
+    ScrollTrigger.refresh();
 
     // 🛠 RESTORED CAMERA DEBUG GUI
     const gui = document.createElement("div");
