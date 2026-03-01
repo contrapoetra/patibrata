@@ -158,7 +158,7 @@ async function setup3DModel() {
         time: maxDuration,
         ease: "none",
         onUpdate: function () {
-          mixer.setTime(animProxy.time);
+          action.time = animProxy.time;
           mixer.update(0);
         },
       });
