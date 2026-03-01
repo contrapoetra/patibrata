@@ -36,12 +36,14 @@ async function setup3DModel() {
   scene.add(ambientLight);
 
   const mainLight = new THREE.DirectionalLight(0xffffff, 2);
-  mainLight.position.set(5, 10, 7);
+  mainLight.position.set(2, 8, -12); // Rotated another 90 degrees (back-lit for dramatic shadows)
   mainLight.castShadow = true;
-  mainLight.shadow.mapSize.width = 1024;
-  mainLight.shadow.mapSize.height = 1024;
+  mainLight.shadow.mapSize.width = 2048;
+  mainLight.shadow.mapSize.height = 2048;
   mainLight.shadow.camera.near = 0.5;
   mainLight.shadow.camera.far = 50;
+  mainLight.shadow.radius = 20; // Maximum softness for a diffused, premium look
+  mainLight.shadow.bias = -0.0005;
   scene.add(mainLight);
 
   const fillLight = new THREE.PointLight(0xffffff, 1.5);
