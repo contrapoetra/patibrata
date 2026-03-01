@@ -172,6 +172,11 @@ document.addEventListener("click", (e) => {
 
 window.addEventListener("popstate", router);
 
+window.addEventListener("focus", () => {
+  if (typeof slideBackgroundsHandler === "function") slideBackgroundsHandler();
+  if (typeof floatingPhotosHandler === "function") floatingPhotosHandler();
+});
+
 /* =========================
    CIRCLE PORTAL REVEAL
 ========================= */
@@ -199,6 +204,28 @@ function setupHomeParallax() {
   }, 50);
 }
 
+let cachedAlbums = null;
+let albumsPromise = null;
+
+async function fetchAlbums() {
+  if (cachedAlbums) return cachedAlbums;
+  if (albumsPromise) return albumsPromise;
+  
+  albumsPromise = (async () => {
+    try {
+      const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
+      cachedAlbums = await response.json();
+      return cachedAlbums;
+    } catch (error) {
+      console.error("Error fetching albums:", error);
+      albumsPromise = null; // Reset to allow retry
+      return null;
+    }
+  })();
+  
+  return albumsPromise;
+}
+
 let floatingPhotosHandler = null;
 
 async function setupFloatingPhotos(albums = null) {
@@ -213,16 +240,12 @@ async function setupFloatingPhotos(albums = null) {
   }
   container.style.display = "block";
 
-  // If albums not passed, try to fetch (fallback)
+  // Use cached albums if available
   if (!albums) {
-    try {
-      const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
-      albums = await response.json();
-    } catch (error) {
-      console.error("Error fetching photos for homepage:", error);
-      return;
-    }
+    albums = await fetchAlbums();
   }
+  if (!albums) return;
+  // ... (rest of function unchanged, just ensuring it's robust)
 
   let allImages = [];
   Object.keys(albums).forEach(albumKey => {
@@ -317,6 +340,8 @@ async function setupFloatingPhotos(albums = null) {
       inner._rotationSpeed = 0.03;
       inner._baseRotation = !isMobile ? gsap.utils.random(0, 360) : 0;
       inner._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1;
+
+      let tickCount = 0;
 
       photo.addEventListener("mouseenter", () => {
         photo.classList.add("is-hovered");
@@ -427,16 +452,11 @@ async function setupSlideBackgrounds(albums = null) {
     return;
   }
 
-  // If albums not passed, try to fetch (fallback)
+  // Use cached albums if available
   if (!albums) {
-    try {
-      const response = await fetch("https://patibrata-gallery-ls.poetra.workers.dev/list/moments");
-      albums = await response.json();
-    } catch (error) {
-      console.error("Error fetching slide backgrounds:", error);
-      return;
-    }
+    albums = await fetchAlbums();
   }
+  if (!albums) return;
 
   const smoother = ScrollSmoother.get();
   if (slideBackgroundsHandler) gsap.ticker.remove(slideBackgroundsHandler);
@@ -492,12 +512,19 @@ async function setupSlideBackgrounds(albums = null) {
     const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
     const vh = window.innerHeight;
 
+    // Skip if viewport is not initialized properly
+    if (vh <= 0) return;
+
     slides.forEach((slide) => {
       const bg = slide.querySelector(".slide-image-bg");
       if (!bg || parseFloat(bg.style.opacity) === 0) return;
 
       // Calculate slide's distance from the center of the viewport
       const rect = slide.getBoundingClientRect();
+      
+      // If rect is all zeros (hidden tab), skip
+      if (rect.height === 0 && rect.top === 0) return;
+
       const slideTop = rect.top + scrollY;
       const slideHeight = rect.height;
       
@@ -516,6 +543,7 @@ async function setupSlideBackgrounds(albums = null) {
   };
 
   gsap.ticker.add(slideBackgroundsHandler);
+  // Run once immediately to set initial positions
   slideBackgroundsHandler();
 
   return Promise.all(slidePromises);
@@ -556,6 +584,12 @@ window.initScrollReveal = function initScrollReveal(skipSetup = false) {
   const currentPath = window.location.pathname;
   nextPath = connections[currentPath];
 
+  // Prevent double initialization if loader is active and we're not explicitly skipping setup
+  const loader = document.getElementById("loader");
+  if (loader && !loader.classList.contains("loaded") && !skipSetup) {
+    return;
+  }
+
   ScrollTrigger.getAll().forEach((t) => {
     if (t.trigger && (t.trigger.classList?.contains("parallax-logo") || t.trigger.classList?.contains("floating-photo") || t.trigger.id === "slide-title" || t.trigger.id === "smooth-content" || t.trigger.id === "smooth-wrapper")) {
       t.kill();
@@ -563,8 +597,11 @@ window.initScrollReveal = function initScrollReveal(skipSetup = false) {
   });
 
   if (!skipSetup) {
-    setupFloatingPhotos();
-    if (currentPath === "/") setupHomeParallax();
+    setupFloatingPhotos(cachedAlbums);
+    if (currentPath === "/") {
+      setupHomeParallax();
+      setupSlideBackgrounds(cachedAlbums);
+    }
   }
   
   if (currentPath === "/about") randomizeTeamPhotos();
@@ -683,14 +720,7 @@ async function initApp() {
   const currentPath = window.location.pathname;
   
   if (currentPath === "/") {
-    const API_LIST = "https://patibrata-gallery-ls.poetra.workers.dev/list/moments";
-    let albums = null;
-    try {
-      const response = await fetch(API_LIST);
-      albums = await response.json();
-    } catch (e) {
-      console.error("Failed to fetch image list for homepage", e);
-    }
+    const albums = await fetchAlbums();
 
     const floatingPhotosCount = document.querySelectorAll(".floating-photo").length;
     const slidesCount = document.querySelectorAll(".slide-image").length;
@@ -707,7 +737,8 @@ async function initApp() {
     // For other pages, hide loader immediately or don't use it
     loadingManager.finish();
     initScrollReveal();
-    setupFloatingPhotos();
+    // Also fetch albums in background to cache them
+    fetchAlbums();
   }
 }
 
