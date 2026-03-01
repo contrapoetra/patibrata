@@ -71,6 +71,9 @@ async function setup3DModel() {
         action.play();
         maxDuration = Math.max(maxDuration, clip.duration);
       });
+      // Force it to the first frame immediately
+      mixer.setTime(0);
+      mixer.update(0);
     }
 
     // Final coordinates from orbit debug: Y: 1.1, Distance: 5.1, Rot: 0deg
