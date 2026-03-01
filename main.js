@@ -84,7 +84,7 @@ async function setup3DModel() {
     const lockedRotation = camera.rotation.clone();
     
     // Set to start height
-    camera.position.y = 100; // Lowered to 100 for better visibility of descent
+    camera.position.y = 20; // Lowered to 20 so the descent is much slower over the whole page
     camera.rotation.copy(lockedRotation);
 
     // 1. CAMERA DESCENT (Entire Page)
@@ -92,7 +92,7 @@ async function setup3DModel() {
       scrollTrigger: {
         trigger: "#smooth-content",
         start: "top top",
-        end: "bottom bottom",
+        end: "bottom bottom", // Entire page scroll
         scrub: true,
       }
     });
@@ -101,19 +101,19 @@ async function setup3DModel() {
       y: endY,
       ease: "none",
       onUpdate: () => {
-        // Force the rotation to remain locked during the entire movement
+        // Force the rotation to remain locked
         camera.rotation.copy(lockedRotation);
       }
     });
 
-    // 2. MODEL ANIMATION (Starts at 30% into view)
+    // 2. MODEL ANIMATION (Only when slide-3d is entering/visible)
     if (maxDuration > 0) {
       const animProxy = { time: 0 };
       const modelTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#slide-3d",
-          start: "top 70%", // 30% from bottom
-          end: "bottom bottom",
+          start: "top bottom", // Starts as soon as slide-3d peeks in
+          end: "bottom bottom", // Finishes at the bottom
           scrub: true,
           markers: true,
         }
