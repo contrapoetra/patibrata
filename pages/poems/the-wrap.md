@@ -62,7 +62,8 @@ one after another
 
 sounds so fun
 unfortunately
-                   i'm now in the back
+i'm now in the back
+right behind big brother
 sobbing my eyes out in the sun
 
 is it just because of all this?
@@ -71,9 +72,12 @@ that's how much i wanted to be friends
 
 …but we are
 don't you remember?
-                you were in the back
+Blackie was trying to catch up
+with the rest of the arborists
+and you were behind me
 jolting out of sleep
-so you made me sing
+what a dangerous thing
+so you asked me to sing
 
 and oh the songs the two of us sing
 how my brother and me ring
