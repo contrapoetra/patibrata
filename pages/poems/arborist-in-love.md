@@ -33,5 +33,5 @@ but as you know, she loves you still
 and me and her have one thing in common
 we love to see you light up
 to see the taste of life in you
-as savory as the dish you make
 as sweet as the dessert you bake
+as savory as the dish you make
