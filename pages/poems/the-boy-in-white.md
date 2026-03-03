@@ -59,7 +59,11 @@ the kids
 everyone
 i quite miss
 your laugh and your smile
+---
+I'm fluent in English, she's fluent in Arabic
+---
 our banter about languages we master
+===
 and the way you make your arborist smile
 and how you keep accidentally
 calling me, and everyone “darling”
@@ -80,6 +84,9 @@ they frown at what i know
 but what i know
 is that you’re in a battle of wits
 
+---
+I used to slur my words and be forgetful a lot. When I tried to learn one of my favorite songs on guitar [with uncle Stuart Alexander Lehman-Brown](https://youtu.be/4oOhPABow0Q?t=1642), uncle Stu jokingly said to himself "I wonder if I have some sort of a thing growing in my brain that's making me slur my words." It took me aback and thought, what if the same thing was happening to me... in a poem in this collection "Sister, Darling" I also told about the accident, I also had my head scanned there for good measure and they didn't bring up anything about something like that. But she, she apparently did have a tumor growing in her head, and has started treatment for it. May she defeat it, and for it to be benign so that she can defeat it once and for all.
+---
 the thing
 that i thought
 was growing in mine
@@ -87,6 +94,7 @@ was growing in yours
 and i sincerely hope
 that you kill it
 once and for all
+===
 
 signed
 the boy in white
