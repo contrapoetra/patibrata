@@ -1002,7 +1002,43 @@ export async function initApp() {
 
 async function loadGallery() {
   const container = document.getElementById("gallery-content");
+  const videoContainer = document.getElementById("video-content");
   if (!container) return;
+
+  // Load videos first
+  if (videoContainer) {
+    const videos = [
+      { id: "hfWY2fPpixo", title: "Sosialisasi & Edukasi" },
+      { id: "jeKRt_PIuj0", title: "Tradisi Nyongkolan Part 2" },
+      { id: "oudjsyRfZK8", title: "Tradisi Nyongkolan Part 1" }
+    ];
+
+    let videoHtml = `
+      <section class="album-section video-section">
+        <header class="album-header">
+          <h2 class="album-title">Featured Videos</h2>
+          <span class="album-count">${videos.length} Stories</span>
+        </header>
+        <div class="video-grid-container">
+          ${videos.map(v => `
+            <div class="video-card">
+              <div class="video-aspect-ratio">
+                <iframe 
+                  src="https://www.youtube.com/embed/${v.id}?modestbranding=1&rel=0" 
+                  title="${v.title}" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3 class="video-card-title">${v.title}</h3>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    `;
+    videoContainer.innerHTML = videoHtml;
+  }
 
   const API_LIST =
     "https://patibrata-gallery-ls.poetra.workers.dev/list/moments";
