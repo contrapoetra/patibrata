@@ -4,7 +4,8 @@ const connections = {
   "/": "/about",
   "/about": "/poems",
   "/poems": "/gallery",
-  "/gallery": "/",
+  "/gallery": "/blog",
+  "/blog": "/",
 };
 
 const routes = {
@@ -12,6 +13,7 @@ const routes = {
   "/about": "/pages/about.html",
   "/poems": "/pages/poems.html",
   "/gallery": "/pages/gallery.html",
+  "/blog": "/pages/blog.html",
 };
 
 export function navigateTo(url) {
@@ -55,10 +57,73 @@ export async function router() {
     });
   }
 
-  setTimeout(async () => {
+    setTimeout(async () => {
     try {
+      // 🔹 Dynamic blog route
+      if (path.startsWith("/blog/") && path !== "/blog") {
+        const slug = path.replace("/blog/", "");
+
+        const res = await fetch(`/pages/blog/${slug}.md`);
+        if (!res.ok) throw new Error("Not found");
+
+        const md = await res.text();
+
+        app.innerHTML = `
+          <div class="blog-post">
+            <a href="/blog" data-link class="back-link">← Back to blog</a>
+            ${marked.parse(md, { breaks: true })}
+          </div>
+        `;
+
+        // Animate blog text (similar to poems but potentially more content)
+        const blogContent = document.querySelectorAll(".blog-post p");
+        blogContent.forEach((p) => {
+          const originalNodes = Array.from(p.childNodes);
+          p.innerHTML = "";
+
+          const processNode = (node, parent) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const text = node.textContent || "";
+              const words = text.split(/(\s+)/).filter((word) => word.length > 0);
+              words.forEach((word) => {
+                const span = document.createElement("span");
+                span.textContent = word;
+                parent.appendChild(span);
+              });
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.tagName === "BR") {
+                parent.appendChild(node.cloneNode(true));
+              } else if (node.tagName === "IMG") {
+                parent.appendChild(node.cloneNode(true));
+              } else {
+                const newElement = node.cloneNode(false);
+                parent.appendChild(newElement);
+                Array.from(node.childNodes).forEach((child) =>
+                  processNode(child, newElement)
+                );
+              }
+            }
+          };
+
+          originalNodes.forEach((node) => processNode(node, p));
+
+          gsap.from(p.querySelectorAll("span, img"), {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.01, // Faster stagger for blog
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: p,
+              start: "top bottom-=50",
+              toggleActions: "play none none none",
+            },
+          });
+        });
+      }
+
       // 🔹 Dynamic poem route
-      if (path.startsWith("/poems/") && path !== "/poems") {
+      else if (path.startsWith("/poems/") && path !== "/poems") {
         const slug = path.replace("/poems/", "");
 
         const res = await fetch(`/pages/poems/${slug}.md`);

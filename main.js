@@ -314,7 +314,8 @@ const connections = {
   "/": "/about",
   "/about": "/poems",
   "/poems": "/gallery",
-  "/gallery": "/",
+  "/gallery": "/blog",
+  "/blog": "/",
 };
 
 /* =========================
