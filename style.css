@@ -1473,7 +1473,7 @@ a:hover {
 .poem {
     max-width: 720px;
     margin: 80px auto;
-    padding: 0 40px;
+    padding: 0 40px 120px 40px; /* Added bottom padding */
     animation: fadeIn 0.6s ease;
 }
 
@@ -1660,7 +1660,7 @@ a:hover {
 
     .poem {
         margin: 40px auto;
-        padding: 0 20px;
+        padding: 0 20px 100px 20px; /* Added bottom padding for mobile */
     }
 
     .poem h1 {
