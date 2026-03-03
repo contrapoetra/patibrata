@@ -129,12 +129,47 @@ export async function router() {
         const res = await fetch(`/pages/poems/${slug}.md`);
         if (!res.ok) throw new Error("Not found");
 
-        const md = await res.text();
+        let md = await res.text();
+
+        // 🔹 Genius Annotation Parsing
+        // Use unique markers that won't be interpreted as Markdown
+        const annotations = [];
+        md = md.replace(/\[\[([\s\S]*?)\|([\s\S]*?)\]\]/g, (match, verse, annotation) => {
+          const id = annotations.length;
+          annotations.push(annotation);
+          return `MARKERSTART${id}${verse}MARKEREND${id}`;
+        });
+
+        let html = marked.parse(md, { breaks: true });
+
+        // Replace markers with actual span tags, handling multi-stanza spans
+        annotations.forEach((annotation, i) => {
+          const startMarker = `MARKERSTART${i}`;
+          const endMarker = `MARKEREND${i}`;
+          const safeAnnotation = annotation.replace(/"/g, "&quot;");
+          const spanStart = `<span class="annotated-verse" data-annotation="${safeAnnotation}">`;
+          const spanEnd = `</span>`;
+          
+          // Regex to find the range between markers, including potential paragraph tags
+          const regex = new RegExp(`${startMarker}([\\s\\S]*?)${endMarker}`, 'g');
+          
+          html = html.replace(regex, (match, content) => {
+            // Close and reopen the span tag at paragraph/list boundaries to keep HTML valid
+            let wrappedContent = content.replace(/(<\/p>|<p>|<li>|<\/li>|<br\s*\/?>)/g, (tag) => {
+              if (tag.startsWith('</')) {
+                return `${spanEnd}${tag}`;
+              } else {
+                return `${tag}${spanStart}`;
+              }
+            });
+            return `${spanStart}${wrappedContent}${spanEnd}`;
+          });
+        });
 
         app.innerHTML = `
           <div class="poem">
             <a href="/poems" data-link class="back-link">← Back to collection</a>
-            ${marked.parse(md, { breaks: true })}
+            ${html}
           </div>
         `;
 
@@ -158,6 +193,10 @@ export async function router() {
                 parent.appendChild(node.cloneNode(true));
               } else {
                 const newElement = node.cloneNode(false);
+                // Copy all attributes (crucial for annotations)
+                Array.from(node.attributes).forEach(attr => {
+                  newElement.setAttribute(attr.name, attr.value);
+                });
                 parent.appendChild(newElement);
                 Array.from(node.childNodes).forEach((child) =>
                   processNode(child, newElement)

@@ -957,6 +957,46 @@ function finalizeReveal() {
   setTimeout(initScrollReveal, 100);
 }
 
+/* =========================
+   GENIUS ANNOTATIONS
+========================= */
+
+window.openAnnotation = function(el) {
+  const sidebar = document.getElementById('annotation-sidebar');
+  if (!sidebar) return;
+  
+  const content = sidebar.querySelector('.annotation-content');
+  const annotation = el.getAttribute('data-annotation');
+  
+  // Highlight active verse
+  document.querySelectorAll('.annotated-verse').forEach(v => v.classList.remove('active'));
+  el.classList.add('active');
+  content.innerHTML = marked.parse(annotation);
+
+  sidebar.classList.add('open');
+};
+
+window.closeAnnotation = function() {
+  const sidebar = document.getElementById('annotation-sidebar');
+  if (sidebar) {
+    sidebar.classList.remove('open');
+    document.querySelectorAll('.annotated-verse').forEach(v => v.classList.remove('active'));
+  }
+};
+
+document.addEventListener("click", (e) => {
+  const verse = e.target.closest(".annotated-verse");
+  if (verse) {
+    openAnnotation(verse);
+    return;
+  }
+  
+  // Close if clicking outside
+  if (!e.target.closest("#annotation-sidebar") && !e.target.closest(".annotated-verse")) {
+    closeAnnotation();
+  }
+});
+
 router();
 
 export async function initApp() {

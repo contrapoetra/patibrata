@@ -2019,3 +2019,89 @@ a:hover {
     gap: 1.5rem;
   }
 }
+
+/* --- GENIUS ANNOTATIONS --- */
+.annotated-verse {
+    background: rgba(255, 235, 59, 0.2);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+    cursor: help;
+    transition: background 0.3s ease;
+    display: inline !important; /* Ensure it doesn't break the animation spans */
+    padding: 0 2px;
+}
+
+.annotated-verse:hover {
+    background: rgba(255, 235, 59, 0.4);
+}
+
+.annotated-verse.active {
+    background: rgba(255, 235, 59, 0.6);
+    border-bottom-style: solid;
+}
+
+#annotation-sidebar {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+    z-index: 2147483647;
+    padding: 100px 40px;
+    transition: right 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    overflow-y: auto;
+}
+
+#annotation-sidebar.open {
+    right: 0;
+}
+
+.annotation-header {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.annotation-content {
+    font-family: "Libre Baskerville", serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.annotation-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.annotation-close:hover {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    #annotation-sidebar {
+        width: 100%;
+        right: -100%;
+        height: 50vh;
+        top: auto;
+        bottom: -50vh;
+        transition: bottom 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    }
+
+    #annotation-sidebar.open {
+        bottom: 0;
+        right: 0;
+    }
+}
