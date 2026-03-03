@@ -16,15 +16,23 @@ and demanded everyone
 of the names they just claimed
 and your gaze fell
 on my white denim
+---
+It was an introduction session in our meeting. Her first ever words to me was, "kamu yang baju putih, namanya siapa?" (hey you in white, what's your name)
+---
 called me out for it
 and demanded me
 for what to call me
+===
 then it was your turn
 and you were the birthday girl
 
+---
+Because of her parents, she didn't go to Lombok with the rest of us over the sea, she went by plane. And she had been in a relationship with one of us. It was clear to us how moody and void of life he was. It was hard for him.
+---
 but you couldn’t go alongside us
 the boat was so empty without you
 the arborist who loved you was heartbroken
+===
 so we went miles to reunite with you
 and the holes were no more
 and the arborist was laughing

@@ -8,14 +8,22 @@ under the same roof
 
 we're housemates
 since we were done boarding
+---
+"Roommate" is the person I wrote "The Arborists" about. Remember how "poppy" keeps appearing in that one?
+---
 but then roommate came along
+===
 and it was funny
 
 how i was in love with her
 but she turn out to only
 only want to talk to you
 gave you a nickname
+---
+She gives "poppy" the pet name "papi" ("dad" in English, which I turned into poppy throughout this collection because they sound similar) because he's good at cooking.
+---
 because you have a quality
+===
 she only calls out to you
 and knows you better
 
@@ -27,7 +35,11 @@ and you know a lot about her
 and all i know is you seem to never run out
 of things to talk about with each other
 it keeps on happening
+---
+I had a crush on her, but we never clicked, and she's more affectionate to Poppy. It goes on and on, and each day it fades out my feelings for her.
+---
 until she stops crushing my mind
+===
 
 but still, that saturday night
 on the way back, when you both talk on the bike
@@ -61,4 +73,8 @@ if you knew
 if my roommate
 would be the most affectionate to you
 and would be ever-so-distant from me
+---
+He was the one who asked that devastating question in the Truth or Dare game (read The Arborist for more)
+---
 would you still ask her that question?
+===

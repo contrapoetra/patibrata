@@ -34,4 +34,8 @@ and me and her have one thing in common
 we love to see you light up
 to see the taste of life in you
 as sweet as the dessert you bake
+---
+Just like our dear Poppy, he (the person I wrote this for) is also a very good cook. It's one of the reasons why she (the person I wrote The Boy In White about) fell for him.
+---
 as savory as the dish you make
+===

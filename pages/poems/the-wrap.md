@@ -11,7 +11,11 @@ and that's our only thing
 but oh do i want to talk
 about something else
 how you comforted me when she was upset
+---
+"Gajah" (Indonesian for "elephant") was the name of a cat that we took care of for a while during the time of the Patibrata project. We had bonded a bit over this cat and when it slept in between my legs I texted her about it. She never replied.
+---
 the elephant that slept in between my legs
+===
 the semester recap i like best
 the video you took at the event
 my beloved rotting fountain pen
@@ -34,7 +38,11 @@ that's how he never lets you blink
 that is why talking
 is not our thing
 
+---
+"Blackie" is the name she gave to her scooter.
+---
 you were in the back of your beloved Blackie
+===
 twenty-six meters each second
 each other wolves pass by
 and they are sharing life lessons
@@ -57,7 +65,11 @@ buddy Jo came along
 and your big sharp eyes go rosy
 white teeth blooming in song
 
+---
+"Singing" is my metaphor here and throughout these collection for "having a conversation."
+---
 and songs the two of you sing
+===
 one after another
 
 sounds so fun

@@ -7,9 +7,15 @@ novel eyes of us at each other, claiming our names
 your head nods up and down when you hear mine
 a kind of name you always hear
 
+---
+We had some things in common: we were both from Bali, but we both weren't Balinese. She was a Sasak, I was a Minang. We simply lived in Bali.
+
+So "room" was Bali, and she was a "roommate," meaning we both lived in Bali.
+---
 but we emerge from the same room
 yet i've never seen your face
 it kind of baffled me, we were roommates
+===
 thought we could've known each other
 
 thought we could've gone back there together
@@ -45,9 +51,13 @@ while your back was staring
 at me crying my eyes out
 
 but then i stop
+---
+She LOVES baby oranges. They're oranges but small, each of them are like candy. In fact, I miss them too.
+---
 a few of those baby oranges
 they were crying at me
 i made sure to keep some for you
+===
 because you told me you wanted them
 and in a pure dopamine rush
 you gasp at the sight of them and utter to me, “love you”
@@ -105,8 +115,6 @@ but even with all that
 i am still the furthest to you
 compared to buddy Jo, big brother, and little Poppy
 that night, your Poppy demanded the truth from you
-if one had never went with you on this journey
-who would it have been?
 if the boat was overcrowded
 and someone had to be thrown overboard
 you chose for it to be me
@@ -116,6 +124,9 @@ of your revolver, and you pulled the trigger
 and you shot me between the eyes
 and i sobbed the rest of the night
 
+---
+It was a game of Truth or Dare. It was her turn and someone asked, if one of us (the Patibrata team) never joined (the team), who would it have been. It was a brutal question. And I immediately looked down the whole time, playing with her phone's bracelet. Because I know it was going to be me. She did ask "can I choose one that is not playing?" but then she had to choose one of us. I knew it was going to be me because, I have seen her level of affection for the players that night. She's so affectionate to a bunch of us she even gave them nicknames. The only one who doesn't have a nickname in this team, and the one she was less affectionate with, is me. She said "jangan baper ya," (don't take it personally please) and utter my name. I thought I could handle it. It's just a game. But at that time all I thought was, "that was her truth." I started having flashbacks of all the good memories I had with her, and thought that even with all that, she still hated me, and I sobbed quietly while they continued playing. I don't hate her though. I loved her. I know the rules of the game, she HAD to choose somebody. It was a brutal question anyway.
+---
 and to think that
 i knew it was gonna be me
 you wouldn't throw your sisters overboard
@@ -124,6 +135,7 @@ so that leaves me
 i held my head down, nodding
 as you told me not to take this personal
 but i could not handle the truth
+===
 
 what i can take is that
 i failed to get your attention
@@ -307,7 +319,11 @@ that i never had the courage to
 raise my rifle, take an aim
 and tell you everything
 
+---
+From the first time we met, I had feelings for her. I never could've told her anything because, at first because I thought she was in a relationship. Then she was more affectionate to certain people in our team, like "poppy" and "big brother". Everytime she comes over the person she calls out first is "poppy" and "big brother". We never clicked. This continues on throughout our period, and made my feelings of her gradually fade. She is still a very dear friend, though. She is very kind to me. But I was clearly not meant to be hers.
+---
 at least this will be how i can heal
+===
 because in a strange way myself is just am
 however graceful they are
 however beautiful they are

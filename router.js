@@ -132,11 +132,21 @@ export async function router() {
         let md = await res.text();
 
         // 🔹 Genius Annotation Parsing
-        // Use unique markers that won't be interpreted as Markdown
         const annotations = [];
+
+        // 1. Block Syntax: --- explanation --- verse ===
+        // Capture leading newline and use === as the end marker
+        md = md.replace(/(^|\n)---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*?)\n===/g, (match, leading, annotation, verse) => {
+          const id = annotations.length;
+          annotations.push(annotation.trim());
+          // Keep the verse exactly as it is (including newlines) so marked handles stanzas
+          return `${leading}MARKERSTART${id}${verse}MARKEREND${id}`;
+        });
+
+        // 2. Inline Syntax: [[verse|annotation]]
         md = md.replace(/\[\[([\s\S]*?)\|([\s\S]*?)\]\]/g, (match, verse, annotation) => {
           const id = annotations.length;
-          annotations.push(annotation);
+          annotations.push(annotation.trim());
           return `MARKERSTART${id}${verse}MARKEREND${id}`;
         });
 
@@ -154,13 +164,22 @@ export async function router() {
           const regex = new RegExp(`${startMarker}([\\s\\S]*?)${endMarker}`, 'g');
           
           html = html.replace(regex, (match, content) => {
-            // Close and reopen the span tag at paragraph/list boundaries to keep HTML valid
-            let wrappedContent = content.replace(/(<\/p>|<p>|<li>|<\/li>|<br\s*\/?>)/g, (tag) => {
-              if (tag.startsWith('</')) {
-                return `${spanEnd}${tag}`;
-              } else {
-                return `${tag}${spanStart}`;
+            // Close and reopen the span tag at any tag that breaks a line or block
+            // This ensures valid HTML and correct highlighting scope.
+            let wrappedContent = content.replace(/(<\/?[a-zA-Z0-9]+(?:\s+[^>]*?)?>)/g, (tag) => {
+              // Tags that should break the span: p, br, div, li, ul, ol, h1-h6
+              if (tag.match(/<\/?(p|br|div|li|ul|ol|h[1-6]|blockquote)(?:\s+[^>]*?)?>/i)) {
+                if (tag.startsWith('</')) {
+                  return `${spanEnd}${tag}`;
+                } else if (tag.startsWith('<')) {
+                  // Special case for self-closing tags like <br>
+                  if (tag.match(/<br\s*\/?>/i)) {
+                    return `${spanEnd}${tag}${spanStart}`;
+                  }
+                  return `${tag}${spanStart}`;
+                }
               }
+              return tag;
             });
             return `${spanStart}${wrappedContent}${spanEnd}`;
           });
