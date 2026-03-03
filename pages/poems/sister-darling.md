@@ -104,7 +104,7 @@ I can't believe I never thought of that (eating chips with ice cream by scooping
 i am thankful for your life-altering trick
 ===
 i am thankful for you sharing it with me
-I am thankful for you making it out
+i am thankful for you making it out
 and noticing the petrichor that saturday night
 and telling me that there were perfumes designed to smell like petrichor…
 and asking if i were sleepy
