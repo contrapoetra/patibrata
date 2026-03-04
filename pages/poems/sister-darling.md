@@ -73,22 +73,28 @@ my beloved sister
 my little darling
 
 oh how i miss you
-i hear your laughter
-right outside my room
-calling everyone by their nickname
-big brother, little Poppy, Godzilla
-but i never heard my name
-so i am surely not expected
-but oh how i wanted to
-open my door and greet you
-tell you how much i missed you
-then i remember, that all of you
-never gave me a nickname
-so i am on my bed
-writing a few words
-that i hope you'll read
+i'm on my bed in my room
+not sleeping, not doing anything
+when your laughter reverberated throughout our house
+i sat up and tied my hair to meet you
+---
+She comes over from time to time. She always comes over laughing or in a cheerful mood. And she usually calls out to Poppy and Big Brother. As usual, because she's closer/more comfortable with them. But I usually would stay in my room, hoping that she calls me out. Because with the dynamics between me, Poppy, and Big Brother with the rest of the Patibrata team, I feel like a kid whose parents is having guests over. I feel weird to exit my room just to meet her, when she's not looking for me. It's kind of pitiful and petty, but I felt like if I, Poppy and Big Brother all live in different places, they would rarely or never come over to mine. This one time, she came over, and I was in my room. She calls out to Poppy and Big Brother, of course. And they talked for a couple minutes. Then just a few seconds before she departs, she asks where I was. Maybe they said I was sleeping because she didn't call me out or anything and just left.
 
-but you did call me out the next day 
+Oh I just realized what this is called. It's *insecurity*.
+What I had to do was simply get out of my room, and greet her. I even tied my hair up, prepared to meet her. But for some reason I was thinking that I didn't belong.
+---
+but i wasn't in anyone's mind
+do i exit my room even if it's just to meet you?
+do i stay and wait until i cross someone's mind?
+5 minutes after you arrived
+i did cross one
+and it was yours
+you were looking for me
+45 seconds before you depart
+===
+
+and the next day
+you did call me out
 and told me to
 take a chip
 scoop a little of ice cream with it
