@@ -36,7 +36,7 @@ and all i know is you seem to never run out
 of things to talk about with each other
 it keeps on happening
 ---
-I had a crush on her, but we never clicked, and she's more affectionate to Poppy. It goes on and on, and each day it fades out my feelings for her.
+I had a crush on her, but we never clicked, and she's more affectionate to and comfortable with Poppy. It goes on and on, and each day it fades out my feelings for her, and by the end of Patibrata, I left my feelings with it.
 ---
 until she stops crushing my mind
 ===
