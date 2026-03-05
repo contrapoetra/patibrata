@@ -274,31 +274,49 @@ window.addEventListener("resize", setViewportHeight);
 ========================= */
 
 function animatePoemText() {
-  const poemContent = document.querySelector(".poem p");
-  if (!poemContent) return;
+  const poemContent = document.querySelectorAll(".poem > *:not(.back-link)");
+  if (!poemContent.length) return;
 
-  const poems = document.querySelectorAll(".poem p");
+  poemContent.forEach((el) => {
+    const originalNodes = Array.from(el.childNodes);
+    el.innerHTML = "";
 
-  poems.forEach((poem) => {
-    const text = poem.textContent;
-    const words = text.split(" ");
+    const processNode = (node, parent) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent || "";
+        const words = text.split(/(\s+)/).filter((word) => word.length > 0);
+        words.forEach((word) => {
+          const span = document.createElement("span");
+          span.textContent = word;
+          parent.appendChild(span);
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === "BR") {
+          parent.appendChild(node.cloneNode(true));
+        } else {
+          const newElement = node.cloneNode(false);
+          // Copy all attributes
+          Array.from(node.attributes).forEach(attr => {
+            newElement.setAttribute(attr.name, attr.value);
+          });
+          parent.appendChild(newElement);
+          Array.from(node.childNodes).forEach((child) =>
+            processNode(child, newElement)
+          );
+        }
+      }
+    };
 
-    poem.innerHTML = "";
-    words.forEach((word, index) => {
-      const span = document.createElement("span");
-      span.textContent = word + " ";
-      span.style.display = "inline-block";
-      poem.appendChild(span);
-    });
+    originalNodes.forEach((node) => processNode(node, el));
 
-    gsap.from(poem.querySelectorAll("span"), {
+    gsap.from(el.querySelectorAll("span"), {
       y: 20,
       opacity: 0,
       duration: 0.8,
       stagger: 0.02,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: poem,
+        trigger: el,
         start: "top bottom-=100",
         toggleActions: "play none none none",
       },
@@ -964,10 +982,11 @@ function finalizeReveal() {
 window.openAnnotation = function(el) {
   const sidebar = document.getElementById('annotation-sidebar');
   if (!sidebar) return;
-  
+
   const content = sidebar.querySelector('.annotation-content');
-  const annotation = el.getAttribute('data-annotation');
-  
+  const encodedAnnotation = el.getAttribute('data-annotation');
+  const annotation = decodeURIComponent(encodedAnnotation);
+
   // Highlight active verse
   document.querySelectorAll('.annotated-verse').forEach(v => v.classList.remove('active'));
   el.classList.add('active');
@@ -975,7 +994,6 @@ window.openAnnotation = function(el) {
 
   sidebar.classList.add('open');
 };
-
 window.closeAnnotation = function() {
   const sidebar = document.getElementById('annotation-sidebar');
   if (sidebar) {

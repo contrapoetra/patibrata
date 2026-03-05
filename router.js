@@ -156,7 +156,7 @@ export async function router() {
         annotations.forEach((annotation, i) => {
           const startMarker = `MARKERSTART${i}`;
           const endMarker = `MARKEREND${i}`;
-          const safeAnnotation = annotation.replace(/"/g, "&quot;");
+          const safeAnnotation = encodeURIComponent(annotation);
           const spanStart = `<span class="annotated-verse" data-annotation="${safeAnnotation}">`;
           const spanEnd = `</span>`;
           
@@ -193,10 +193,10 @@ export async function router() {
         `;
 
         // Animate poem text
-        const poemContent = document.querySelectorAll(".poem p");
-        poemContent.forEach((poem) => {
-          const originalNodes = Array.from(poem.childNodes);
-          poem.innerHTML = "";
+        const poemContent = document.querySelectorAll(".poem > *:not(.back-link)");
+        poemContent.forEach((el) => {
+          const originalNodes = Array.from(el.childNodes);
+          el.innerHTML = "";
 
           const processNode = (node, parent) => {
             if (node.nodeType === Node.TEXT_NODE) {
@@ -224,16 +224,16 @@ export async function router() {
             }
           };
 
-          originalNodes.forEach((node) => processNode(node, poem));
+          originalNodes.forEach((node) => processNode(node, el));
 
-          gsap.from(poem.querySelectorAll("span"), {
+          gsap.from(el.querySelectorAll("span"), {
             y: 20,
             opacity: 0,
             duration: 0.8,
             stagger: 0.02,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: poem,
+              trigger: el,
               start: "top bottom-=100",
               toggleActions: "play none none none",
             },

@@ -72,7 +72,8 @@
 
 @font-face {
     font-family: "Plus Jakarta Sans";
-    src: url("/assets/fonts/PlusJakartaSans-Regular.woff2") format("woff2");
+    src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2-variations"),
+         url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2");
     font-weight: 100 800;
     font-style: normal;
     font-display: swap;
@@ -80,7 +81,8 @@
 
 @font-face {
     font-family: "Plus Jakarta Sans";
-    src: url("/assets/fonts/PlusJakartaSans-Italic.woff2") format("woff2");
+    src: url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2") format("woff2-variations"),
+         url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2") format("woff2");
     font-weight: 100 800;
     font-style: italic;
     font-display: swap;
@@ -88,32 +90,18 @@
 
 @font-face {
     font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-Regular.woff2") format("woff2");
-    font-weight: 400;
+    src: url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2") format("woff2-variations"),
+         url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2") format("woff2");
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-Regular.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-Italic.woff2") format("woff2");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-Italic.woff2") format("woff2");
-    font-weight: 700;
+    src: url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2") format("woff2-variations"),
+         url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2") format("woff2");
+    font-weight: 100 900;
     font-style: italic;
     font-display: swap;
 }
@@ -559,7 +547,6 @@ html {
 .news-card h3 {
     font-family: "Libre Baskerville", serif;
     font-size: 16px;
-    font-weight: 400;
     color: #1a1a1a;
     margin-bottom: 8px;
     line-height: 1.3;
@@ -727,7 +714,6 @@ html {
 .story-title {
     font-family: "Libre Baskerville", serif;
     font-size: 42px;
-    font-weight: 400;
     line-height: 1.3;
     margin: 0 0 1.5rem 0;
     color: #1a1a1a;
@@ -797,7 +783,6 @@ html {
 .location-name {
     font-family: "Libre Baskerville", serif;
     font-size: 48px;
-    font-weight: 400;
     margin: 0 0 1.5rem 0;
     color: #1a1a1a;
 }
@@ -839,7 +824,6 @@ html {
 .pillars-title {
     font-family: "Libre Baskerville", serif;
     font-size: 36px;
-    font-weight: 400;
     margin: 1rem 0 3rem 0;
     color: #1a1a1a;
 }
@@ -866,7 +850,6 @@ html {
 .pillar h3 {
     font-family: "Libre Baskerville", serif;
     font-size: 24px;
-    font-weight: 400;
     margin: 0 0 1rem 0;
     color: #1a1a1a;
 }
@@ -896,7 +879,6 @@ html {
 .journey-title {
     font-family: "Libre Baskerville", serif;
     font-size: 42px;
-    font-weight: 400;
     line-height: 1.3;
     margin: 1rem 0 1.5rem 0;
     color: #1a1a1a;
@@ -975,7 +957,6 @@ html {
 .about-hero-title {
     font-family: "Libre Baskerville", serif;
     font-size: 72px;
-    font-weight: 400;
     line-height: 1.1;
     margin: 0 0 1.5rem 0;
     color: #1a1a1a;
@@ -1048,7 +1029,6 @@ html {
 .about-story-text h2 {
     font-family: "Libre Baskerville", serif;
     font-size: 36px;
-    font-weight: 400;
     margin: 0 0 2rem 0;
     color: #1a1a1a;
 }
@@ -1102,7 +1082,6 @@ html {
 .value-card h3 {
     font-family: "Libre Baskerville", serif;
     font-size: 20px;
-    font-weight: 400;
     margin: 0 0 1rem 0;
     color: #1a1a1a;
 }
@@ -1224,7 +1203,6 @@ html {
 .village-info h2 {
     font-family: "Libre Baskerville", serif;
     font-size: 42px;
-    font-weight: 400;
     margin: 1rem 0 1.5rem 0;
     color: #fff;
 }
@@ -1275,7 +1253,6 @@ html {
 .about-team h2 {
     font-family: "Libre Baskerville", serif;
     font-size: 36px;
-    font-weight: 400;
     margin: 1rem 0 3rem 0;
     color: #1a1a1a;
 }
@@ -1313,7 +1290,6 @@ html {
 .team-member h4 {
     font-family: "Libre Baskerville", serif;
     font-size: 20px;
-    font-weight: 400;
     margin: 0 0 0.5rem 0;
     color: #1a1a1a;
 }
@@ -1336,7 +1312,6 @@ html {
 .about-cta h2 {
     font-family: "Libre Baskerville", serif;
     font-size: 42px;
-    font-weight: 400;
     margin: 0 0 1.5rem 0;
     color: #1a1a1a;
 }
@@ -1495,7 +1470,6 @@ a:hover {
     letter-spacing: 4px;
     opacity: 0.6;
     margin-bottom: 70px;
-    font-weight: 400;
 }
 
 /* Poem body */
@@ -1504,6 +1478,14 @@ a:hover {
     font-size: 19px;
     line-height: 2.1;
     margin: 0 0 28px 0;
+}
+
+.poem strong span, .poem b span {
+    font-weight: inherit;
+}
+
+.poem strong, .poem b {
+    font-weight: 700;
 }
 
 /* ===============================
@@ -1791,7 +1773,6 @@ a:hover {
 .album-title {
     font-family: "Libre Baskerville", serif;
     font-size: 28px;
-    font-weight: 400;
     color: #1a1a1a;
     text-transform: capitalize;
     margin: 0;
@@ -2072,6 +2053,10 @@ a:hover {
     font-size: 16px;
     line-height: 1.8;
     color: #333;
+}
+
+.annotation-content strong, .annotation-content b {
+    font-weight: 700;
 }
 
 .annotation-close {
