@@ -1,5 +1,8 @@
 # The Leader
 ### by Dimas Atha Putra
 
-the calm wind blowing over your face
-each time the cow bit your fingers
+face the wind
+and calm your senses
+read the book upside down
+interpret it with your whole heart
+solve the riddles and open the secret door

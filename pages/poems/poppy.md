@@ -18,11 +18,15 @@ and it was funny
 how i was in love with her
 but she turn out to only
 only want to talk to you
+---
+She gives "poppy" the pet name "papi" ("dad" in English, which I turned into poppy throughout this collection because "papi" and "poppy" sound similar). She gave him this name because he's good at cooking.
+
+He said it was uncomfortable at first, but from what I've seen he's used to it. Safe to say that he's grown to it.
+---
 gave you a nickname
----
-She gives "poppy" the pet name "papi" ("dad" in English, which I turned into poppy throughout this collection because they sound similar) because he's good at cooking.
----
 because you have a quality
+and even after you shove it away
+it clung to you
 ===
 she only calls out to you
 and knows you better
