@@ -101,8 +101,8 @@ the accident a few hours back
 and what i thought happened in a flash
 the undertow of which we had no clue
 and why i almost didn't go through
-that i almost asked you to a date
-but, different classes made it fate
+that i almost asked you to a date to the book store
+but, different classes made it fate and we talk no more
 how we almost never called it
 if you got into what you wanted
 disappointments i had for myself
