@@ -32,7 +32,12 @@ export async function router() {
   loadingManager.show();
 
   // Update body class based on current page
+  const hadAnnotationsDisabled = body.classList.contains('annotations-disabled');
   body.className = "";
+  if (hadAnnotationsDisabled) {
+    body.classList.add('annotations-disabled');
+  }
+
   if (path === "/") {
     body.classList.add("home");
   } else if (path === "/gallery") {
@@ -187,13 +192,24 @@ export async function router() {
 
         app.innerHTML = `
           <div class="poem">
-            <a href="/poems" data-link class="back-link">← Back to collection</a>
+            <div class="poem-nav">
+              <a href="/poems" data-link class="back-link">← Back to collection</a>
+              <button id="toggle-annotations" class="toggle-btn" title="Toggle Highlights">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </button>
+            </div>
             ${html}
           </div>
         `;
 
+        // Update toggle state
+        const toggleBtn = document.getElementById('toggle-annotations');
+        if (toggleBtn && !document.body.classList.contains('annotations-disabled')) {
+          toggleBtn.classList.add('active');
+        }
+
         // Animate poem text
-        const poemContent = document.querySelectorAll(".poem > *:not(.back-link)");
+        const poemContent = document.querySelectorAll(".poem > *:not(.poem-nav)");
         poemContent.forEach((el) => {
           const originalNodes = Array.from(el.childNodes);
           el.innerHTML = "";
