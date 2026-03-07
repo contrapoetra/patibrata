@@ -101,6 +101,8 @@ the accident a few hours back
 and what i thought happened in a flash
 the undertow of which we had no clue
 and why i almost didn't go through
+that i almost asked you to a date
+but, different classes made it fate
 how we almost never called it
 if you got into what you wanted
 disappointments i had for myself
@@ -114,10 +116,10 @@ the poems, like this one i wrote for you
 
 and we never sang again
 oh how i missed us
-everyday i see you sing with somebody else
+everyday i see you sing with somebody
 and they always loved singing with you 
 and i don't blame them
-
-who doesn't love listening to
-your soothing voice tell all about yourself
+like a bird kissed by the sun
+after hours of being kissed softly by the moon
+your soothing voice tells all about yourself
 and all the endearing things about you
