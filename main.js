@@ -475,19 +475,28 @@ async function setupFloatingPhotos(albums = null) {
   }
   container.style.display = "block";
 
-  // Use cached albums if available
-  if (!albums) {
-    albums = await fetchAlbums();
-  }
-  if (!albums) return;
-  // ... (rest of function unchanged, just ensuring it's robust)
+  try {
+    // Use cached albums if available
+    if (!albums) {
+      albums = await fetchAlbums();
+    }
+    if (!albums) {
+      // If we can't get albums, we must still inform the loading manager
+      photos.forEach(() => loadingManager.itemLoaded());
+      return;
+    }
 
-  let allImages = [];
-  Object.keys(albums).forEach((albumKey) => {
-    albums[albumKey].images.forEach((img) => {
-      allImages.push({ album: albumKey, file: img });
+    let allImages = [];
+    Object.keys(albums).forEach((albumKey) => {
+      albums[albumKey].images.forEach((img) => {
+        allImages.push({ album: albumKey, file: img });
+      });
     });
-  });
+
+    if (allImages.length === 0) {
+      photos.forEach(() => loadingManager.itemLoaded());
+      return;
+    }
 
   const shuffled = allImages.sort(() => Math.random() - 0.5);
   const selectedCards = shuffled.slice(0, photos.length);
@@ -684,7 +693,11 @@ async function setupFloatingPhotos(albums = null) {
 
     gsap.ticker.add(floatingPhotosHandler);
     floatingPhotosHandler();
-  });
+    });
+  } catch (error) {
+    console.error("Error setting up floating photos:", error);
+    photos.forEach(() => loadingManager.itemLoaded());
+  }
 }
 
 let slideBackgroundsHandler = null;
@@ -701,21 +714,30 @@ async function setupSlideBackgrounds(albums = null) {
     return;
   }
 
-  // Use cached albums if available
-  if (!albums) {
-    albums = await fetchAlbums();
-  }
-  if (!albums) return;
+  try {
+    // Use cached albums if available
+    if (!albums) {
+      albums = await fetchAlbums();
+    }
+    if (!albums) {
+      slides.forEach(() => loadingManager.itemLoaded());
+      return;
+    }
 
-  const smoother = ScrollSmoother.get();
-  if (slideBackgroundsHandler) gsap.ticker.remove(slideBackgroundsHandler);
+    const smoother = ScrollSmoother.get();
+    if (slideBackgroundsHandler) gsap.ticker.remove(slideBackgroundsHandler);
 
-  let allImages = [];
-  Object.keys(albums).forEach((albumKey) => {
-    albums[albumKey].images.forEach((img) => {
-      allImages.push({ album: albumKey, file: img });
+    let allImages = [];
+    Object.keys(albums).forEach((albumKey) => {
+      albums[albumKey].images.forEach((img) => {
+        allImages.push({ album: albumKey, file: img });
+      });
     });
-  });
+
+    if (allImages.length === 0) {
+      slides.forEach(() => loadingManager.itemLoaded());
+      return;
+    }
 
   const shuffled = allImages.sort(() => Math.random() - 0.5);
   const API_IMAGE_BASE =
@@ -797,6 +819,10 @@ async function setupSlideBackgrounds(albums = null) {
   slideBackgroundsHandler();
 
   return Promise.all(slidePromises);
+  } catch (error) {
+    console.error("Error setting up slide backgrounds:", error);
+    slides.forEach(() => loadingManager.itemLoaded());
+  }
 }
 
 function setupFallingLetters() {
@@ -891,6 +917,42 @@ window.initScrollReveal = function initScrollReveal(skipSetup = false) {
 };
 
 let cachedPfps = null;
+let pfpsPromise = null;
+
+function getSmolUrl(url) {
+  return url.replace("/pfps/", "/pfps/smol/").replace(/\.(jpg|png)$/i, ".webp");
+}
+
+async function preloadPfps() {
+  if (cachedPfps) return cachedPfps;
+  if (pfpsPromise) return pfpsPromise;
+
+  pfpsPromise = (async () => {
+    try {
+      const response = await fetch("/assets/pfps.json");
+      cachedPfps = await response.json();
+
+      // Preload all unique SMOL images in the background
+      const allSmolUrls = new Set();
+      Object.values(cachedPfps).forEach((urls) => {
+        urls.forEach((url) => allSmolUrls.add(getSmolUrl(url)));
+      });
+
+      Array.from(allSmolUrls).forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+
+      return cachedPfps;
+    } catch (error) {
+      console.error("Error preloading PFPs:", error);
+      pfpsPromise = null;
+      return null;
+    }
+  })();
+
+  return pfpsPromise;
+}
 
 async function randomizeTeamPhotos() {
   const members = document.querySelectorAll(".team-member");
@@ -898,19 +960,29 @@ async function randomizeTeamPhotos() {
   if (members.length === 0 || !teamGrid) return;
 
   try {
-    if (!cachedPfps) {
-      const response = await fetch("/assets/pfps.json");
-      cachedPfps = await response.json();
-    }
+    const pfps = await preloadPfps();
+    if (!pfps) return;
 
     members.forEach((member) => {
       const memberId = member.getAttribute("data-member");
-      const photos = cachedPfps[memberId];
+      const photos = pfps[memberId];
       if (photos && photos.length > 0) {
-        const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+        const fullUrl = photos[Math.floor(Math.random() * photos.length)];
+        const smolUrl = getSmolUrl(fullUrl);
         const img = member.querySelector("img");
+
         if (img) {
-          img.src = randomPhoto;
+          const isPlaceholder = img.src.startsWith("data:image");
+
+          if (isPlaceholder) {
+            img.style.opacity = "0";
+            img.onload = () => {
+              gsap.to(img, { opacity: 1, duration: 0.5, ease: "power2.out" });
+            };
+            img.src = smolUrl;
+          } else {
+            img.src = smolUrl;
+          }
         }
       }
     });
@@ -929,10 +1001,12 @@ async function randomizeTeamPhotos() {
         if (!img) return;
 
         // Find a different photo than the current one
-        let newPhoto;
+        let newFullUrl;
         do {
-          newPhoto = photos[Math.floor(Math.random() * photos.length)];
-        } while (newPhoto === img.src && photos.length > 1);
+          newFullUrl = photos[Math.floor(Math.random() * photos.length)];
+        } while (getSmolUrl(newFullUrl) === img.src && photos.length > 1);
+
+        const newSmolUrl = getSmolUrl(newFullUrl);
 
         // Animation for switching
         gsap.to(img, {
@@ -940,7 +1014,7 @@ async function randomizeTeamPhotos() {
           scale: 0.9,
           duration: 0.2,
           onComplete: () => {
-            img.src = newPhoto;
+            img.src = newSmolUrl;
             gsap.to(img, {
               opacity: 1,
               scale: 1,
@@ -1039,8 +1113,6 @@ export async function initApp() {
   const currentPath = window.location.pathname;
 
   if (currentPath === "/") {
-    const albums = await fetchAlbums();
-
     const floatingPhotosCount =
       document.querySelectorAll(".floating-photo").length;
     const slidesCount = document.querySelectorAll(".slide-image").length;
@@ -1049,6 +1121,8 @@ export async function initApp() {
     // Reset and initialize loading manager for home page
     loadingManager.show();
     loadingManager.init(floatingPhotosCount + slidesCount + (hasModel ? 1 : 0));
+
+    const albums = await fetchAlbums();
 
     // Both setup functions now return promises that resolve when their images load
     await Promise.all([
@@ -1074,6 +1148,9 @@ export async function initApp() {
     // Also fetch albums in background to cache them
     fetchAlbums();
   }
+
+  // Always preload PFPs in background at the end
+  preloadPfps();
 }
 
 async function loadGallery() {
