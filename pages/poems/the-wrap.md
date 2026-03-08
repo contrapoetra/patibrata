@@ -119,7 +119,11 @@ oh how i missed us
 everyday i see you sing with somebody
 and they always loved singing with you 
 and i don't blame them
+---
+She's only talkative with people she's actually close with. But that isn't actually true. As depicted in first half of this poem, I had trouble starting conversations with her. I once showed Buddy Jo and Poppy an earlier draft of this poem. Poppy and Buddy Jo told me that, once you pull her in, she would talk with you endlessly **and with passion**. For my case, as depicted in the latter half of this poem, she's actually the one who invited me to talk, but still, she is a very fun and interesting person to talk to. 
+---
 like a bird kissed by the sun
 after hours of being kissed softly by the moon
+===
 your soothing voice tells all about yourself
 and all the endearing things about you
