@@ -1,12 +1,12 @@
 # Ray of the Sun
 ### by Dimas Atha Putra
 
-r your arborist came down from upstairs
-e walked over to an empty space on my bed
-y and sat in front of me and asked
-h why do you people love
-a giving the silent treatment
-n and i tell her i don’t know
+rapid steps as your arborist came down from upstairs
+a defeat on her face, walked over to an empty space on my bed
+yielded a gaze at me, she sat in front of me and asked
+how on god's green earth and why, do you people love
+and easily give the silent treatment
+never done that and i tell her i don’t know
 
 my heart has been long untouched
 
