@@ -76,7 +76,7 @@ you love every arborist like family
 towards the end of our mission
 as the arborists for that community
 ---
-I am a videographer for the Patibrata Project. I make little films documenting some of our missions.
+I was a videographer for the Patibrata Project. I make little films documenting some of our missions.
 
 Cheap among them is this: [Sosialisasi](https://www.youtube.com/watch?v=hfWY2fPpixo)
 
