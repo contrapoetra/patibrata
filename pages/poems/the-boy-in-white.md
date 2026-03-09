@@ -80,7 +80,7 @@ I am a videographer for the Patibrata Project. I make little films documenting s
 
 Cheap among them is this: [Sosialisasi](https://www.youtube.com/watch?v=hfWY2fPpixo)
 
-It is one of my proudest work for the Patibrata Project. But, she left the project sometime during post-production of this video. During editing, I had recurring emotional waves regarding her leaving the project. Every day I see her laugh and smile with the kids in the film, and the kids are gonna watch the film without her. It had gotten into me. Perhaps it's why I hold onto this one film closer than the other films I did for this project, and am proud of this film the most. It's my sentimental nature. I wish she loved the film as much as I do.
+It is one of my proudest work for the Patibrata Project. But, she left the project sometime during post-production of this video. During editing, I had recurring emotional waves regarding her leaving the project. Every day in the video editor I see her laugh and smile with the kids, and have the fun of her life with fellow arborists, and the kids are gonna watch the film without her. It had gotten into me. Perhaps it's why I hold onto this one film closer than the other films I did for this project, and am proud of this film the most. It's my sentimental nature. I wish she loved the film as much as I do.
 ---
 as the sentimental archivist preserving our memories
 ===

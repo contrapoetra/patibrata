@@ -2,6 +2,15 @@ import { router, navigateTo } from "./router.js";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
+// Configure marked to open links in a new tab
+marked.use({
+  renderer: {
+    link({ href, title, text }) {
+      return `<a href="${href}" ${title ? `title="${title}"` : ''} target="_blank" rel="noopener noreferrer">${text}</a>`;
+    }
+  }
+});
+
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Draggable, InertiaPlugin);
 
 /* =========================
