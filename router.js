@@ -28,6 +28,19 @@ export async function router() {
 
   if (!app) return;
 
+  // Update Page Title Mapping
+  const pageTitles = {
+    "/": "Patibrata",
+    "/about": "About | Patibrata",
+    "/poems": "Poems | Patibrata",
+    "/gallery": "Gallery | Patibrata",
+    "/blog": "Blog | Patibrata",
+  };
+
+  if (pageTitles[path]) {
+    document.title = pageTitles[path];
+  }
+
   // Show loader and disable scroll/menu
   loadingManager.show();
 
@@ -73,6 +86,15 @@ export async function router() {
         if (!res.ok) throw new Error("Not found");
 
         const md = await res.text();
+
+        // 🔹 Extract Title for Tab Title
+        const titleMatch = md.match(/^#\s+(.+)$/m);
+        if (titleMatch) {
+          document.title = `${titleMatch[1]} | Patibrata`;
+        } else {
+          const formattedSlug = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          document.title = `${formattedSlug} | Blog | Patibrata`;
+        }
 
         app.innerHTML = `
           <div class="blog-post">
@@ -136,6 +158,15 @@ export async function router() {
         if (!res.ok) throw new Error("Not found");
 
         let md = await res.text();
+
+        // 🔹 Extract Title for Tab Title
+        const titleMatch = md.match(/^#\s+(.+)$/m);
+        if (titleMatch) {
+          document.title = `${titleMatch[1]} | Patibrata`;
+        } else {
+          const formattedSlug = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          document.title = `${formattedSlug} | Poems | Patibrata`;
+        }
 
         // 🔹 Genius Annotation Parsing
         const annotations = [];
