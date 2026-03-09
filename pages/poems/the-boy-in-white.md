@@ -17,7 +17,7 @@ of the names they just claimed
 and your gaze fell
 on my white denim
 ---
-It was an introduction session in our meeting. Her first ever words to me was, "kamu yang baju putih, namanya siapa?" (hey you in white, what's your name)
+Her first ever words to me was in an introduction session in the first ever Patibrata meeting: *kamu yang baju putih, namanya siapa?* (hey you in white, what's your name)
 ---
 called me out for it
 and demanded me
@@ -69,14 +69,21 @@ and how you keep accidentally
 calling me, and everyone “darling”
 because i know that deep down
 you love every arborist like family
-<span lang="ar">
-من الصعب أن أُصالح قلبي
+<span lang="ar">من الصعب أن أُصالح قلبي
 حين قرّرتِ الزهرةُ المتفتّحةُ الضاحكة
-أن ترحلَ عنّا باكرًا
-</span>
+أن ترحلَ عنّا باكرًا</span>
 
 towards the end of our mission
 as the arborists for that community
+---
+I am a videographer for the Patibrata Project. I make little films documenting some of our missions.
+
+Cheap among them is this: [Sosialisasi](https://www.youtube.com/watch?v=hfWY2fPpixo)
+
+It is one of my proudest work for the Patibrata Project. But, she left the project sometime during post-production of this video. During editing, I had recurring emotional waves regarding her leaving the project. Every day I see her laugh and smile with the kids in the film, and the kids are gonna watch the film without her. It had gotten into me. Perhaps it's why I hold onto this one film closer than the other films I did for this project, and am proud of this film the most. It's my sentimental nature. I wish she loved the film as much as I do.
+---
+as the sentimental archivist preserving our memories
+===
 the kids kept asking me
 about you… what happened
 it kills me every time
