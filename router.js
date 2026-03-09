@@ -32,11 +32,7 @@ export async function router() {
   loadingManager.show();
 
   // Update body class based on current page
-  const hadAnnotationsDisabled = body.classList.contains('annotations-disabled');
   body.className = "";
-  if (hadAnnotationsDisabled) {
-    body.classList.add('annotations-disabled');
-  }
 
   if (path === "/") {
     body.classList.add("home");

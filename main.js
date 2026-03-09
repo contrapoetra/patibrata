@@ -683,8 +683,6 @@ function finalizeReveal() {
    GENIUS ANNOTATIONS
 ========================= */
 
-if (localStorage.getItem('annotations-disabled') === 'true') document.body.classList.add('annotations-disabled');
-
 window.openAnnotation = function(el) {
   if (document.body.classList.contains('annotations-disabled')) return;
   const sidebar = document.getElementById('annotation-sidebar'); if (!sidebar) return;
@@ -704,7 +702,6 @@ document.addEventListener("click", (e) => {
   const toggleBtn = e.target.closest("#toggle-annotations");
   if (toggleBtn) {
     const isDisabled = document.body.classList.toggle('annotations-disabled');
-    localStorage.setItem('annotations-disabled', isDisabled);
     toggleBtn.classList.toggle('active', !isDisabled);
     if (isDisabled) closeAnnotation();
     return;
