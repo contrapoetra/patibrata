@@ -643,12 +643,16 @@ html {
     border-radius: 6px;
     will-change: transform;
     z-index: 2147483647 !important;
-    pointer-events: auto;
+    pointer-events: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
+}
+
+.home .floating-photo {
+    pointer-events: auto;
 }
 
 .photo-inner {

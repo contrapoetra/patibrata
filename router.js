@@ -49,12 +49,17 @@ export async function router() {
     gsap.to(photos, {
       opacity: 0,
       scale: 2, // Larger explosion
+      pointerEvents: "none",
       duration: 1.2, // Doubled duration
       stagger: {
         amount: 0.4,
         from: "random"
       },
-      ease: "power2.inOut" // Smoother curve
+      ease: "power2.inOut", // Smoother curve
+      onComplete: () => {
+        const container = document.getElementById("floating-photos");
+        if (container) container.style.display = "none";
+      }
     });
   }
 
