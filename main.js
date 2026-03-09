@@ -475,6 +475,64 @@ async function setupFloatingPhotos(albums = null) {
       inner._rotationSpeed = 0.03;
       inner._baseRotation = !isMobile ? gsap.utils.random(0, 360) : 0;
       inner._rotationDirection = gsap.utils.random() > 0.5 ? 1 : -1;
+      
+      photo._dragOffset = { x: 0, y: 0 };
+
+      photo.addEventListener("mouseenter", () => {
+        if (isMobile) return;
+        photo.classList.add("is-hovered");
+        const currentRotation = photo._lastRotation || 0;
+        const targetRotation = Math.round(currentRotation / 360) * 360;
+        gsap.to(inner, {
+          rotation: targetRotation,
+          scale: 1.1,
+          duration: 0.6,
+          ease: "back.out(1.7)"
+        });
+      });
+
+      photo.addEventListener("mouseleave", () => {
+        if (isMobile) return;
+        photo.classList.remove("is-hovered");
+        gsap.to(inner, {
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      });
+
+      Draggable.create(photo, {
+        type: "x,y",
+        inertia: true,
+        bounds: "#smooth-content",
+        edgeResistance: 0.65,
+        onDragStart: function () {
+          photo._isDraggingActive = true;
+          photo.style.zIndex = 2147483647;
+        },
+        onDrag: function () {
+          const scrollY = window.scrollY;
+          const speed = parseFloat(photo.dataset.speed) || 1.4;
+          const driftY = -scrollY * (speed - 1);
+          photo._dragOffset.x = this.x;
+          photo._dragOffset.y = this.y - driftY;
+        },
+        onThrowUpdate: function () {
+          const scrollY = window.scrollY;
+          const speed = parseFloat(photo.dataset.speed) || 1.4;
+          const driftY = -scrollY * (speed - 1);
+          photo._dragOffset.x = this.x;
+          photo._dragOffset.y = this.y - driftY;
+        },
+        onDragEnd: function () {
+          photo._isDraggingActive = false;
+          photo.style.zIndex = 2147483646;
+        },
+        onThrowComplete: function () {
+          photo._isDraggingActive = false;
+        },
+      });
+
       return loadWithRetry(photo, inner, i);
     });
 
@@ -497,8 +555,8 @@ async function setupFloatingPhotos(albums = null) {
           if (inner && !isMobile && !photo.classList.contains("is-hovered")) {
             const auto = (inner._baseRotation || 0) + (tickCount * 0.1 + scrollY * (inner._rotationSpeed || 0.03)) * (inner._rotationDirection || 1);
             inner.style.transform = `rotate(${auto}deg) scale(1)`;
-          }
-        });
+            photo._lastRotation = auto;
+          }        });
       };
       gsap.ticker.add(floatingPhotosHandler);
     });
