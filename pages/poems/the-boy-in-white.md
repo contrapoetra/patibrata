@@ -14,11 +14,11 @@ ever fancy
 you sat down
 and demanded everyone
 of the names they just claimed
-and your gaze fell
-on my white denim
 ---
 Her first ever words to me was in an introduction session in the first ever Patibrata meeting: *kamu yang baju putih, namanya siapa?* (hey you in white, what's your name)
 ---
+and your gaze fell
+on my white denim
 called me out for it
 and demanded me
 for what to call me
