@@ -44,21 +44,14 @@ export async function router() {
   // Show loader and disable scroll/menu
   loadingManager.show();
 
-  // Update body class based on current page
-  body.className = "";
-
-  if (path === "/") {
-    body.classList.add("home");
-  } else if (path === "/gallery") {
-    body.classList.add("gallery");
-  }
-
   app.classList.remove("fade-in");
   app.classList.add("fade-out");
 
-  // 🔹 Photocard Exit Animation
+  // 🔹 Photocard Exit Animation (Only if leaving home and going away)
+  const isLeavingHome = body.classList.contains("home") && path !== "/";
   const photos = document.querySelectorAll(".floating-photo");
-  if (photos.length > 0) {
+  
+  if (isLeavingHome && photos.length > 0) {
     gsap.to(photos, {
       opacity: 0,
       scale: 2, // Larger explosion
@@ -70,10 +63,22 @@ export async function router() {
       },
       ease: "power2.inOut", // Smoother curve
       onComplete: () => {
-        const container = document.getElementById("floating-photos");
-        if (container) container.style.display = "none";
+        // Double check we haven't navigated back to home in the meantime
+        if (window.location.pathname !== "/") {
+          const container = document.getElementById("floating-photos");
+          if (container) container.style.display = "none";
+        }
       }
     });
+  }
+
+  // Update body class based on current page
+  body.className = "";
+
+  if (path === "/") {
+    body.classList.add("home");
+  } else if (path === "/gallery") {
+    body.classList.add("gallery");
   }
 
     setTimeout(async () => {
