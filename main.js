@@ -2,11 +2,15 @@ import { router, navigateTo } from "./router.js";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-// Configure marked to open links in a new tab
+// Configure marked to open links in a new tab for external links, and same tab for internal
 marked.use({
   renderer: {
     link({ href, title, text }) {
-      return `<a href="${href}" ${title ? `title="${title}"` : ''} target="_blank" rel="noopener noreferrer">${text}</a>`;
+      const isExternal = /^https?:\/\//.test(href);
+      const attributes = isExternal 
+        ? 'target="_blank" rel="noopener noreferrer"' 
+        : 'data-link';
+      return `<a href="${href}" ${title ? `title="${title}"` : ''} ${attributes}>${text}</a>`;
     }
   }
 });
