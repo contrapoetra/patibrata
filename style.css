@@ -19,7 +19,9 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    transition:
+        opacity 0.8s ease-in-out,
+        visibility 0.8s ease-in-out;
 }
 
 #loader.loaded {
@@ -43,8 +45,15 @@
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
 }
 
 .loader-progress-container {
@@ -72,8 +81,11 @@
 
 @font-face {
     font-family: "Plus Jakarta Sans";
-    src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2-variations"),
-         url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2");
+    src:
+        url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2")
+            format("woff2-variations"),
+        url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2")
+            format("woff2");
     font-weight: 100 800;
     font-style: normal;
     font-display: swap;
@@ -81,8 +93,11 @@
 
 @font-face {
     font-family: "Plus Jakarta Sans";
-    src: url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2") format("woff2-variations"),
-         url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2") format("woff2");
+    src:
+        url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2")
+            format("woff2-variations"),
+        url("/assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.woff2")
+            format("woff2");
     font-weight: 100 800;
     font-style: italic;
     font-display: swap;
@@ -90,8 +105,11 @@
 
 @font-face {
     font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2") format("woff2-variations"),
-         url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2") format("woff2");
+    src:
+        url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2")
+            format("woff2-variations"),
+        url("/assets/fonts/LibreBaskerville-VariableFont_wght.woff2")
+            format("woff2");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -99,8 +117,11 @@
 
 @font-face {
     font-family: "Libre Baskerville";
-    src: url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2") format("woff2-variations"),
-         url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2") format("woff2");
+    src:
+        url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2")
+            format("woff2-variations"),
+        url("/assets/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2")
+            format("woff2");
     font-weight: 100 900;
     font-style: italic;
     font-display: swap;
@@ -402,6 +423,40 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.made-with-love {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Kurale", serif;
+    font-size: 2vw;
+    letter-spacing: 0px;
+    color: rgba(51, 51, 51, 0.15);
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.made-with-love .heart {
+    color: rgba(231, 76, 60, 0.15);
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #model-container {
@@ -1480,11 +1535,13 @@ a:hover {
     margin: 0 0 28px 0;
 }
 
-.poem strong span, .poem b span {
+.poem strong span,
+.poem b span {
     font-weight: inherit;
 }
 
-.poem strong, .poem b {
+.poem strong,
+.poem b {
     font-weight: 700;
 }
 
@@ -1832,8 +1889,12 @@ a:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1941,7 +2002,7 @@ a:hover {
     #gallery-lightbox {
         padding: 20px;
     }
-    
+
     .lightbox-close {
         top: 16px;
         right: 16px;
@@ -1951,54 +2012,56 @@ a:hover {
 
 /* --- VIDEO GRID --- */
 .video-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 1.5rem;
-  margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .video-card {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .video-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .video-aspect-ratio {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
 .video-aspect-ratio iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .video-card-title {
-  padding: 1rem 1.2rem;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.2rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 768px) {
-  .video-grid-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+    .video-grid-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 /* --- GENIUS ANNOTATIONS --- */
@@ -2094,7 +2157,8 @@ a:hover {
     color: #333;
 }
 
-.annotation-content strong, .annotation-content b {
+.annotation-content strong,
+.annotation-content b {
     font-weight: 700;
 }
 
