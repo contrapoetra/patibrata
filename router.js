@@ -54,7 +54,7 @@ export async function router() {
   if (isLeavingHome && photos.length > 0) {
     gsap.to(photos, {
       opacity: 0,
-      scale: 2, // Larger explosion
+      scale: 0, // Scale down to 0
       pointerEvents: "none",
       duration: 1.2, // Doubled duration
       stagger: {
