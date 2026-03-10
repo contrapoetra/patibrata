@@ -19,8 +19,12 @@ the elephant that slept in between my legs
 the semester recap i like best
 the video you took at the event
 my beloved rotting fountain pen
+---
+She has read an early draft of this poem. And I explained to her that it's really about me being disappointed in myself for not being able to be closer to her as friends. She then told me, *i was confused because, aren't we friends?* We technically were. But to me she was like a classmate. A colleague. A coworker. We were friends, we knew each other's names, but we never really talked. I have gotten closer with every other arborist (Patibrata personnels) as friends, except for her. It's the whole epitome of why I wrote this poem in the first place.
+---
 how we're not really friends yet
 how we haven't really met
+===
 how i wish to talk with you for minutes
 while we wrap boxes for the winners
 while the other me cry for no reason
@@ -42,7 +46,6 @@ is not our thing
 "Blackie" is the name she gave to her scooter.
 ---
 you were in the back of your beloved Blackie
-===
 twenty-six meters each second
 each other wolves pass by
 and they are sharing life lessons
@@ -122,7 +125,7 @@ and i don't blame them
 ---
 I used to think that she's only talkative with people she's actually close with. But that isn't actually true. As depicted in first half of this poem, I had trouble starting conversations with her. I once showed Buddy Jo and Poppy an earlier draft of this poem. Poppy and Buddy Jo told me that, once you pull her in, she would talk with you endlessly **and with passion**. For my case, as depicted in the latter half of this poem, she's actually the one who invited me to talk, but still, she is a very fun and interesting person to talk to.
 
-Birds stay quite all night long until the morning comes and they feel the warmth of the morning sun. Then they chirp for hours. That's what I feel she's like, a birdie.
+Birds stay quiet all night long until the morning comes and the sun pours the warmth of its light upon them. Then they chirp for hours. That's what I feel she's like, a birdie. She would be quiet as long as she wants, and once provoked, she would chirp as long as she can.
 ---
 like a bird kissed by the sun
 after hours of being kissed softly by the moon

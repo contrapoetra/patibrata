@@ -36,7 +36,7 @@ they are just like what you make me feel
 
 day three
 i wasn't sleepy
-but i was crying
+but it rained on my eyebags
 i couldn't reconcile
 why we couldn't sing
 even though you can
@@ -52,7 +52,7 @@ at me crying my eyes out
 
 but then i stop
 ---
-She LOVES baby oranges. They're oranges but small, each of them are like candy. In fact, I miss them too.
+She LOVES baby oranges. They're oranges but small, each of them are like candy. In fact, I miss them too. Also, when I ate one with her, I found a segment that is half the size of the others. I showed it to her saying *"the baby orange has a baby!!!"* and we had a good laugh out of it.
 ---
 a few of those baby oranges
 they were crying at me
@@ -125,7 +125,7 @@ and you shot me between the eyes
 and i sobbed the rest of the night
 
 ---
-It was a game of Truth or Dare. It was her turn and someone asked, if one of us (the Patibrata team) never joined (the team), who would it have been. It was a brutal question. And I immediately looked down the whole time, playing with her phone's bracelet. Because I know it was going to be me. She did ask "can I choose one that is not playing?" but then she had to choose one of us. I knew it was going to be me because, I have seen her level of affection for the players that night. She's so affectionate to a bunch of us she even gave them nicknames. The only one who doesn't have a nickname in this team, and the one she was less affectionate with, is me. She said "jangan baper ya," (don't take it personally please) and utter my name. I thought I could handle it. It's just a game. But at that time all I thought was, "that was her truth." I started having flashbacks of all the good memories I had with her, and thought that even with all that, she still hated me, and I sobbed quietly while they continued playing. I don't hate her though. I loved her. I know the rules of the game, she HAD to choose somebody. It was a brutal question anyway.
+It was a game of Truth or Dare. It was her turn and someone asked, if one of us (the Patibrata team) never joined (the team), who would it have been. It was a brutal question. And I immediately looked down the whole time, playing with her phone's bracelet. Because I know it was going to be me. She did ask *"can I choose one that is not playing?"* but then she had to choose one of us. I knew it was going to be me because, I have seen her level of affection for the players that night. She's so affectionate to a bunch of us she even gave them nicknames/petnames. The only one who doesn't have a nickname, god forbid a petname, in this team, and the one she was the least affectionate with, is me. She's one of the most affectionate and/or compassionate people I know, and the one she's the least affectionate/compassionate is me. She said *"jangan baper ya,"* (don't take it personally please). And utters my name. I thought I could handle it. I knew it the entire time. And dear Lord and His angels and His prophets my goodness gracious it was just a game. But that day my conclusion for some reason was, *"that was her truth,"* and it was ringing in my head like an earworm forever. I started having flashbacks of all the good memories I had with her, and thought that even with all that, she still hated me, and I sobbed quietly while they continued playing. I don't hate her though. I loved her. I know the rules of the game, she HAD to choose somebody. It was a brutal question anyway.
 ---
 and to think that
 i knew it was gonna be me
