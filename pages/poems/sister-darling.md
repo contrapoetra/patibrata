@@ -96,7 +96,7 @@ do i stay and wait until i cross someone's mind?
 i did cross one
 and it was yours
 you were looking for me
-45 seconds before you depart
+5 seconds before you depart
 ===
 
 and the next day
