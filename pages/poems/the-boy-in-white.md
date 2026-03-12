@@ -86,13 +86,12 @@ as the sentimental archivist preserving our memories
 ===
 the kids kept asking me
 about you… what happened
-it kills me every time
-they frown at what i know
+it kills me every time i watch them frown
 but what i know
 is that you’re in a battle of wits
 
 ---
-I used to slur my words and be forgetful a lot. When I tried to learn one of my favorite songs on guitar [with uncle Stuart Alexander Lehman-Brown](https://youtu.be/4oOhPABow0Q?t=1642), uncle Stu jokingly said to himself "I wonder if I have some sort of a thing growing in my brain that's making me slur my words." It took me aback and thought, what if the same thing was happening to me... in a poem in this collection "Sister, Darling" I also told about the accident, I also had my head scanned there for good measure and they didn't bring up anything about something like that. But she, she apparently did have a tumor growing in her head, and has started treatment for it. May she defeat it, and for it to be benign so that she can defeat it once and for all.
+I used to slur my words and be forgetful a lot. When I tried to learn one of my favorite songs on guitar [with uncle Stuart Alexander Lehman-Brown](https://youtu.be/4oOhPABow0Q?t=1642), uncle Stu jokingly said to himself *I wonder if I have some sort of a thing growing in my brain that's making me slur my words.* It took me aback and thought, what if the same thing was happening to me... in a poem in this collection "Sister, Darling" I also told about the accident, I also had my head scanned there for good measure and that thankfully didn't bring up anything about something like that. But she, she apparently did have a tumor growing in her head, and has started treatment for it. May she defeat it, and for it to be benign so that she can defeat it once and for all.
 ---
 the thing
 that i thought

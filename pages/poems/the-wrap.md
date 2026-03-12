@@ -20,7 +20,7 @@ the semester recap i like best
 the video you took at the event
 my beloved rotting fountain pen
 ---
-She has read an early draft of this poem. And I explained to her that it's really about me being disappointed in myself for not being able to be closer to her as friends. She then told me, *i was confused because, aren't we friends?* We technically were. But to me she was like a classmate. A colleague. A coworker. We were friends, we knew each other's names, but we never really talked. I have gotten closer with every other arborist (Patibrata personnels) as friends, except for her. It's the whole epitome of why I wrote this poem in the first place.
+She has read an early draft of this poem. And I explained to her that it's really about me being disappointed in myself for not being able to be closer to her as friends. She then told me, *i was confused because, aren't we friends?* We technically were. But to me she was like a classmate. A colleague. A coworker. We were friends, we knew each other's names, but we never really talked. I had gotten closer with every other arborist (Patibrata personnels) as friends, except for her. It's the whole epitome of why I wrote this poem in the first place.
 ---
 how we're not really friends yet
 how we haven't really met

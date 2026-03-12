@@ -1,26 +1,27 @@
 # Buddy
 ### by Dimas Atha Putra
 
-just grateful
-over the fact that we ever climbed the mountains together
+joy blows over my face at the summit
+over fifteen hours and my legs are numb
 vast savannah in front of us
-and my camera clicks reverberate
+and my camera shutter reverberates
 negatives imprinted with your charismatic figure
 
-then it was time to go back down
-and let the dense mist simmer
+the camp was waiting for us down there
+and we had to let the dense mist simmer
 over the camps on the savannah
 the camera was heavy in my hands
-so you took it from me, and pointed it at me
+so you took it from me
+and pointed it back at me
 
 and oh the way i look that day
-i've never seen myself look the way i did
-warm and cozy in the mist
+i've never felt more like a child of nature
+my awkward figure warm and cozy in the mist
 between the tall grass and trees
 tracking stick knocking the ground as i walk
 
 but as arborists
-i see a stranger
+i saw a stranger
 still kind and charismatic
 but funny and collected
 so this is the real you, buddy Jo?
@@ -28,10 +29,11 @@ so this is the real you, buddy Jo?
 the children of the village run would toward our base
 every day and night, as we soundly slept inside
 buddy Jo? buddy Jo!
-they screamed, waking up every arborists
+they call out to you screaming
+and wake up every arborists
 they just can’t get enough with you
 
-and you, of course, walk outside
+and you would walk outside
 greet them with a smile
 ask about how school was
 and they would show you their drawings 
@@ -46,15 +48,15 @@ have been doing it since forever
 how come i’ve never seen this side
 
 during our time as arborists
-my eyes sobbed in four different times
+my eyes sobbed four different times
 behind three of them
 was this affable quality of yours
 and disappointments in mine
 
 the first time
-during our time teaching the children to read
+we were teaching the children to read
 i tried to get my roommate to talk
-she responded in a few simplest of words
+she responded in the simplest of words
 like someone dying of boredom
 and turned her head away from me
 then you came in
@@ -70,7 +72,7 @@ you made her laugh
 you made her talk for hours
 and i hugged my pillow
 disappointed in myself because i could never
-never could made her feel special like that
+never could make her feel special like that
 
 the third time
 i tried to talk with her

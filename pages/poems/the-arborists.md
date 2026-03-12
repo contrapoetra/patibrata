@@ -41,12 +41,11 @@ i couldn't reconcile
 why we couldn't sing
 even though you can
 because i tried to get you to sing
-but you look like you're sleepy
-then buddy Jo came along
-and in an instant you spill
-your entire heart out
-told him your childhood
-told him your life's story
+but i saw someone so uninterested
+like someone so deprived of sleep
+then buddy Jo shows up
+and in an instant you light up
+you spill your entire heart out
 while your back was staring
 at me crying my eyes out
 
@@ -55,29 +54,55 @@ but then i stop
 She LOVES baby oranges. They're oranges but small, each of them are like candy. In fact, I miss them too. Also, when I ate one with her, I found a segment that is half the size of the others. I showed it to her saying *"the baby orange has a baby!!!"* and we had a good laugh out of it.
 ---
 a few of those baby oranges
-they were crying at me
-i made sure to keep some for you
+they were crying back at me
+i know exactly who can calm them down
+i wrapped them up in blankets
+they were so excited
 ===
-because you told me you wanted them
+
+the fathers were leaving
+and we arborists gather
+in front of you i unwrapped the blankets
 and in a pure dopamine rush
-you gasp at the sight of them and utter to me, “love you”
+you gasp at the sight of them
+and said to me that you loved me
 like someone drunk on something
-but i can only nod and smile because oh well
-as much as i wished the way you meant it
-you do say that to every other arborists
+i know you do
+you loved all of us
+and like a child with good grade
+i felt proud, i felt happy
+that i made your day that night
 
 day four
-and our missions are done
-but then you had to aim the gun
-at one of us, and pull the trigger
+the schools of sergeant majors
+the people on the nest
+the turtle
+all were happy to meet us
+the turtle was kind of shy
+to meet dear sister, birdie, and you
+he should've meet Godzilla
+they would get along really well
 
-i know you had to choose one
-but why should it be me?
+we had lunch near where another turtle lived
+your plate was clean and you were sitting
+alone where the waves crashed and melted on the shore
+i came over to you and accompanied you
+the corals and shells joined
+we decided to show them life above the sea
+and you went against the small waves
+dived to invite more of them
+you put them in my hand
+where they can feel the warmth of the sun
+
+and our missions are done
+the corals and shells are asleep
 
 you told me that it wasn't personal
 and not to think about it too much
 but honestly I can't
-i can't not think about that time, 
+as my fingers dance with your phone's bracelet
+i can't not think about
+
 when i was failing
 to get the bracelet off
 i tried to rip the paper
@@ -85,7 +110,8 @@ and it turned into a sheet of stainless steel
 and you called out to me
 with your hands uncuffed
 and tried your best to set me free
-then, that time when we were surveying
+
+when we were surveying
 and this old man's goats
 were calling out to me, but
 i didn't understand them
@@ -95,7 +121,8 @@ i walked towards them
 and said "hi" back
 and you took my arms and pulled me back
 while your laughter resonated with mine
-that time when i was struggling
+
+when i was struggling
 to get the other end of my backpack
 and you pulled it out for me
 that time when
@@ -103,7 +130,8 @@ i saw you were craving for those baby oranges
 and i saved some for you
 and how bright your eyes were shining
 looking at them, excited for them
-that time when i rushed to your side 
+
+when i rushed to your side 
 when you were alone in the blue seashore
 and i invited you to collect sea corals 
 and one of them you gave to me
@@ -111,9 +139,9 @@ i still have some of them in my jacket
 it's my letter to current me
 reminding me of the fun we had at the seashore
 we had so much
+
 but even with all that
 i am still the furthest to you
-compared to buddy Jo, big brother, and little Poppy
 that night, your Poppy demanded the truth from you
 if the boat was overcrowded
 and someone had to be thrown overboard
@@ -130,145 +158,33 @@ It was a game of Truth or Dare. It was her turn and someone asked, if one of us 
 and to think that
 i knew it was gonna be me
 you wouldn't throw your sisters overboard
-your limitless affection to buddy Jo, big brother, and your Poppy
+and i know of your limitless affection
+to buddy Jo, big brother, and your Poppy
 so that leaves me
 i held my head down, nodding
 as you told me not to take this personal
 but i could not handle the truth
 ===
 
-what i can take is that
-i failed to get your attention
-thus i’ll never get to be your friend
-the way a big brother and a poppy are
-one on which you can lean on
-for any of your difficulties
-one who will always be there for you
-for any of your hardships
-that you need to tell somebody
-let alone someone
-you can lean on when you're sad
-or who i can lean on when i am
-
-i can do all that
-but i won’t be your first choice
-even when we say our goodbyes
-as i say good luck to you
-you needed big brother
-to hear what i said
-
-though i always listen
-when you talk about your crush 
-the person you're infatuated with
-the way he is infatuated with you
-yet the both of you
-don't know what to call the both of you yet
-i listen in awe
-because you were mine…
-oh to be the one
-you talk about the way you did
-
-the way you talk to everybody
-as if you are all best friends
-you act like this with everyone
-but exactly one person 
-me
-the only one you don't invite to talk
-the only one you don't invite to spend time with you
-the only one you don't invite
-the only one you don't greet
-the way you greet big brother and dear Poppy
-the only one you don't ever feed with your soft lovely hand
-like you did one time
-when i was in bed
-in a hospital
-one of the few times i ever felt loved by you
-like when you tried so hard
-to help me get the bracelet off me
-when i was struggling to get my hand
-through the straps of my backpack
-and out of nowhere you show up
-and pulled it out for my hand to reach
-the way my heart melted for you then
-and how i felt sorry for every other me
-for they will never going to feel
-being cared for by you
-
-i cleaned out a chair next to me
-as i see you sit down cross legged
-on the cold floor when it was raining outside
-and i thought you were cold, and tired
-after you break your little fast before the holy month came
-but you never sat down
-and you yelled out to your Poppy
-if you can lay down in his room
-and off you went
-each step you went further and further from me
-my ribcage felt like the floor you stomp on the way there
-
 when we went to go camping
 you notice big brother feeling down
 and like the big sister you are
 you comfort him
-it reminds me
-that you've done this many times
-to everyone but me
-where i stay in the basement
-still down there, with nobody to help
-like after you shot me
-and i was sobbing my eyes out
-i tried so hard to lower the volume
-but the sounds were still clear
-and i do notice how
-you kept on going
-like nothing happened
+i wish i was there in the tent
+when fireflies met you for the first time
+i miss them
 
-and when you invited everyone in the camp
-everyone but me
-and even after i asked to join
-after i've been drenched in the rain
-none of you said anything
-it's as if
-you didn't want to include me
-so i went as far away as you need me
-and when i get back
-dead silence
-not even then
-no one wanted to talk to me
-but i overheard
-that when i was gone
-fireflies met you
-and gave you company
-while mosquitoes
-drained my feet in the dark 
-my poor heart
-how i wished i was you then because, i love those guys
-fireflies should accompany me
-instead of blood-sucking nobodies
-
-and in breakfast i sat
-between you and your Poppy
-with no energy to take a bite i watched
-as you take a spoonful
-and put it in front of your Poppy
-and i watched that twice
-three times
-four times
-and i lost count
-as i take a spoonful myself
-and tried to enjoy our noodles
-
-and on the way home i was in awe
-watching you pull him close
-rest your face on his back
-and drift off into sleep
-
-that day, you and Poppy were preparing dinner
+when you and Poppy were preparing dinner
 you asked for my help
+---
+She asked for nail clippers. I was going to get mine and lend it to her, but for some stupid reason I said *don't worry, i'll buy a new one*. Then she answered, *oh you think i'm impure?* She know I'm joking, at least I hope, but I felt so bad.
+
+I was taught not to share nail clippers. Because of hygiene reasons. But even if I explain that too her, it's still me who was stupid. If I shouldn't lend my nail clippers, I should've went out and bought her a new one, instead of giving her mine and buying myself a new one. Moron.
+---
 but i said something stupid
-because i thought we were taught
-not to share nail clippers
+about stuff we shouldn't share
 and so i broke your heart
+===
 and you think i hated you
 but nothing could be further from the truth
 i loved you
@@ -282,6 +198,9 @@ i broke your heart
 and i will never be able
 never be able to forgive myself
 
+---
+From the first time we met, I had feelings for her. I never could've told her anything because, at first because I thought she was in a relationship. Then she was more affectionate to certain people in our team, like "poppy" and "big brother". Every time she comes over the person she calls out first is "poppy" and "big brother". We never clicked. This continues on throughout our period, and made my feelings of her gradually fade. She is still a very dear friend, though. She is very kind to me. But I was clearly not meant to be hers.
+---
 as my weak fingers type this out
 i mourn you
 a friend that could’ve been
@@ -289,57 +208,6 @@ how we could've loved each other
 and perhaps i can try
 to find one just like you
 and love you through them
-but i have a feeling
-that they won't be the one
-that they will never be able
-never be able to be a proxy to you
-that i only wanted
-to be yours
-and when we went out sunday night
-you went with us with a bike
-with a plate none of the other arborists had
-and, wait, who's bike is this?
-and you reveal
-you have found somebody
-and it was his
-in a strange turn of emotions
-i felt some kind of
-pride in you
-happy for you
-wishful for your new journey
-and in another strange turn of emotions
-i felt in myself some kind of
-relieve
-like a soldier
-receiving a news
-that the battle has ended
-and
-disappointment
-that i never had the courage to
-raise my rifle, take an aim
-and tell you everything
-
----
-From the first time we met, I had feelings for her. I never could've told her anything because, at first because I thought she was in a relationship. Then she was more affectionate to certain people in our team, like "poppy" and "big brother". Everytime she comes over the person she calls out first is "poppy" and "big brother". We never clicked. This continues on throughout our period, and made my feelings of her gradually fade. She is still a very dear friend, though. She is very kind to me. But I was clearly not meant to be hers.
----
-at least this will be how i can heal
-===
-because in a strange way myself is just am
-however graceful they are
-however beautiful they are
-however much they make me feel
-like how you made me feel
-my heart could never
-could never see them as more
-than the closest a friend can be
-once they've found somebody else
-well, my friends cheer at me
-to tell you everything
-but i simply can't
-i can confess
-but i can't if their mind is preoccupied
-this poem
-is all that i can do
 
 but please stay
 stay being affectionate to your Poppy, big brother,
@@ -347,5 +215,6 @@ and everyone else you're affectionate with
 even if that person isn't me
 please keep being you 
 because i know
-this is essentially how you are
+this is essentially who you are
 the one i know and love with all my heart
+===
