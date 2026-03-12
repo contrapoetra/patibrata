@@ -74,9 +74,13 @@ i felt proud, i felt happy
 that i made your day that night
 
 day four
+---
+On the last days of Patibrata, some of us went snorkeling across the Gili Islands of Lombok. On the first stop, I met a school of [sergeant major fish](https://en.wikipedia.org/wiki/Sergeant_major_(fish)). They were so beautiful I almost cried. On the second stop, we visit a statue installed in Gili Meno. It's a piece of artwork titled "Nest" and was [installed by sculptor and marinist Jason deCaires Taylor in 2017](https://www.divephotoguide.com/underwater-photography-scuba-ocean-news/jason-decaires-taylor-sculpture-nest-unveiled/). On the last stop, we meet the turtle.
+---
 the schools of sergeant majors
 the people on the nest
 the turtle
+===
 all were happy to meet us
 the turtle was kind of shy
 to meet dear sister, birdie, and you
