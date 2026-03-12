@@ -16,7 +16,7 @@ i always hear it like
 you say it out of spite
 it’s the way you answer my call:
 ---
-I never heard someone call another "darling" platonically before. She calls everyone in the team this. It's like how Anya Taylor-Joy calls her co-stars "babe", "darling", etc.
+I never heard someone call another "darling" platonically in person before. She does this with everyone in the team. It's like how Anya Taylor-Joy calls her co-stars "babe", "darling", etc. It's her way to show affection to her friends.
 
 I used to feel weirded out but throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
 ---
