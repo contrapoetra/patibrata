@@ -87,6 +87,13 @@ to meet dear sister, birdie, and you
 he should've meet Godzilla
 they would get along really well
 
+---
+One of the few memories with her that I cherish so much. After the snorkeling trip, we stay at the last island, Gili Trawangan, for a minute and eat lunch. After eating lunch, she went to the seashore, I'm guessing to feel the waves. She was alone, so I went there to join her. Then I notice that the floor under the waters are full, I mean it's littered, with dead corals and shells. I took one, it looked fantastic. I then tell her I wanna find more. She then joined me. We found some interesting corals. We also befriended a foreigner there. He was also collecting dead corals to gift them to his girlfriend way back home. Then at some point, he calls us out, pointing at a turtle. It was amazing! This is a different turtle than the one we were visiting in the snorkeling trip. I saw it pops its head out of the water for a moment, then dove back down. It was one of the most memorable moments for me during our time in Lombok.
+
+You can actually see this moment as it plays out: [junior year: part one (YouTube)](https://youtu.be/oa-3um2xrBE?t=280)
+4:40 - the seashore and the corals
+2:50 - the turtle and the foreigner
+---
 we had lunch near where another turtle lived
 your plate was clean and you were sitting
 alone where the waves crashed and melted on the shore
@@ -97,6 +104,7 @@ and you went against the small waves
 dived to invite more of them
 you put them in my hand
 where they can feel the warmth of the sun
+===
 
 and our missions are done
 the corals and shells are asleep
