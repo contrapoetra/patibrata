@@ -189,7 +189,7 @@ i miss them
 when you and Poppy were preparing dinner
 you asked for my help
 ---
-She asked for nail clippers. I was going to get mine and lend it to her, but for some stupid reason I said *don't worry, i'll buy a new one*. Then she answered, *oh you think i'm impure?* She know I'm joking, at least I hope, but I felt so bad.
+She asked for nail clippers. I was going to get mine and lend it to her, but for some stupid reason I said *don't worry, i'll buy a new one*. Then she answered, *oh you think i'm dirty?* She knows I'm joking, at least I hope, but I felt so bad.
 
 I was taught not to share nail clippers. Because of hygiene reasons. But even if I explain that too her, it's still me who was stupid. If I shouldn't lend my nail clippers, I should've went out and bought her a new one, instead of giving her mine and buying myself a new one. Moron.
 ---
