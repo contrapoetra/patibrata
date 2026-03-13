@@ -14,7 +14,7 @@ how you look at me
 when you first met me
 
 and you talk to me
-how you to talk to me
+how you talk to me
 when you first met me
 ===
 
