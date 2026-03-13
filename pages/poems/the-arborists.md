@@ -220,13 +220,4 @@ how we could've loved each other
 and perhaps i can try
 to find one just like you
 and love you through them
-
-but please stay
-stay being affectionate to your Poppy, big brother,
-and everyone else you're affectionate with
-even if that person isn't me
-please keep being you 
-because i know
-this is essentially who you are
-the one i know and love with all my heart
 ===
