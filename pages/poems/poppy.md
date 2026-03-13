@@ -16,12 +16,11 @@ but then my roommate shows up
 and it was funny
 
 how i was in love with her
-but she turn out to only
-only want to talk to you
+but her mind is more at ease with you
 ---
 She gives "poppy" the pet name "papi" ("dad" in English, which I turned into poppy throughout this collection because "papi" and "poppy" sound similar). She gave him this name because he's good at cooking.
 
-He said it was uncomfortable at first, but from what I've seen he's used to it. Safe to say that he's grown to it.
+"Even after you shove it away it clung to you," he once said it was uncomfortable at first, but from what I've seen he's used to it. Safe to say that he's grown to it.
 ---
 gave you a nickname
 because you have a quality
