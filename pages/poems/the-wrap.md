@@ -128,7 +128,7 @@ I used to think that she's only talkative with people she's actually close with.
 
 Birds stay quiet all night long until the morning comes and the sun pours the warmth of its light upon them. Then they chirp for hours. That's what I feel she's like, a birdie. She would be quiet as long as she wants, and once provoked, she would chirp as long as she can.
 ---
-like a bird kissed by the sun
+like a birdie kissed by the sun
 after hours of being kissed softly by the moon
 ===
 your soothing voice tells all about yourself
