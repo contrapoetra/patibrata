@@ -63,7 +63,7 @@ after i lost hours of my memory
 the taste of food your soft little hands put in my teeth
 just like the first slice of cake
 that my mom put in my teeth when i was little
-fear flowing through my body like a sandstorm
+fear flowing through my body like a feeding sandstorm
 before you threw your arms around me
 and the sandstorm disperses
 the other universe i see behind it
@@ -108,7 +108,7 @@ and you laugh like someone
 who just changed somebody's entire life
 
 ---
-I can't believe I never thought of that (eating chips with ice cream by scooping it with the chip) oh my goodness she's a *genius*...
+I can't believe I never thought of that (eating chips with ice cream by scooping it with the chip) oh my goodness she's a **genius**...
 ---
 i am thankful for your life-altering trick
 ===
