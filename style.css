@@ -2109,7 +2109,10 @@ a:hover {
 }
 
 .annotated-verse {
-    background: rgba(255, 235, 59, 0.2);
+    --annotation-bg: rgba(255, 235, 59, 0.2);
+    --annotation-hover-bg: rgba(255, 235, 59, 0.4);
+    --annotation-active-bg: rgba(255, 235, 59, 0.6);
+    background: var(--annotation-bg);
     border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
     cursor: help;
     transition: background 0.3s ease;
@@ -2118,12 +2121,43 @@ a:hover {
 }
 
 .annotated-verse:hover {
-    background: rgba(255, 235, 59, 0.4);
+    background: var(--annotation-hover-bg);
 }
 
 .annotated-verse.active {
-    background: rgba(255, 235, 59, 0.6);
+    background: var(--annotation-active-bg);
     border-bottom-style: solid;
+}
+
+/* Annotation Color Variations */
+.annotated-verse.color-1 {
+    --annotation-bg: rgba(76, 175, 80, 0.2);
+    --annotation-hover-bg: rgba(76, 175, 80, 0.4);
+    --annotation-active-bg: rgba(76, 175, 80, 0.6);
+}
+
+.annotated-verse.color-2 {
+    --annotation-bg: rgba(33, 150, 243, 0.2);
+    --annotation-hover-bg: rgba(33, 150, 243, 0.4);
+    --annotation-active-bg: rgba(33, 150, 243, 0.6);
+}
+
+.annotated-verse.color-3 {
+    --annotation-bg: rgba(156, 39, 176, 0.2);
+    --annotation-hover-bg: rgba(156, 39, 176, 0.4);
+    --annotation-active-bg: rgba(156, 39, 176, 0.6);
+}
+
+.annotated-verse.color-4 {
+    --annotation-bg: rgba(233, 30, 99, 0.2);
+    --annotation-hover-bg: rgba(233, 30, 99, 0.4);
+    --annotation-active-bg: rgba(233, 30, 99, 0.6);
+}
+
+.annotated-verse.color-5 {
+    --annotation-bg: rgba(255, 152, 0, 0.2);
+    --annotation-hover-bg: rgba(255, 152, 0, 0.4);
+    --annotation-active-bg: rgba(255, 152, 0, 0.6);
 }
 
 #annotation-sidebar {

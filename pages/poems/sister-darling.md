@@ -60,24 +60,30 @@ In all seriousness, it's just me losing a couple hours of my memory. I looked it
 ---
 after i lost hours of my memory
 ===
+---
+She and Roommate, and everybody really, took care of me when I was recovering from the accident. Helped me eat, let me find comfort with them when I was scared. I think of her like a sister I never had. My Patibrata friends are like a family to me.
+---
 the taste of food your soft little hands put in my teeth
 just like the first slice of cake
 that my mom put in my teeth when i was little
 fear flowing through my body like a feeding sandstorm
-before you threw your arms around me
+before my arms clung around you, and yours around me
 and the sandstorm disperses
 the other universe i see behind it
 where you were the sibling i would annoy the most
+===
 
 oh how i miss you
+the emptiness is vast and freezing
 i'm on my bed in my room
 not sleeping, not doing anything
-when your laughter reverberated throughout our house
+the sound of your laughter
+reverberating on the other side of the wall
 i sat up and tied my hair to meet you
 ---
 She comes over from time to time. She always comes over laughing or in a cheerful mood. And she usually **only** calls out to Poppy and Big Brother. As usual, because she's closer/more comfortable with them. But I usually would stay in my room, hoping that she calls me out. Because with the dynamics between me, Poppy, and Big Brother with the rest of the Patibrata team, I feel like a kid whose parents is having guests over.
 
-I don't know how to explain this dynamic, but it's essentially because me, Poppy and Big Brother lived together for a while, way before Patibrata, and at some point new people came into our lives, we form the Patibrata project, and everyone becomes good and close friends with each other, except me. I turn out to be the **only** one that is distant from the rest of the team, including her. So between me, Poppy and Big Brother, I felt left out/left behind. This is what I was calling "disappointments in myself" in the poem "The Wrap" in this collection. This whole dynamic is the way it is because I was not good at being close with people, so when the project ended, that's the dynamic that's been molded to harden. So I feel weird to exit my room just to meet her, when she's not looking for me. Like, imagine calling out to your lecturer Mr. Muffin, and some stranger shows up to meet you instead. I regularly feel left out or left behind over the course of the Patibrata project, and this is one that stayed after Patibrata ended.
+I don't know how to explain this dynamic, but it's essentially because me, Poppy and Big Brother lived together for a while, way before Patibrata, and we're pretty much like brothers. So when new people came into our lives, which would come together with us and form The Patibrata Project, everyone becomes good and close friends with each other, except me. I turn out to be the **only** one that is distant from the rest of the team, including her. So between me, Poppy and Big Brother, I felt left out/left behind. It's like being one of a triplet, and when we grew up, your brothers are super successful in life, while you're still down there trying your best to make ends meet. This is what I was calling "disappointments in myself" in the poem "The Wrap" in this collection. This whole dynamic is the way it is because I was not good at being close with people, so when the project ended, that's the dynamic that's been molded to harden. So I feel weird to exit my room just to meet her, when she's not looking for me. Like, imagine calling out to your lecturer Mr. Muffin, and some stranger shows up to meet you instead. I regularly feel left out or left behind over the course of the Patibrata project, and this is one that stayed after Patibrata ended.
 
 It's kind of pitiful and petty, but I felt like if I, Poppy and Big Brother all live in different places, everyone would visit both of them all the time, but they would rarely or never visit me. This one time, she came over, and I was in my room. She calls out to Poppy and Big Brother, of course. And they talked for a couple minutes. Then just a few seconds before she departs, she asks where I was. Maybe they said I was sleeping because she didn't call me out or anything and just left.
 
@@ -86,12 +92,8 @@ What I had to do was simply get out of my room, and greet her. I even tied my ha
 
 What I learned, by advice of other Patibrata team members (or "arborists" you could say), and hopefully useful to whoever is reading this and feeling the same kind of thing by any chance, is that you have to make an effort to be included, not left out, not left behind. If you want in on a game, tell somebody. If you want to talk to someone, go talk to them. If you miss somebody, just greet them when they're around, even if they're not looking for you. Chances are, they would be happy to see you.
 ---
-but i wasn't in anyone's mind
-do i exit my room even if it's just to meet you?
-do i stay and wait until i cross someone's mind?
-5 minutes after you arrived
-i did cross one
-and it was yours
+the silence as i waited for you to call my name
+5 minutes since you arrived
 you were looking for me
 5 seconds before you depart
 ===

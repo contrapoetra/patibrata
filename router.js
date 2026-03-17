@@ -199,7 +199,8 @@ export async function router() {
           const startMarker = `MARKERSTART${i}`;
           const endMarker = `MARKEREND${i}`;
           const safeAnnotation = encodeURIComponent(annotation);
-          const spanStart = `<span class="annotated-verse" data-annotation="${safeAnnotation}">`;
+          const colorClass = i % 6 === 0 ? "" : `color-${i % 6}`;
+          const spanStart = `<span class="annotated-verse ${colorClass}" data-id="${i}" data-annotation="${safeAnnotation}">`;
           const spanEnd = `</span>`;
           
           // Regex to find the range between markers, including potential paragraph tags

@@ -750,8 +750,12 @@ window.openAnnotation = function(el) {
   const sidebar = document.getElementById('annotation-sidebar'); if (!sidebar) return;
   const content = sidebar.querySelector('.annotation-content');
   const annotation = decodeURIComponent(el.getAttribute('data-annotation'));
+  const id = el.getAttribute('data-id');
+
   document.querySelectorAll('.annotated-verse').forEach(v => v.classList.remove('active'));
-  el.classList.add('active'); content.innerHTML = marked.parse(annotation);
+  document.querySelectorAll(`.annotated-verse[data-id="${id}"]`).forEach(v => v.classList.add('active'));
+
+  content.innerHTML = marked.parse(annotation);
   sidebar.classList.add('open');
 };
 
