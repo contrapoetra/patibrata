@@ -94,18 +94,18 @@ What I learned, by advice of other Patibrata team members (or "arborists" you co
 ---
 the silence as i waited for you to call my name
 5 minutes since you arrived
-you were looking for me
+and then i hear my name in your voice
 5 seconds before you depart
 ===
 
 and the next day
-you did call me out
-and told me to
-take a chip
+i hear it again
+and told me to take a chip
 scoop a little of ice cream with it
-and enjoy
+the taste of the crunchy chip
+coated with the soft ice cream
 and my smile grew
-as i looked into your cheerful doe-eyes
+as i looked into your cheerful eyes
 and you laugh like someone
 who just changed somebody's entire life
 
@@ -115,9 +115,8 @@ I can't believe I never thought of that (eating chips with ice cream by scooping
 i am thankful for your life-altering trick
 ===
 i am thankful for you sharing it with me
-i am thankful for you making it out
+i am thankful for you making it out of the raging waters
 and noticing the petrichor that saturday night
-and telling me that there were perfumes designed to smell like petrichor…
 and asking if i were sleepy
 and waving at me on the way back
 
