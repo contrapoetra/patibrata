@@ -12,25 +12,21 @@ raindrops were pooling on the table
 ===
 and we try to sit somewhere dry
 
-i always hear it like
-you say it out of spite
-it’s the way you answer my call:
 ---
-I never heard someone call another "darling" platonically in person before. She does this with everyone in the team. It's like how Anya Taylor-Joy calls her co-stars "babe", "darling", etc. It's her way to show affection to her friends.
+I knew people do this, but I never heard someone call another "darling" platonically in person before. She does this with everyone in the team. It reminds me of Anya Taylor-Joy who sometimes calls her co-stars "babe", "darling", etc. It's her way to show affection to her friends.
 
-I used to feel weirded out but throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
+I used to feel weirded out, and at first I thought she does it because I was annoying her. But that's not true, and throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
 ---
-yes, darling?
-
+the fear of annoying you whenever you "darling" me
+was like a tiny jab of needle on my cheek
 i surely know i'm not your love, darling
 but you made sure to make everyone feel loved
 ===
 and that's what i love about you
 
-and the way you loved films, and english
-so i made sure to share my poems with you
+i made sure to share my poems with you
 ---
-The person I wrote "The Wrap" for is her best friend.
+The person I wrote "The Wrap" for is her best friend. I offered her to read an earlier draft of it on my journaling notebook.
 ---
 like the one i wrote for your best friend
 ===
@@ -50,7 +46,7 @@ and like how you made everyone feel afloat
 i'm sorry i wasn't there to save you
 ===
 
-like how you took care of me
+like how you were there for me
 ---
 I had an accident, apparently. I sat on a ride with my friend, and suddenly I was on a hospital bed. Have you seen the Apple TV show "Severance"? I had a shower thought that that's what happened to me.
 
@@ -79,7 +75,7 @@ i'm on my bed in my room
 not sleeping, not doing anything
 the sound of your laughter
 reverberating on the other side of the wall
-i sat up and tied my hair to meet you
+i sat up and tied my hair to greet you
 ---
 She comes over from time to time. She always comes over laughing or in a cheerful mood. And she usually **only** calls out to Poppy and Big Brother. As usual, because she's closer/more comfortable with them. But I usually would stay in my room, hoping that she calls me out. Because with the dynamics between me, Poppy, and Big Brother with the rest of the Patibrata team, I feel like a kid whose parents is having guests over.
 
