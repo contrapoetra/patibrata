@@ -15,7 +15,7 @@ and we try to sit somewhere dry
 ---
 I knew people do this, but I never heard someone call another "darling" platonically in person before. She does this with everyone in the team. It reminds me of Anya Taylor-Joy who sometimes calls her co-stars "babe", "darling", etc. It's her way to show affection to her friends.
 
-I used to feel weirded out, and at first I thought she does it because I was annoying her. But that's not true, and throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
+I used to feel weirded out, and at first I thought she does it because I was annoying her. But that's not true, it was just some lighthearted joke, and throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
 ---
 the fear of annoying you whenever you "darling" me
 was like a tiny jab of needle on my cheek
