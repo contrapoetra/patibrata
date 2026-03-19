@@ -18,7 +18,7 @@ I knew people do this, but I never heard someone call another "darling" platonic
 I used to feel weirded out, and at first I thought she does it because I was annoying her. But that's not true, it was just some lighthearted joke, and throughout our friendship it felt fine and I grew to find it endearing. We are like family to her.
 ---
 the fear of annoying you whenever you "darling" me
-was like a tiny jab of needle on my cheek
+was a tiny jab of needle on my cheek
 i surely know i'm not your love, darling
 but you made sure to make everyone feel loved
 ===
@@ -39,8 +39,7 @@ She had a near-death experience during our time as Patibrata. She was almost car
 Thank you so much for saving our dearest friend's life.
 ---
 and how deep i sank when i heard you almost sank
-but you pulled through
-safe and sound on deck
+you pulled through and you're safe and sound on deck
 while i suffocated in front of you
 and like how you made everyone feel afloat
 i'm sorry i wasn't there to save you
@@ -94,20 +93,20 @@ and then i hear my name in your voice
 5 seconds before you depart
 ===
 
-and the next day
-i hear it again
-and told me to take a chip
-scoop a little of ice cream with it
-the taste of the crunchy chip
-coated with the soft ice cream
-and my smile grew
-as i looked into your cheerful eyes
-and you laugh like someone
-who just changed somebody's entire life
+i hear it the next day again
+with near a bagful of chips in your hand
+and not a cupful of ice cream in another
+i nod my head at your instructions unbothered
+the chip in my fingers is now a spoon scooping the ice cream out
+the taste of the spoonful lingering melting in my mouth
+it is as crunchy as it is soft as it is cool as ice
+my munchy smile widens as i was caught in your cheerful eyes
+---
+I can't believe I never thought of that (eating ice cream with chips by scooping the ice cream with the chip) oh my goodness she's a **genius**...
+---
+and your laugh reverberates just the way it always does
+this time like it just changed somebody's entire life
 
----
-I can't believe I never thought of that (eating chips with ice cream by scooping it with the chip) oh my goodness she's a **genius**...
----
 i am thankful for your life-altering trick
 ===
 i am thankful for you sharing it with me
