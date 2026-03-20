@@ -24,7 +24,7 @@ how simple it is to mold my confidence
 but your life isn't just jokes and giggles
 
 ---
-*Our friend, my dear sister, our family* is the person I wrote "Sister, Darling" about. I've also written about this in that poem. The person I wrote this poem about, is the one who ultimately saved her. He endured a wound below his knees in the process. He's a goddamn hero. I couldn't bear to imagine what would've happened without him.
+*Our friend, my dear sister, our family* is the person I wrote ["Sister, Darling"](/poems/sister-darling) about. I've also written about this in that poem. The person I wrote this poem about, is the one who ultimately saved her. He endured a wound below his knees in the process. He's a goddamn hero. I couldn't bear to imagine what would've happened without him.
 ---
 our friend, my dear sister, our family
 her life flashed before her eyes

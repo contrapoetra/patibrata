@@ -12,7 +12,7 @@ but oh do i want to talk
 about something else
 how you comforted me when she was upset
 ---
-"Gajah" (Indonesian for "elephant") was the name of a cat that we took care of for a while during the time of the Patibrata project. We had bonded a bit over this cat and when it slept in between my legs I texted her about it. She never replied.
+"Gajah" (Indonesian for "elephant") was the name of a cat that we took care of for a while during the time of the Patibrata project. We had bonded a bit over this cat and when it for some reason chose to sleep in between my legs I texted her about it. She never replied.
 ---
 the elephant that slept in between my legs
 ===

@@ -75,7 +75,7 @@ that i made your day that night
 
 day four
 ---
-On the last days of Patibrata, some of us went snorkeling across the Gili Islands of Lombok. On the first stop, I met a school of [sergeant major fish](https://en.wikipedia.org/wiki/Sergeant_major_(fish)). They were so beautiful I almost cried. On the second stop, we visit a statue installed in Gili Meno. It's a piece of artwork titled "Nest" and was [installed by sculptor and marinist Jason deCaires Taylor in 2017](https://www.divephotoguide.com/underwater-photography-scuba-ocean-news/jason-decaires-taylor-sculpture-nest-unveiled/). On the last stop, we met the turtle.
+On the last days of Patibrata, some of us went snorkeling across the Gili Islands of Lombok. On the first stop, I met a school of [sergeant major fish](https://en.wikipedia.org/wiki/Sergeant_major_(fish)). They were so beautiful I almost cried. On the second stop, we visited a statue installed under the waters of Gili Meno. It's a piece of artwork titled "Nest" and was [installed by sculptor and marinist Jason deCaires Taylor in 2017](https://www.divephotoguide.com/underwater-photography-scuba-ocean-news/jason-decaires-taylor-sculpture-nest-unveiled/). On the last stop, we met the turtle.
 ---
 the schools of sergeant majors
 the people on the nest
@@ -88,7 +88,7 @@ he should've meet Godzilla
 they would get along really well
 
 ---
-One of the few memories with her that I cherish so much. After the snorkeling trip, we stay at the last island, Gili Trawangan, for a minute and eat lunch. After eating lunch, she went to the seashore, I'm guessing to feel the waves. She was alone, so I went there to join her. Then I notice that the floor under the waters are full, I mean it's littered, with dead corals and shells. I took one, it looked fantastic. I then tell her I wanna find more. She then joined me. We found some interesting corals. We also befriended a foreigner there. He was also collecting dead corals to gift them to his girlfriend way back home. Then at some point, he calls us out, pointing at a turtle. It was amazing! This was a different turtle than the one we were visiting in the snorkeling trip. I saw it pops its head out of the water for a moment, then dove back down. It was one of the most memorable moments for me during our time in Lombok. I still have some of those corals with me.
+One of the few memories with her that I cherish so much. After the snorkeling trip, we stay at the last island, Gili Trawangan, for a minute and eat lunch. After eating lunch, she went to the seashore, I'm guessing to feel the waves. She was alone, so I went there to join her. Then I notice that the floor under the waters are full, I mean it's littered, with dead corals and shells. I took one, it looked fantastic. I then tell her I wanna find more. She then joined me. We found some interesting corals. We also befriended a foreigner there. He was also collecting dead corals to gift them to his girlfriend way back home. Then at some point, he calls us out, pointing at a turtle. It was amazing! This was a different turtle than the one we were visiting in the snorkeling trip. I saw it pop its head out of the water for a moment, then dove back down. It was one of the most memorable moments for me during our time in Lombok. I still have some of those corals with me.
 
 You can actually see this moment as it plays out: [junior year: part one (YouTube)](https://youtu.be/oa-3um2xrBE?t=280)
 <br> [4:40](https://youtu.be/oa-3um2xrBE?t=280) - the seashore and the corals
@@ -137,8 +137,8 @@ while your laughter resonated with mine
 when i was struggling
 to get the other end of my backpack
 and you pulled it out for me
-that time when
-i saw you were craving for those baby oranges
+
+when i saw you were craving for those baby oranges
 and i saved some for you
 and how bright your eyes were shining
 looking at them, excited for them

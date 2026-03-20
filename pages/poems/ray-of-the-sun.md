@@ -2,7 +2,7 @@
 ### by Dimas Atha Putra
 
 ---
-"She" is the person I wrote "The Boy In White" about. He (who this poem is about) was in a relationship with her.
+"She" is the person I wrote ["The Boy In White"](/poems/the-boy-in-white) about. He (who this poem is about) was in a relationship with her.
 
 One day, she came over to me while I was on my laptop working on usual Patibrata duties, and asked me, *kenapa cowok tu suka silent treatment, ya?* ("why do boys love giving the silent treatment?"). I didn't realize what she was talking about, because I thought it's something between her and him. But after a few days, he did it again to her, and this time I noticed, that it's the same thing he did to me a few months back, way before Patibrata was even a thing. I had failed to clean up my trash on the living room (cut me some slack okay it was late in the night I was sleepy okay don't judge me) and he was always the one who cleans the house a lot, so he was rightfully mad at me and a couple other housemates. And the way he was mad at me isn't by yelling at me or confronting me about anything. The day after that, I called out to him to ask about something. He didn't respond. I was in front of him. He acted like I wasn't anywhere there. It was painful to me the first time, because why did he do that all of a sudden. So I avoided him. That lasted for months.
 
@@ -43,7 +43,7 @@ we love to see you light up
 to see the taste of life in you
 as sweet as the dessert you bake
 ---
-Just like our dear Poppy, he (the person I wrote this for) is also a very good cook. It's one of the reasons why she (the person I wrote The Boy In White about) fell for him.
+Just like our dear Poppy, he (the person I wrote this for) is also a very good cook. It's one of the reasons why she (the person I wrote ["The Boy In White"](/poems/the-boy-in-white) about) fell for him.
 ---
 as savory as the dish you make
 ===

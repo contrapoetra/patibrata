@@ -9,7 +9,7 @@ under the same roof
 we're housemates
 since we were done boarding
 ---
-"Roommate" is the person I wrote "The Arborists" about. Notice how "poppy" keeps appearing in that one?
+"Roommate" is the person I wrote ["The Arborists"](/poems/the-arborists) about. Notice how "poppy" keeps appearing in that one?
 ---
 but then my roommate shows up
 ===
