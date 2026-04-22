@@ -3,7 +3,7 @@ import { loadingManager, initApp } from "./main.js";
 const connections = {
   "/": "/about",
   "/about": "/poems",
-  "/poems": "/", // yeah i don't feel like it for now
+  "/poems": "/gallery",
   "/gallery": "/blog",
   "/blog": "/",
 };
@@ -11,7 +11,7 @@ const connections = {
 const routes = {
   "/": "/pages/home.html",
   "/about": "/pages/about.html",
-  "/poems": "/pages/poems.html",
+  "/poems": "/pages/home.html", // see it's really clouding my head
   "/gallery": "/pages/gallery.html",
   "/blog": "/pages/blog.html",
 };
