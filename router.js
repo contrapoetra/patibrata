@@ -3,7 +3,7 @@ import { loadingManager, initApp } from "./main.js";
 const connections = {
   "/": "/about",
   "/about": "/poems",
-  "/poems": "/gallery",
+  "/poems": "/", // yeah i don't feel like it for now
   "/gallery": "/blog",
   "/blog": "/",
 };
@@ -50,7 +50,7 @@ export async function router() {
   // 🔹 Photocard Exit Animation (Only if leaving home and going away)
   const isLeavingHome = body.classList.contains("home") && path !== "/";
   const photos = document.querySelectorAll(".floating-photo");
-  
+
   if (isLeavingHome && photos.length > 0) {
     gsap.to(photos, {
       opacity: 0,
@@ -202,10 +202,10 @@ export async function router() {
           const colorClass = i % 6 === 0 ? "" : `color-${i % 6}`;
           const spanStart = `<span class="annotated-verse ${colorClass}" data-id="${i}" data-annotation="${safeAnnotation}">`;
           const spanEnd = `</span>`;
-          
+
           // Regex to find the range between markers, including potential paragraph tags
           const regex = new RegExp(`${startMarker}([\\s\\S]*?)${endMarker}`, 'g');
-          
+
           html = html.replace(regex, (match, content) => {
             // Close and reopen the span tag at any tag that breaks a line or block
             // This ensures valid HTML and correct highlighting scope.
